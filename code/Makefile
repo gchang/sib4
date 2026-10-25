@@ -362,8 +362,14 @@ help:
 	@echo ""
 
 # Dependencies
+# Each module must be compiled before the files that use it, so that
+# parallel builds (make -j) work.
 
-$(VAR_OBJS):
+module_oparams.o module_pparams.o module_sibconst.o module_param.o \
+module_pftinfo.o module_phosib.o module_poolinfo.o module_sib.o \
+module_sibvs.o module_time.o: kinds.o
+
+module_io.o module_local.o: kinds.o module_sibconst.o
 
 $(SCI_OBJS): $(VAR_OBJS)
 

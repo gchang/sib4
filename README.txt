@@ -32,6 +32,7 @@ optimization (optimized).
 To use NetCDF and LAPACK from elsewhere (for example a conda
 environment), type:
 >make NETCDF_ROOT=$CONDA_PREFIX LAPACK_ROOT=$CONDA_PREFIX
+Add -j (for example 'make -j4') to compile in parallel.
 
 Finishing compilation will create the 'SiB4D'.
 
