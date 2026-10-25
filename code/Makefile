@@ -23,6 +23,9 @@
 #The libraries will be searched for in
 #     $(NETCDF_ROOT)/lib and $(LAPACK_ROOT)/lib
 #
+#The library flags themselves can be replaced by setting LALIB
+#  (LAPACK/BLAS) or NCLIB (NetCDF), see "Set Library Flags" below.
+#
 #
 #Please note, when linking/running you need to have
 #  the libraries loaded into the library path.
@@ -114,24 +117,40 @@ endif
 
 # Set Library Flags
 # -------------------------------------------------------------------------
-ifeq ($(OS),Darwin)
-  ifeq ($(VERSION),10.8.0)
-       LALIB = -framework vecLib
+# SiB4 only needs LAPACK's dgesv and the NetCDF Fortran and C libraries.
+# The defaults link plain LAPACK/BLAS and NetCDF, and record the library
+# folders in SiB4D (rpath) so LD_LIBRARY_PATH need not be set to run it.
+# To link something else, set LALIB or NCLIB, for example ATLAS:
+#   make LALIB="-L/usr/local/atlas/lib -llapack -lcblas -latlas -lf77blas"
+# or a static NetCDF that needs HDF5:
+#   make NCLIB="-L/usr/local/lib -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -ldl -lz"
+ifndef LALIB
+  ifeq ($(OS),Darwin)
+    ifeq ($(VERSION),10.8.0)
+         LALIB = -framework vecLib
+    else
+         LALIB = -framework Accelerate
+    endif
   else
-       LALIB = -framework Accelerate
+    LALIB = -L$(LAPACK_ROOT)/lib -Wl,-rpath,$(LAPACK_ROOT)/lib -llapack -lblas
   endif
-else
-  LALIB = -L$(LAPACK_ROOT)/lib -llapack -lcblas -latlas -lf77blas -lgfortran
 endif
 
-ifeq ($(NC),3)
-  INCLUDES = -I$(NETCDF_ROOT)/include
-  LIBS = $(LALIB) -L$(NETCDF_ROOT)/lib -lnetcdf
-else
-  INCLUDES = -I$(NETCDF_ROOT)/include -I$(H5ROOT)/include
-  LIBS = $(LALIB) -L$(NETCDF_ROOT)/lib -L$(H5ROOT)/lib -lnetcdff -lnetcdf \
-          -lhdf5hl_fortran -lhdf5_fortran -lhdf5_hl -lhdf5 -ldl -lz
+ifndef NCLIB
+  ifeq ($(NC),3)
+    NCLIB = -L$(NETCDF_ROOT)/lib -Wl,-rpath,$(NETCDF_ROOT)/lib -lnetcdf
+  else
+    NCLIB = -L$(NETCDF_ROOT)/lib -Wl,-rpath,$(NETCDF_ROOT)/lib -lnetcdff -lnetcdf
+  endif
 endif
+
+INCLUDES = -I$(NETCDF_ROOT)/include
+ifneq ($(NC),3)
+  ifdef H5ROOT
+    INCLUDES += -I$(H5ROOT)/include
+  endif
+endif
+LIBS = $(LALIB) $(NCLIB)
 
 
 # Set Compiler Option Flags

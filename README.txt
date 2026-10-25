@@ -29,6 +29,9 @@ To compile SiB4, type:
 which will compile with the default compile (gfortran), 
 the default netcdf libraries (netcdf4), and the default
 optimization (optimized).
+To use NetCDF and LAPACK from elsewhere (for example a conda
+environment), type:
+>make NETCDF_ROOT=$CONDA_PREFIX LAPACK_ROOT=$CONDA_PREFIX
 
 Finishing compilation will create the 'SiB4D'.
 
