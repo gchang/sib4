@@ -1,0 +1,10 @@
+#/bin/bash
+
+SiB4D ./namel/namel.xx1 >xx1.out &
+SiB4D ./namel/namel.xx2 >xx2.out &
+SiB4D ./namel/namel.xx3 >xx3.out &
+SiB4D ./namel/namel.xx4 >xx4.out &
+SiB4D ./namel/namel.xx5 >xx5.out &
+SiB4D ./namel/namel.xx6 >xx6.out &
+SiB4D ./namel/namel.xx7 >xx7.out &
+SiB4D ./namel/namel.xx8 >xx8.out &

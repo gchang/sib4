@@ -1,0 +1,24 @@
+1    ;start month
+1997 ;start year
+12   ;stop month
+1997 ;stop year
+----SiB4 Directory----
+/Users/kdhaynes/Output/groups/amz/hsib_xxx.lu.hr3.nc
+----Output File----
+/Users/kdhaynes/sib4_pools.txt
+---Number/Name of Variables---
+14
+lai,LAI
+pool_leaf,Leaf Pool
+pool_froot,Fine Roots
+pool_croot,Coarse Roots
+pool_wood,Wood Pool
+pool_prod,Product Pool
+pool_cdb,Coarse Dead Biomass
+pool_met,Metabolic Litter
+pool_lstr,Structural Litter
+pool_slit,Soil Litter
+pool_slow,Soil Slow Pool
+pool_arm,Soil Passive Pool
+agb,Above-Ground Biomass
+bgb,Below-Ground Biomass

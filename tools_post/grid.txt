@@ -1,0 +1,33 @@
+SiB4 grid program input file----------------|
+--------------------------------------------|
+                                 start month=12
+                                  start year=2018
+                                   end month=12
+                                    end year=2018
+                               output global=.T.
+--------->                    grid hr2 files=.F.
+                              grid hr3 files=.F.
+                              grid qp2 files=.F.
+                              grid qp3 files=.T.
+                             grid pbp1 files=.F.
+                             grid pbp2 files=.F.
+                            grid other files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+--------->                    specific files=0
+----input path------------------(SiB4 Files)|
+/Users/kdhaynes/
+---output path------------------(SiB4 Files)|
+/Users/kdhaynes/
+--input path, prefix, suffix---(Other Files)| 
+/Users/kdhaynes/Output/global/monthly/qsib_xxx.lu.qp3.nc
+--output path, prefix, suffix--(Other Files)|
+/Users/kdhaynes/Output/global/test/qgrid_xxx.nc
+----specific file input name(s)-------------|
+/Users/kdhaynes/Output/global/clim/monthly/qsib_9817.g.qp2.nc
+----specific file output name(s)------------|
+/Users/kdhaynes/Output/global/clim/monthly/qgrid_9817.g.qp2.nc
+
+

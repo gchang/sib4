@@ -1,0 +1,18 @@
+5  PFT Pools
+6  LU Pools
+***********************************************************************
+Pool Information:
+------------------------
+ num  Long_Name             Short     Type    Location  Vertical_Level
+   1  leaf                  leaf      live    canopy    1
+   2  fine root             froot     live    soil      10
+   3  coarse root           croot     live    soil      10
+   4  stem / wood           stwd      live    canopy    1
+   5  product               prod      live    canopy    1
+   6  coarse dead biomass   cdb       dead    surface   1
+   7  metabolic litter      metl      dead    surface   1
+   8  structural litter     strl      dead    surface   1
+   9  soil litter           slit      dead    soil      10
+  10  soil slow             slow      dead    soil      10
+  11  soil armored          arm       dead    soil      10
+

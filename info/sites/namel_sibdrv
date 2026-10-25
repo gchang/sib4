@@ -1,0 +1,238 @@
+
+$CONTROL_LIST_SIBDRV
+   nsib           = 1,
+   starttime      = 1,
+   startyear      = 1997,
+   endtime        = 365,
+   endyear        = 2018,
+   dtsib          = 600,
+   restart_dtsib  = 0,
+   qp_dtsib       = -1,
+   pbp_dtsib      = 86400,
+   hr_dtsib       = 3600,
+/
+
+$IO_LIST_SIBDRV
+   pft_info  = './input/params/info_pft.dat'
+   pool_info = './input/params/info_pool.dat'
+   aero_file = './input/params/sib_aero.nc'
+   pgdd_file = './input/params/phen_gdd.dat'
+   pstg_file = './input/params/phen_stg.dat'
+   phys_file = './input/params/sib_phys.dat'
+   pool_file = './input/params/sib_pool.dat'
+   vs_file = '../sib4_driver/sites/XX-XXX/sib_vs.txt'
+   ic_file = '../sib4_driver/sites/XX-XXX/sib_requib.nc'
+   dr_path = '../sib4_driver/sites/XX-XXX/merra2/merra2_xxx_'
+   tm5_path = '../sib4_driver/sites/XX-XXX/TM5COS/'
+   fr_path = '../sib4_driver/sites/XX-XXX/gfed4/gfed4_xxx_'
+   out_path = '../sib4_output/sites/XX-XXX/'
+   out_info = './input/sib_outopts'
+   out_rinfo= './input/sibr_outopts'
+/
+
+$SPINUP_LIST_SIBDRV
+   spinup         = .true.,
+   spinup_default = .true.,
+   spinup_numyrs  = 44,
+   spinup_maxiter = 10,
+   spinup_threshold = 0.01,
+   spinup_writediag = .false.,
+   spinup_writetxtf = .false.,
+/
+
+$SUBGRID_SIBDRV
+   minlon = -180,
+   maxlon = 180,
+   minlat = -90,
+   maxlat =  90,
+/
+
+$PBP_LIST_SIBDRV
+   npbp = -1
+/
+-lon-, -lat-,
+/
+
+$BALAN_LIST_SIBDRV
+   badtc_print    = .true.,
+   badtc_stop     = .false.,
+   canb_print     = .false.,
+   canb_stop      = .true.,
+   canb_thresh    = 1.E-6,
+   carbonb_print  = .false.,
+   carbonb_stop   = .true.,
+   carbonb_thresh = 1.E-6,
+   fireb_print    = .false.,
+   fireb_stop     = .true.,
+   fireb_thresh   = 1.E-6,
+   snocmbn_print  = .false.,
+   snocmbn_stop   = .true.,
+   snocmbn_thresh = 1.E-6,
+   bnum_allow     = 10,
+   energyb_print  = .false.,
+   energyb_stop   = .true.,
+   energyb_thresh = 0.01,
+   waterb_print   = .false.,
+   waterb_stop    = .true.,
+   waterb_thresh  = 0.1,
+/
+
+$PRINT_LIST_SIBDRV
+   print_avec    = .false.,
+   print_driver  = .false.,
+   print_fire    = .false.,
+   print_harvest = .false.,
+   print_pftinfo = .false.,
+   print_pooll   = .false.,
+   print_soil    = .false.,
+   print_sscol   = .false.,
+   print_veg     = .false.,
+   print_stop    = .false.,
+/
+
+$SWITCH_LIST_SIBDRV
+   cornsoy_switch   = .false.,
+   fire_switch      = .false.,
+   grazing_switch   = .true.,
+   green_switch     = .true.,
+   eqclear_switch   = .true.,
+   leapyr_switch    = .true.,
+   updatelst_switch  = .true.,
+   varcos_switch    = .false.,
+   soilogee_switch  = .false.,
+   varco2_switch    = .false.,
+   ftcos_switch = .true.,
+/
+
+$VALUE_FTCOS
+   ha = 40000.,
+   heq = 100000.,
+   teq = 303.,
+/
+------------------------------------------------------------------------------
+  nsib      : number of points in simulation
+  starttime : day of year to start simulation
+  startyear : year to start simulation
+  endtime   : day of year to stop simulation
+  endyear   : year to stop simulation
+  dtsib     : prognostic time step, in seconds
+  restart_dtsib  : > 0 implies units of seconds - restart output interval
+                   -- only intervals of days (86400 s) are allowed
+		       because SiB4 always starts at O GMT
+		   -- file names have the format sib_ryyyydoy.nc, where
+		       doy is the day of year the file is ready to be used for
+		       (file is written on the last timestep of the previous day)
+                  < 0 implies units of months - restart output interval
+		   -- can be multiple months up to years
+		   -- file names have teh format sib_ryyyymm.nc, where
+		      mm is the month the file is ready to be used for
+		      (i.e. sib_r200201.nc is for run starting Jan 1, 2002)
+  dtsibqp  : greater than zero implies units of seconds - QP output interval
+             less than zero implies units of months - QP output interval
+  dtsibpbp : greater than zero implies units of seconds - PBP output interval
+             less than zero implies units of months - PBP output interval
+  dtsibhr  : greater than zero implies units of seconds - HR output interval
+             less than zero implies units of months - HR output interval
+
+  pft_info  : File containing PFT information
+  pool_info : File containing pool information
+  aero_file : File containing aerodynamical parameters
+  pgdd_file : File containing GDD-based phenological parameters
+  pstg_file : File containing stage-based phenological parameters
+  pnvg_file : File containing non-vegetation parameters
+  phys_file : File containing physiological parameters
+  pool_file : File containing pool respiration/transfer parameters
+  vs_file   : File containing vegetation structure
+  ic_file   : File containing initial condition/restart values
+  dr_path   : Directory containing driver data
+  fr_path   : Directory containing fire emissions
+  out_path  : Directory for model output
+  out_info  : File containing output specification/information
+  out_rinfo : File containing restart specification/information
+
+  spinup    : Flag to perform a spinup simulation
+              ->simulation continues until either:
+                 -- pools are within threshold equilibrium values
+                 -- max number of iterations is met
+  spinup_default : Flag to use default initial conditions for spin-up run
+                    -- all pools zero except minimal froot
+                    -- soil moisture starts at saturation
+  spinup_numyrs  : Number of years in spinup run to run before calculating equilibrium pools
+  spinup_maxiter : Number of interations in a spinup simulation
+  spinup_threshold: Input/output ratio threshold for 'spun-up'
+  spinup_writediag: Flag to follow output choices in spin-up run
+                      (false will only save equilibrium files)
+  spinup_writetxtf: Flag to write equilibrium pools to a text file
+
+  minlon : Minimum longitude for setting a subgrid
+  maxlon : Maximum longitude for setting a subgrid
+  minlat : Minimum latitude for setting a subgrid
+  maxlat : Maximum latitude for setting a subgrid
+
+  npbp : Number of PBP's to be saved
+          --corresponding lon/lat pairs (in degrees) are listed below npbp
+          --value of -1 will save all points
+
+  badtc_print    : print canopy temperatures?
+  badtc_stop     : stop for bad canopy temperatures?
+  canb_print     : print canopy balance values?
+  canb_stop      : stop if canopy balance fails?
+  canb_thresh    : canopy balance threshold (r4)
+  carbonb_print  : print carbon balance information?
+  carbonb_stop   : stop if carbon balance fails?
+  carbonb_thresh : carbon balance threshold (r4)
+  fireb_print    : print fire balance information?
+  fireb_stop     : stop if fire balance fails?
+  fireb_thres    : fire balance threshold (r4)
+  snocmbn_print  : print snow combine information?
+  snocmbn_stop   : stop if snow combine water balance fails?
+  snocmbn_thresh : snow combine balance threshold (r4)
+
+  bnum_allow     : number of allowable energy/water offenses (i4)
+  energyb_print  : print energy balance values?
+  energyb_stop   : stop if energy balance fails?
+  energyb_thresh : energy balance threshold (r4)
+  waterb_print   : print water balance values?
+  waterb_stop    : stop if water balance fails?
+  waterb_thresh  : water balance threshold (r4)
+
+  print_avec     : print avec/bvec values?
+  print_driver   : print driver data?
+  print_fire     : print fire emissions?
+  print_harvest  : print harvest information?
+  print_pftinfo  : print PFT information?
+  print_pooll    : print live pool values?
+  print_soil     ; print soil properties?
+  print_sscol    : print soil/snow layer info?
+  print_veg      : print vegetation values?
+  print_stop     : stop after printing information?
+
+  cornsoy_switch : Flag to annually alternate corn/soybeans
+  fire_switch    : Flag for fire emissions
+  grazing_switch : Flag for grazing
+  green_switch   : Flag to use greenness fraction
+  eqclear_switch : Flag to clear equilibrium variables
+                     at start of simulation
+  leapyr_switch  : Flag for using leap years (.F. == constant 365 days)
+  updatelst_switch: Flag to update carbon pools at 0 LST (rather than 0 GMT)
+  varcos_switch  : Flag to use variable atmospheric COS levels
+  soilogee_switch : Flag to use COS soil model after Ogee et al. (2016)
+  varco2_switch  : Flag to use variable atmospheric CO2 levels
+  ftcos_switch   : Flag to use the new function of temperature for CA following Cho et al. (2022)
+  ha, heq, teq   : variables for the function of temperature for CA
+
+=============================
+Julian Days (not leap year )
+  January    1 = 1
+  February   1 = 32
+  March      1 = 60
+  April      1 = 91
+  May        1 = 121
+  June       1 = 152
+  July       1 = 182
+  August     1 = 213
+  September  1 = 244
+  October    1 = 274
+  November   1 = 305
+  December   1 = 335
+=============================

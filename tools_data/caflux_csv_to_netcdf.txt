@@ -1,0 +1,12 @@
+1999    Start Year
+2007    Stop Year
+48      Timesteps Per Day
+4       File Time Output (0=1/2 hourly, 1=hourly, 2=daily, 3=weekly 4=monthly)
+Input Directory:
+'/Users/kdhaynes/Downloads/'
+Input File Prefix:
+'AB-GRL_FlxTwr_Flx2Met2_'
+Input File Suffix:
+'-00.csv'
+Output File Prefix:
+'/Users/kdhaynes/let_'

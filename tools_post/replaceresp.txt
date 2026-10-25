@@ -1,0 +1,24 @@
+SiB4 replace respiration program input file-|
+--------------------------------------------|
+                                 start month=1 
+                                  start year=2017
+                                   end month=1
+                                    end year=2017
+--------->                 replace hr2 files=.F.
+                           replace hr3 files=.F.
+                           replace qp2 files=.F.
+                           replace qp3 files=.T.
+                          replace pbp1 files=.F.
+                          replace pbp2 files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+----balance ratio file----------------------|
+/Users/kdhaynes/Output/global/monthly/qbal_199801_201712.lu.qp3.nc
+----input path and prefix-------(SiB4 files)|
+/Users/kdhaynes/Output/global/monthly/
+---output path and prefix-------(SiB4 files)|
+/Users/kdhaynes/Output/global/monthlybal/
+
+

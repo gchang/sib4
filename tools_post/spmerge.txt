@@ -1,0 +1,25 @@
+SiB4 spmerge program input file-------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=1997
+                                   end month=12
+                                    end year=1997
+                         merge restart files=.F.
+                          merge requib files=.T.
+                             merge hr2 files=.F.
+                             merge hr3 files=.F.
+                             merge qp2 files=.F.
+                             merge qp3 files=.F.
+                            merge pbp1 files=.F.
+                            merge pbp2 files=.F.
+                        number of processors=74
+----path and file for reference SiB vector--|
+/Users/kdhaynes/Dropbox/sib4v2/driver/global/sib_vs_0.5deg.nc
+----path for unmerged output files----------|
+/Users/kdhaynes/Test2/
+----path for merged output files------------|
+/Users/kdhaynes/Test2/
+----number of variables and names-----------|
+-1
+
+

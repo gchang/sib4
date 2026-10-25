@@ -1,0 +1,42 @@
+**********************************************************************
+************STEPS TO PROCESS GPCP version 2.3 DATA********************
+
+--2.5-degree longitude by 2.5-degree latitude
+--Monthly resolution
+--Units of average mm/month
+--Adler, R.F., G.J. Huffman, A. Chang, R. Ferraro, P. Xie, 
+  J. Janowiak, B. Rudolf, U. Schneider, S. Curtis, D. Bolvin,
+  A. Gruber, J. Sussking, P. Arkin, 2003: The Version 2 Global 
+  Precipitation Climatology Project (GPCP) Monthly Precipitation
+  Analysis (1979-Present).  J. Hydrometeor., 4, 1147-1167.
+
+1) Download the data from
+   http://eagle1.umd.edu/GPCP_CDR/Monthly_Data/
+
+   (Interim data can be found at:
+    http://eagle1.umd.edu/GPCP_ICDR/GPCP_Monthly.html)
+
+2) Convert the data from monthly means to monthly totals,
+   and regrid to weather data resolution.
+   --Use program gpcp_prep23.f90
+   --Specify the years to convert
+   --Check the units
+      If using gpcp data for driver data comparison/calculations, 
+           make sure flag_mmpmon=.false., which output units of mm/day.
+      Otherwise, if flag_mmpmon=.true. then mm/month are output.
+
+   --Compile (>make gpcp_prep23)
+   --Run (>gpcp_prep23)
+
+3) Check the global total precipitation
+   --Use the program gpcp_checktot.f90
+   --Provide the name of the file that you wish to check
+   --Check the units (matching flag_mmpmon as in gpcp_prep23.f90)
+   --Compile (>make gpcp_checktot)
+   --Run (>gpcp_checktot)
+
+
+*******************************************************************
+Questions?  Contact Kathy Haynes, katherine.haynes@colostate.edu
+Last Modified: March, 2019
+******************************************************************

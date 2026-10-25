@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+# Written 2016/11/12  John Haynes
+# Searches user processes (output of ps -aF) 
+#   and reports number of for process(es) matching $search_string
+
+use strict;
+
+my $search_string = "SiB4D";
+my $res = `ps -a -A | grep $search_string |wc -l`;
+print "$search_string processes running: $res";

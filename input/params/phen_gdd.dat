@@ -1,0 +1,151 @@
+15 PFTs
+5  GDD PFTs
+5  Live Pools
+*******************************************************************************************************
+                      GDD-Based Phenology Parameter Definitions and Units:
+-------------------------------------------------------------------------------------------------------
+LP=Leaf Pool
+FR=Fine Root Pool
+CR=Coarse Root Pool
+WP=Stem/Wood Pool
+PP=Product Pool
+
+-----Growing Season Start Parameters (FlagG)-----
+DayMinI = Minimum light to start growing season for increasing day lengths (hr)
+DayOffD = Parameter to start growing season for decreasing day lengths (hr)
+          > 0: Offset from maximum day length
+	  < 0: Daylength threshold to restrict day lengths (winter wheat)
+PrLen = Length of time to average precipitation (days)
+PrBef = Number of days before precip max to allow planting (days)
+PrAft = Number of days after precip max to allow planting (days)
+
+TAWMin  = Minimum fraction of total available water (TAW) in
+            top three layers to start growing season (-)
+TAWLen  = Number of sequential days TAW_FTop > FlagG_WMin (days)
+TempMin = Minimum temperature to start growing season (K)
+TempMax = Maximum tempeature to start growing season (K)
+TempLen = Number of sequential days temperature > FlagG_Tmin (days)
+
+-----Growing Season Reset Parameters (FlagA)-----
+ALen   = Running-mean length for Assim_Mean
+AReset = Threshold value for FAssim to set FlagA
+
+-----Growing Season Parameters-----
+GDD_PD = Stages determined using:
+          1=GDD; 2=DAPD (days after planting); 3=DAPDNF (above freezing)
+GDD_TBASE = Temperature base for GDD calculation (F)
+GDD_TMax  = Temperature maximum for GDD calculation (F)
+
+NStg = Number of phenological stages
+Seed_C = Carbon contained in seed (g C)
+Seed_Release = Carbon released daily from seed (g C)
+GSL_Max = Maximum number of days of growing season prior to harvest (days)
+
+------Phenology Stage Parameters-----
+ThrP = Thresholds between stages (-)
+LP_Alloc=Leaf pool allocation fractions per stages (-)
+FR_Alloc=Fine root allocation fractions per stages (-)
+WP_Alloc=Stem allocation fractions per stages (-)
+PP_Alloc=Product allocation fractions per stages (-)
+M_Adj=Adjust allocation fractions from moisture rules?
+T_Adj=Adjust allocation fractions from temperature rules?
+LPT=Leaf pool transfer per phenology stage (daily fraction)
+VMAX=Rubisco velocity of sun leaf per phenology stage (mol/m2/s)
+
+*********************************************************************************************************
+
+Growing Season Start Parameters (hrs, -, K, days)
+--------------------------------------------------
+     PFT  DayMinI  DayOffD  PrLen  PrBef  PrAft  TAWMin  TAWLen  TempMin  TempMax  TempLen
+17   c3c  010.000  002.000  030    090    010    00.12   004     282.0    306.0    004
+18   c4c  010.000  002.000  030    070    030    00.12   004     284.0    308.0    004
+20   mze  010.000  002.000  030    070    030    00.12   004     288.0    308.0    005
+22   soy  010.000  002.000  030    090    010    00.12   004     286.0    306.0    007
+24   wwt  024.000  -13.000  030    030    090    00.12   004     280.0    298.0    007
+
+Growing Season Reset Parameters (hrs, -, K, days)
+--------------------------------------------------
+     PFT  ALen  AReset  
+17   c3c  010   00.05
+18   c4c  010   00.05
+20   mze  010   00.05
+22   soy  010   00.05
+24   wwt  010   00.05
+
+
+Stage Type and Num (-), Seed Info (g C), and GSL Max (days)
+-------------------------------------------------------------
+     PFT  GDD_PD   GDD_TBase  GDD_TMax  NStg   Seed_C  Seed_Release   GSL_Max
+17   c3c     2     050.00     078.00    010    2.000   0.200          140
+18   c4c     1     050.00     078.00    010    2.000   0.200          180
+20   mze     1     050.00     078.00    010    2.000   0.200          180
+22   soy     2     050.00     078.00    010    2.000   0.200          140
+24   wwt     3     042.00     078.00    010    2.000   0.200          350
+
+
+Stage Thresholds (Type1=>GDD or Type2=>DAPD or Type3=>DAPDNF)
+---------------------------------------------
+     PFT  Thr12   Thr23   Thr34   Thr45   Thr56   Thr67   Thr78   Thr89   Thr910
+17   c3c  0010.   0035.   0050.   0060.   0070.   0090.   0100.   0110.   0120.
+18   c4c  0140.   0400.   0900.   1300.   1600.   1900.   2200.   2500.   2700.
+20   mze  0140.   0400.   0900.   1300.   1600.   1900.   2200.   2500.   2700.
+22   soy  0010.   0035.   0050.   0062.   0075.   0098.   0110.   0120.   0120.
+24   wwt  0010.   0025.   0060.   0072.   0085.   0095.   0105.   0115.   0120.
+
+
+Allocation Fractions (-)
+------------------------
+     PFT  LP1   LP2   LP3   LP4   LP5   LP6   LP7   LP8   LP9   LP10  M_Adj  T_Adj
+17   c3c  0.00  0.45  0.40  0.30  0.20  0.15  0.10  0.00  0.00  0.00  .F.    .F.
+18   c4c  0.00  0.45  0.30  0.20  0.10  0.10  0.00  0.00  0.00  0.00  .F.    .F.
+20   mze  0.00  0.45  0.30  0.20  0.10  0.10  0.00  0.00  0.00  0.00  .F.    .F.
+22   soy  0.00  0.40  0.40  0.30  0.20  0.15  0.10  0.10  0.10  0.00  .F.    .F.
+24   wwt  0.00  0.40  0.45  0.40  0.25  0.25  0.25  0.15  0.10  0.00  .F.    .F.
+
+     PFT  FR1   FR2   FR3   FR4   FR5   FR6   FR7   FR8   FR9   FR10
+17   c3c  0.00  0.45  0.40  0.30  0.20  0.20  0.15  0.10  0.00  0.00
+18   c4c  0.00  0.45  0.35  0.30  0.25  0.10  0.05  0.00  0.00  0.00
+20   mze  0.00  0.45  0.35  0.30  0.25  0.10  0.05  0.00  0.00  0.00
+22   soy  0.00  0.40  0.40  0.30  0.20  0.20  0.15  0.10  0.00  0.00
+24   wwt  0.00  0.40  0.35  0.30  0.30  0.25  0.10  0.10  0.00  0.00
+
+     PFT  WP1   WP2   WP3   WP4   WP5   WP6   WP7   WP8   WP9   WP10
+17   c3c  0.00  0.10  0.20  0.40  0.45  0.30  0.15  0.00  0.00  0.00
+18   c4c  0.00  0.10  0.35  0.50  0.50  0.25  0.00  0.00  0.00  0.00
+20   mze  0.00  0.10  0.35  0.50  0.50  0.25  0.00  0.00  0.00  0.00
+22   soy  0.00  0.20  0.20  0.40  0.45  0.30  0.15  0.00  0.00  0.00
+24   wwt  0.00  0.20  0.20  0.25  0.25  0.15  0.10  0.10  0.00  0.00
+
+     PFT  PP1   PP2   PP3   PP4   PP5   PP6   PP7   PP8   PP9   PP10
+17   c3c  0.00  0.00  0.00  0.00  0.15  0.35  0.60  0.90  1.00  0.00
+18   c4c  0.00  0.00  0.00  0.00  0.15  0.55  0.95  1.00  1.00  0.00
+20   mze  0.00  0.00  0.00  0.00  0.15  0.55  0.95  1.00  1.00  0.00
+22   soy  0.00  0.00  0.00  0.00  0.15  0.35  0.60  0.80  0.90  0.00
+24   wwt  0.00  0.00  0.00  0.05  0.20  0.35  0.55  0.65  0.90  0.00
+
+Leaf Pool Transfer Fractions (fraction per day)
+---------------------------------------------------------------------
+     PFT  LPT1  LPT2  LPT3  LPT4  LPT5  LPT6  LPT7  LPT8  LPT9  LPT10
+17   c3c  0.00  0.00  0.00  0.00  0.00  0.00  0.04  0.06  0.08  1.00
+18   c4c  0.00  0.00  0.00  0.00  0.00  0.00  0.05  0.07  0.10  1.00
+20   mze  0.00  0.00  0.00  0.00  0.00  0.00  0.05  0.07  0.10  1.00
+22   soy  0.00  0.00  0.00  0.00  0.00  0.00  0.02  0.04  0.06  1.00
+24   wwt  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.02  0.04  1.00
+
+VMAX (mol/m2/s)
+-----------------------------------------------------------
+#    PFT   VMAX1    VMAX2    VMAX3    VMAX4    VMAX5    VMAX6    VMAX7    VMAX8    VMAX9   VMAX10
+17   c3c   0.10E-4  1.00E-4  1.05E-4  1.10E-4  1.10E-4  0.95E-4  0.90E-4  0.80E-4  0.60E-4  0.10E-4
+18   c4c   0.10E-4  0.58E-4  0.58E-4  0.55E-4  0.52E-4  0.50E-4  0.48E-4  0.45E-4  0.45E-4  0.10E-4
+20   mze   0.10E-4  0.58E-4  0.58E-4  0.55E-4  0.52E-4  0.50E-4  0.48E-4  0.45E-4  0.45E-4  0.10E-4
+22   soy   0.10E-4  0.95E-4  1.00E-4  1.10E-4  1.10E-4  0.95E-4  0.90E-4  0.80E-4  0.60E-4  0.10E-4
+24   wwt   0.10E-4  0.66E-4  0.66E-4  0.66E-4  0.66E-4  0.66E-4  0.60E-4  0.50E-4  0.40E-4  0.10E-4
+
+VMAX_CA (mol/m2/s)
+-----------------------------------------------------------
+#    PFT   VMAX1    VMAX2    VMAX3    VMAX4    VMAX5    VMAX6    VMAX7    VMAX8    VMAX9   VMAX10
+17   c3c   1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00
+18   c4c   1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00
+20   mze   1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00
+22   soy   1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00
+24   wwt   1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00  1400.00

@@ -1,0 +1,430 @@
+List of sites simulated for each PFT
+kdhaynes, 09/17
+
+------------------------ Forests -----------------------------------------------------
+#  PFT  Site    Lat     Lon      Notes
+2  ENF  44
+        AR-Vir -28.24   -56.19   Fluxnet - Virasoro, Argentina
+        CA-Ca1  49.87  -125.33   Fluxnet Canada - Campbell River, British Columbia
+        CA-Man  55.87   -98.48   BOREAS/Fluxnet - Northern Old Black Spruce (NBS), Manitoba
+        CA-Njp  55.92   -98.61   BOREAS - Northern Old Jack Pine (NOJP), Manitoba
+        CA-NS1  55.88   -98.48   Fluxnet Canada - UCI-1850 Black Spruce, Manitoba
+        CA-NS2  55.91   -98.52   Fluxnet Canada - UCI-1930 Black Spruce, Manitoba
+        CA-NS3  55.91   -98.38   Fluxnet Canada - UCI-1964 Black Spruce, Manitoba
+        CA-Obs  53.99  -105.12   BOREAS/Fluxnet - Southern Black Spruce (SBS), Saskatchewan
+        CA-Ojp  53.92  -104.69   BOREAS/Fluxnet - Southern Old Jack Pine (SOJP), Saskatchewan
+        CA-Qfo  49.69   -74.34   Fluxnet Canada - East Boreal Mat Black Spruce, Saskatchewan
+        CA-TP4  42.71   -80.36   Fluxnet Canada - Turkey Point, Ontario
+        CA-WP1  54.95  -112.47   Fluxnet Canada - Western Peatland, Alberta
+        CH-Dav  46.82     9.86   GHG Europe - Davos - Seehorn Forest, Switzerland
+        CN-Qia  26.74   115.06   AsiaFlux - Qianyanzhou, China
+        CZ-BK1  49.50    18.54   GHG Europe - Billy Kriz Forest, Czech Republic
+        DE-Lkb  49.10    13.30   GHG Europe - Lackenberg, Germany
+        DE-Obe  50.78    13.72   GHG Europe - Oberbarenburg, Germany
+        DE-Tha  50.96    13.57   GHG Europe - Tharandt, Germany
+        FI-Alk  62.18    22.78   GHG Europe - Alkkia Scots Pine Forest, Finland
+        FI-Hyy  61.85    24.29   GHG Europe - Hyytiala, Finland
+        FI-Kot  67.75    29.62   GHG Europe - Kotovaara, Finland
+        FI-Let  60.64    23.96   GHG Europe - Lettosua, Finland
+        FI-Lop  60.65    24.35   Loppi Scots Pine Forest, Finland
+        FI-Mat  67.98    24.24   GHG Europe - Kenttarova (Matorava) Spruce Forest, Finland
+        FI-Sod  67.36    26.64   GHG Europe - Sodankyla, Finland
+        IT-Lav  45.96    11.28   CarboItaly - Lavarone, Italy
+        IT-Ren  46.59    11.43   CarboItaly - Renon, Italy
+        IT-SRo  43.73    10.28   CarboItaly - San Rossore, Italy
+        IT-SR2  43.73    10.29   CarboItaly - San Rossore 2, Italy
+        JP-TKC  36.14   137.37   AsiaFlux - Takayama Evergreen Coniferous Forest, Japan
+        NL-Loo  52.17     5.74   GHG Europe - Loobos, Netherlands
+        RU-Fyo  56.46    32.92   Fluxnet - Fyodorovskoye, Russia
+        US-Blo  38.90  -120.63   AmeriFlux - Blodgett Forest, CA
+        US-Dk3  35.98   -79.09   AmeriFlux - Duke Loblolly Pine, NC
+        US-GBT  41.37  -106.23   AmeriFlux - GLEES Brooklyn Tower, WY
+        US-GLE  41.36  -106.24   AmeriFlux - GLEES, WY
+        US-Goo  34.25   -89.87   AmeriFlux - Goodwin Creek, MS
+        US-KS1  28.45   -80.67   AmeriFlux - Kennedy Space Center Pine, FL
+        US-Me2  44.45  -121.56   AmeriFlux - Metolius Mature Ponderosa Pine, OR
+        US-NR1  40.03  -105.55   AmeriFlux - Niwot Ridge Forest, CO
+        US-Prr  65.12  -147.49   AmeriFlux - Poker Flat Research Range Black Spruce, AK
+        US-Vcp  35.86  -106.60   AmeriFlux - Valles Caldera Ponderosa Pine, NM
+        US-Vcm  35.89  -106.53   AmeriFlux - Valles Caldera Mixed Conifer, NM
+        US-Wi4  46.74   -91.17   AmeriFlux - Mature Red Pine, WI
+
+4  DNF  10
+        CN-Dax  50.83   121.50   Daxing'anling Province, China
+        CN-LSH  45.30   137.42   AsiaFlux - Laoshan, China
+        JP-TMK  42.73   141.52   AsiaFlux - Tomakomai Flux Research Site, Japan
+        MO-SKT  48.36   108.65   AsiaFlux - Southern Khentei Taiga, Mongolia
+        RU-Nel  62.30   129.50   Northeastern Siberia
+        RU-Nes  68.74   161.40   Northeastern Siberia
+        RU-SkP  62.26   129.17   Fluxnet - Spasskaya Pad Larch, Russia
+        RU-Tur  64.21   100.46   Fluxnet - Tura, Russia
+	RU-Yak  62.14   130.52   Yakutsk Larch, Russia
+        RU-Ylf  62.26   129.62   AsiaFlux - Yakutsk Spasskaya Pad Larch
+
+5  EBF  21
+        AU-Cum -33.61   150.72   OzFlux - Cumberland Plains, Australia
+        AU-Rob -17.12   145.63   OzFlux - Tobson Creek, Australia
+        AU-Tum -35.66   148.15   OzFlux - Tumbaramba, Australia      
+        AU-Wac -37.43   145.19   OzFlux - Wallaby Creek, Australia
+        AU-Whr -36.67   145.03   OzFlux - Whroo, Australia
+        AU-Wom -37.42   144.09   OzFlux - Wombat, Australia
+        BR-Ban  -9.82   -50.16   LBA - Bananal Island (JAV), Brazil
+        BR-Cax  -1.72   -51.46   LBA - Caxiuana Forest (CAX), Brazil
+        BR-Ji2 -10.08   -61.93   LBA - Rond-Rebio Jaru Ji Parana (RJA), Brazil
+        BR-Ma2  -2.61   -60.21   LBA - Manaus (K34), Brazil
+        BR-Sa1  -2.86   -54.96   LBA - Santarem Primary Forest (K67), Brazil
+        BR-Sa3  -3.02   -54.97   LBA - Santarem Logged Forest (K83), Brazil
+        CO-AGP  -3.72   -70.30   Agua Pudre, Columbia   
+        CN-Din  23.17   112.54   AsiaFlux - Dinghushan, China
+        GF-Guy   5.28   -52.93   Fluxnet - Guyaflux, French Guiana
+        GH-Ank   5.27    -2.69   Fluxnet - Ankasa, Ghana
+        IT-Cpz  41.71    12.38   CarboItaly - Castelporziano, Italy
+        MY-PSO   2.97   102.31   Fluxnet - Pasoh Forest Reserve, Malaysia
+        NZ-Kop -37.39   175.55   OzFlux - Kopuatai, North Island, New Zealand
+        PE-Tam -12.80   -69.70   Tambopata, Peru
+        PT-Mi1  38.54    -8.00   Fluxnet - Mitra (Evora)
+
+8  DBF  31
+        CA-Nas  55.88   -98.67   BOREAS - Northern Aspen (NA), Canada
+        CA-Oas  53.63  -106.20   BOREAS/Fluxnet - Old Aspen (SA), Canada
+        CA-TPD  42.63   -80.56   Fluxnet Canada - Tukery Point Mature Deciduous, Ontario
+        DE-Hai  50.95    13.51   GHG Europe - Hainich, Germany
+        DE-Lnf  50.95    10.37   GHG Europe - Leinefelde, Germany
+        DK-Sor  55.48    11.65   GHG Europe - Soroe, Denmark
+        FR-Hes  48.67     7.07   GHG Europe - Hesse Forest, France
+        FR-Fon  48.47     2.78   GHG Europe - Fontainebleau-Barbeau, France
+        GH-BFL  06.90    -0.02   Bobiri Forest Reserve, Ghana (Logged)
+        GH-BFO  06.70    -0.02   Bobiri Forest Reserve, Ghana (Old Growth)
+        IT-CA1  42.38    12.03   CarboItaly - Castel d'Asso 1, Italy
+        IT-Col  41.85    13.59   CarboItaly - Collelongo/Salva Piana, Italy
+        IT-Isp  45.81    8.63    CarboItaly - Ispra, Italy
+        IT-PT1  45.20    9.06    CarboItaly - Parco Ticino Forest, Italy
+        IT-Ro1  42.40   11.93    CarboItaly - Roccarespampani 1, Italy
+        IT-Ro2  42.39   11.92    CarboItaly - Roccarespampani 2, Italy
+        JP-MBF  44.39   142.32   AsiaFlux - Moshiri Birch Forest Site, Japan
+        JP-TKY  36.15   137.42   AsiaFlux - Takayama Deciduous Broadleaf Forest Site
+        MO-Inn  43.50   117.45   AsiaFlux - Inner Mongolia, Mongolia (Nei Mongol, China)
+        MX-Cha  19.50  -105.05   FluxNet - Jalisco, Mexico
+        PA-SPn  09.31   -79.63   FluxNet - Sardinilla Plantation, Panama
+        TH-MKL  14.57    98.83   AsiaFlux - Mae Klong, Thailand
+        US-Bar  44.06   -71.29   AmeriFlux - Bartlett Experimental Forest, NH
+        US-Dk2  35.97   -79.10   AmeriFlux - Duke Forest Hardwoods, NC
+        US-Ha1  42.54   -72.17   AmeriFlux - Harvard Forest, MA
+        US-MMS  39.32   -86.41   AmeriFlux - Morgan Monroe State Forest, IN
+        US-MOz  38.74   -92.20   AmeriFlux - Missouri Ozark Site, MO
+        US-Oho  41.55   -83.84   AmeriFlux - Oak Openings, OK
+        US-Syv  46.24   -89.35   AmeriFlux - Sylvania Wilderness, MI
+        US-UMB  45.56   -84.71   AmeriFlux - Univ. Mich. Biological Station, MI
+        US-WCr  45.81   -90.08   AmeriFlux - Willow Creek, WI
+        US-Wi3  46.64   -91.10   AmeriFlux - Mature Hardwood, WI
+        ZM-Mon -15.44    23.25   CarboAfrica - Mongo, Zambia
+
+------------------------ Shrubs --------------------------------------------------
+#  PFT  Site    Lat     Lon      Notes
+11 SHB  21
+        AU-ASM -22.28   133.25   OzFlux - Alice Springs, Australia
+        AU-Cpr -34.00   140.59   OzFlux - Calperum, Australia
+        BR-Sp1 -21.60   -47.65   LBA - Sao Paulo Cerrado (PDG), Brazil
+        ES-Amo  36.83    -2.25   GHG Europe - Amolderas, Spain
+        ES-LgS  37.10    -2.96   GHG Europe - Laguna Seca, Spain
+        ES-LJu  36.93    -2.75   GHG Europe - Llano de los Juanes, Spain
+        IT-Noe  40.61     8.15   CarboItaly - Arca di Noe - Le Prigionette, Italy
+        MO-K05  40.35   108.53   Kubuqi Shrubland, Mongolia
+        MX-Col  28.70  -110.54   Fluxnet - Colorada, Mexico
+        MX-Lpa  24.13  -110.44   Fluxnet - La Paz, Mexico
+        US-Bsg  43.48  -119.72   AmeriFlux - Burns Sagebrush, OR
+        US-CuV  41.87  -113.83   Curlew Valley Sagebrush Site, UT
+        US-Dub  44.27  -112.13   Dubois Sagebrush Site, ID
+        US-KS2  28.61   -80.67   AmeriFlux - Kennedy Space Center Scrub Oak, FL
+        US-MoD  34.94  -114.26   Mohave Desert Site, CA
+        US-NTS  37.10  -116.05   Nevada Test Site, NV
+        US-Ses  34.33  -106.75   AmeriFlux - Sevillita Desert Shrubland, NM
+        US-SO2  33.37  -116.62   AmeriFlux - Sky Oaks Old Stand, CA
+        US-SRC  31.90  -110.84   AmeriFlux - Santa Rita Creosote, AZ
+        US-Sta  41.40  -106.80   AmeriFlux - Saratoga, WY
+        US-Whs  31.74  -110.05   AmeriFlux - Walnut Gulch Lucky Hills Shrubland, AZ
+
+12 SHA  16
+        CA-Chh  58.73   -93.82   Churchill, Canada
+        CN-Hab  37.66   101.33   Haibei Shrubland, China
+        CN-Him  27.96    86.87   Himalayas, China
+        DK-NuF  64.13   -51.39   Nuuk Fen, Denmark
+        DK-ZaH  74.47   -20.55   Fluxnet - Zackenberg Heath, Denmark
+        FI-Lom  68.00    24.21   Lompolojankka Wetland, Finland
+        RU-Che  68.61   161.34   Fluxnet - Cherskii, Russia
+        RU-Cok  70.83   147.49   Fluxnet - Chokurdakh, Russia
+        RU-Cuk  65.59   171.05   Fluxnet - Chukotka, Russia
+        RU-Vrk  67.05    62.94   Fluxnet - Seida/Vorkuta, Russia
+        SE-Abi  68.36    18.79   Fluxnet - Abisko, Sweden
+        US-An3  68.93  -150.27   AmeriFlux - Anaktuvuk River Unburned, AK
+        US-EML  63.88  -149.25   AmeriFlux - Eight Mile Lake Permafrost, AK
+        US-ICh  68.61  -149.30   AmeriFlux - Imnavit Creek Watershed Heath Tundra, AK
+        US-Ivo  68.49  -155.75   AmeriFlux - Ivotuk, AK
+        US-Tdr  68.63  -149.59   Arctic LTER - AK
+
+------------------------ Grasslands -----------------------------------------------------
+#  PFT  Site    Lat    Lon       Notes
+13 C3A  9
+        CN-Dan  30.85    91.08   Fluxnet - Dangxiong Grassland, China
+        RU-EST  71.92   128.75   Fluxnet - Eastern Siberia Tundra 
+        RU-Ha1  54.73    90.00   Fluxnet - Ubs Nur Hakasija, Russia
+        RU-Sam  72.37   126.50   Fluxnet - Samoylov Island Lena Delta, Russia
+        SE-Abi  68.36    18.79   Fluxnet - Abisko, Sweden
+        US-Atq  70.47  -157.40   AmeriFlux - Atqasuk, AK
+        US-Brw  71.32  -156.63   AmeriFlux - Barrow, AK
+        US-HVa  69.41  -148.84   AmeriFlux - Happy Valley, AK
+        US-ICt  68.61  -149.30   AmeriFlux - Imnavait Creek Tussock, AK
+
+14 C3G  34
+        AR-MLC -45.20   -71.42   NPP31 - Media Luna, Chabut, Argentina
+        AT-Neu  47.12    11.32   Fluxnet - Neustift/Stubai Valley, Austria
+        AU-Crl -26.40   146.27   NPP31 - Charleville, Australia
+        AU-Nim -36.22   148.55   OzFlux - Nimmo Plains, Australia
+        AU-Otw -38.50   142.82   OzFlux - Otway, Australia
+        AU-Rig -36.65   145.58   OzFlux - Riggs Creek, Australia
+        CH-Cha  47.21     8.41   Fluxnet - Chamau Grassland, Switzerland
+        CH-Fru  47.12     8.54   Fluxnet - Fruebuel Grassland, Switzerland
+        CH-Oe1  47.29     7.73   Fluxnet - Oensingen1 Grassland, Switzerland
+        CN-Du2  42.05   116.32   AsiaFlux - Duolon Grassland, China
+        CN-HaM  37.37   101.18   AsiaFlux - Haibei Meadow, China
+        CN-Hug  49.33   120.05   Fluxnet - Hulunbeier Meadow, China
+        CN-QHB  37.61   101.33   Fluxnet - Qihghai, China
+        CN-Sw2  41.79   111.90   AsiaFlux - Siziwang Grazed, China
+        CN-Xg1  44.13   116.32   AsiaFlux - Xilingol Steppe, China
+        CN-Xi1  43.55   116.67   AsiaFlux - Xilinhot Degraded Steppe, China
+        CN-Xi2  43.55   116.67   AsiaFlux - Xilinhot Fenced Steppe, China
+        CZ-BK2  49.49    18.54   Fluxnet - Bily Kriz Grassland, Czech Republic
+        DE-Gri  50.95    13.51   Fluxnet - Grillenburg Grass Station, Germany
+        DK-Eng  55.69    12.19   Fluxnet - Enghave, Denmark
+        ES-Vad  41.81    -4.93   Fluxnet - Valladolid, Spain
+        IE-Dri  51.99    -8.75   Fluxnet - Dripsey, Ireland
+        IT-MBo  46.01    11.05   Fluxnet - Monte Bondone, Italy
+        IT-Tor  45.84     7.58   Fluxnet - Torgnon, Italy
+        NL-Hor  52.24     5.07   Fluxnet - Horstermeer, Netherlands
+        RU-Tuv  50.15    94.45   Fluxnet - Tuva, Russia 
+        UK-AMo  55.79    -3.24   Fluxnet - Auchencorth Moss, Scotland, UK
+        UK-Pol  55.29    -3.40   Fluxnet - Polden Grassland, Scotland, UK
+        UK-Tad  51.21    -2.83   Fluxnet - Tadham Moor, UK
+        US-Ctn  43.95  -101.85   AmeriFlux - Cottonwood, SD
+        US-FPe  48.31  -105.1    AmeriFlux - Fort Peck, MT
+        US-Myb  38.05  -121.77   AmeriFlux - Mayberry Wetland, CA
+        US-Var  38.41  -120.95   AmeriFlux - Vaira Ranch, CA
+        US-YNP  45.00  -110.50   Data from Risch and Frank (2006), WY
+
+15 C4G  32
+        AU-Stp -17.20   133.35   OzFlux - Sturt Plains, Australia
+        BR-Ji1 -10.80  -62.36    LBA - Rond.-Faz. Nossa Senhora Parana Pasture, Brazil
+        BR-Sa2  -3.01  -54.54    LBA - Santarem K77 Pasture, Brazil 
+        CG-Tch  -4.29   11.66    Fluxnet - Tchizalamou, Congo
+        CN-Cng  44.59   123.51   AsiaFlux - Changling, China
+        IN-Krk  29.97   76.85    Fluxnet - Kurukshetra, India
+        JP-TKG  36.15   137.4    AsiaFlux - Takayama Grassland, Japan
+        KE-Nrb  -1.33   36.83    Nairobi, Kenya
+        ML-AgG  15.34  -01.48    Fluxnet - Agougou G, Mali
+        MX-Mnt  19.46  -98.91    Monticello, Mexico
+        NE-WaD  13.65  -2.64     Fluxnet - Wankama Degraded, Niger
+        NG-Nga  11.52   11.1     Nigeria
+        PA-SPs  9.32   -79.63    Fluxnet - Sardinilla Pasture, Panama
+        SD-Dem  13.28   30.48    Fluxnet - Demokeya, Sudan
+        SN-Dhr  15.40  -15.43    Fluxnet - Dahra, Senegal
+        TH-Kln   6.33  100.93    Klong Hoi Khong, Thailand
+        US-CRP  40.73  -104.3    Conservation Reserve Program, CO
+        US-Hys  38.87  -99.38    Hays Grassland, KS
+        US-IB2  41.84  -88.24    AmeriFlux - Fermi Lab Prairie Site, IL
+        US-Jrn  32.60  -106.8    Jornada LTER, NM
+        US-KFS  39.06  -95.19    AmeriFlux - Kansas Field Station, KS
+        US-Kon  39.08  -96.56    AmeriFlux  - Konza Prairie, KS
+        US-Nun  40.68  -104.82   Data from Svejcar et al. (2008), CO
+        US-Osg  36.95   -96.55   Osage, OK
+        US-Ra1  39.14   -96.52   AmeriFlux - Rannells Ranch, KS
+        US-Seg  34.36  -106.70   AmeriFlux - Sevilleta Desert Grassland, NM
+        US-Shd  36.93   -96.68   AmeriFlux - Shidler Tallgrass Prairie, OK
+        US-Tem  31.10   -97.33   Data from Svejcar et al. (2008), TX
+        US-Wkg  31.74  -109.94   AmeriFlux  - Kendall Grassland, AZ
+        ZA-Kru -25.00    31.50   Kruger National Park - South Africa
+        ZA-Nls -24.65    28.70   Nylsvley, South Africa
+        ZA-URF -30.40    29.40   Ukulinga Research Farm, South Africa
+
+------------------------ Crops --------------------------------------------------
+#  PFT  Site    Lat      Lon    Notes
+17 C3C  51
+        AR-Lac -29.26   -61.03  Fluxnet - La Ciguena Santa Fe, Argentina
+        AU-Ync -34.99  146.29   OzFlux - Yanco (Jaxa), Australia
+        BE-Lon  50.55    4.75   GHG Europe - Lonzee, Belgium
+        CH-Oe2  47.29    7.73   GHG Europe - Oensingen2 Crop, Switzerland
+        CN-Bed  39.53   116.25  AsiaFlux - Beijing Daxing, China
+        CN-Yuc  36.95   116.60  AsiaFlux - Yucheng, China
+        DE-Geb  51.10   10.91   GHG Europe - Gebesee, Germany
+        DE-Kli  50.89   13.52   GHG Europe - Klingenberg, Germany
+        DE-Meh  51.27    10.65  GHG Europe - Mehrstedt1, Germany
+        DE-RuS  50.86    6.44   GHG Europe - Selhausen Juelich, Germany
+        DE-Seh  50.86,   6.45   GHG Europe - Selhausen, Germany
+        DK-Fou  56.48    9.59   GHG Europe - Foulum, Denmark
+        DK-Ris  55.53   12.10   GHG Europe - Risbyholm, Denmark
+        ES-Bar  39.07   -1.20   Barrax, Spain
+        ES-ES2  39.28   -0.32   GHG Europe - El Saler-Sueca, Spain
+        ES-Zam  42.93    -2.85  Fluxnet - Zambrana, Spain
+        FA-Lso  42.43   12.09   GHG Europe - ScrivaniaEle, Falkland Islands
+        FI-Jok  60.89   23.51   GHG Europe - Jokioinen, Finland
+        FR-Aur  43.54    1.10   GHG Europe - Aurade, France
+        FR-Avi  43.92    4.88   GHG Europe - Avignon, France
+        FR-Gri  48.84    1.95   GHG Europe - Grignon, France
+        FR-Lam  43.49    1.24   GHG Europe - Lamasquere, France
+        FR-Lus  46.42    0.12   GHG Europe - Lusignan, France
+        HU-He1  46.96   16.65   GHG Europe - Hegyhatsal, Hungary
+        HU-Mat  47.85   19.73   GHG Europe - Matra, Hungary
+        IE-Ca1  52.86   -6.91   GHG Europe - Carlow Crop, Ireland
+        IT-Abr  41.87   13.63   Abruzzi, Italy
+        IT-Be1  46.00   13.03   CarboItaly - Beano1, Italy
+        IT-Cas  45.07    8.71   CarboItaly - Castellaro, Italy
+        IT-Ctv  37.64   12.85   CarboItaly - Castelvetrano, Italy
+        IT-Neg  45.75   12.45   CarboItaly - Negrisia, Italy
+        IT-Ro3  42.38   11.92   CarboItaly - Roccarespampani 3, Italy
+        IT-Ro4  42.37   11.92   CarboItaly - Roccarespampani 4, Italy
+        IT-VdA  46.19   11.13   CarboItaly - Valle dell'Adige, Italy
+        KZ-VL1  51.51   71.45   Fluxnet - Shortandy, Kazakhstan
+        NE-WaM  13.64    2.62   GHG Europe - Wankama Millet, Niger
+        NL-Mol  51.65    4.64   GHG Europe - Molenweg, Netherlands
+        NL-Vre  51.53    5.84   GHG Europe - Vredepeel, Netherlands
+        NL-Waa  52.83    4.91   GHG Europe - Oostwaard, Netherlands
+        PH-RIf  14.14  121.26   GHG Europe - Rice Flooded, Phillipines
+        PH-RIn  14.14  121.26   GHG Europe - Rice Not-Flooded, Phillipines 
+        PL-Brd  52.43,  16.30   GHG Europe - Brody, Poland
+        RO-Fun  44.41   26.59   Fundulea, Romania
+        UA-Pet  46.46   30.33   Petrodolinskoe, Ukraine
+        UK-AlH  51.15   -0.86   Alice Holt, UK
+        UK-ESa  55.91   -2.86   GHG Europe - East Saltoun, UK
+        UK-Her  51.78   -0.47   GHG Europe - Hertfordshire, UK
+        UK-PL1  51.53   -1.48   GHG Europe - Pang / Lambourne, UK
+        US-Lin  36.36 -119.84   AmeriFlux - Lindcove Orange Orchard, CA
+        US-Tw3  38.12 -121.65   AmeriFlux - Twitchell Alfalfa, CA
+        US-Twt  38.11 -121.65   AmeriFlux - Twitchell Island Rice, CA
+
+18 C4C  22 (includes MZE)
+        BR-Sp2 -21.64  -47.79   Fluxnet - Sao Paulo Sugar Cane, Brazil
+        DE-Kli  50.89   13.52   GHG Europe - Klingenberg, Germany
+        DE-RuS  50.86    6.44   GHG Europe - Selhausen Juelich, Germany
+        IT-BCi  40.52   14.96   CarboItaly - Borgo Cioffi, Italy
+        IT-Be2  46.00   13.01   CarboItaly - Beano2, Italy
+        NL-Dij  51.99    5.65   GHG Europe - Dijkgraaf, Netherlands
+        NL-Lan  51.95    4.90   GHG Europe - Langerak, Netherlands
+        NL-Lel  52.52    5.55   GHG Europe - Lelystad, Netherlands
+        NL-Zee  52.33    5.37   GHG Europe - Zeewolde, Netherlands
+        US-AR1  36.43  -99.42   AmeriFlux - ARM Switchgrass 1, OK
+        US-AR2  36.64  -99.60   Ameriflux - ARM Switchgrass 2, OK
+        US-ARM  36.61  -97.49   AmeriFlux - ARM SGP, OK
+        US-Bo1  40.00  -88.29   AmeriFlux - Bondville, IL
+        US-Bo2  40.00  -88.29   AmeriFlux - Bondville Companion Site, IL
+        US-IB1  41.84  -88.24   AmeriFlux - Fermi Lab Agrictultural Site, IL
+        US-KCM  44.69  -93.07   AmeriFlux - KCMP Tall Tower, MN
+        US-Ne1  41.16  -96.48   AmeriFlux - Mead Irrigated Maize, NE
+        US-Ne2  41.16  -96.47   AmeriFlux - Mead Irrigated Rotation, NE
+        US-Ne3  41.18  -96.44   AmeriFlux - Mead Rainfed Rotation, NE
+        US-Ro2  44.73  -93.09   AmeriFlux - Rosemount C7, MN
+        US-Ro3  44.72  -93.09   AmeriFlux - Rosemount G19, MN
+        US-Tw2  38.10  -121.64  AmeriFlux - Twitchell Corn, CA
+
+20 MZE  19
+        DE-Kli  50.89   13.52   GHG Europe - Klingenberg, Germany
+        DE-RuS  50.86    6.44   GHG Europe - Selhausen Juelich, Germany
+        IT-BCi  40.52   14.96   CarboItaly - Borgo Cioffi, Italy
+        IT-Be2  46.00   13.01   CarboItaly - Beano2, Italy
+        NL-Dij  51.99    5.65   GHG Europe - Dijkgraaf, Netherlands
+        NL-Lan  51.95    4.90   GHG Europe - Langerak, Netherlands
+        NL-Lel  52.52    5.55   GHG Europe - Lelystad, Netherlands
+        NL-Zee  52.33    5.37   GHG Europe - Zeewolde, Netherlands
+        US-ARM  36.61  -97.49   AmeriFlux - ARM SGP, OK
+        US-Bo1  40.00  -88.29   AmeriFlux - Bondville, IL
+        US-Bo2  40.00  -88.29   AmeriFlux - Bondville Companion Site, IL
+        US-IB1  41.84  -88.24   AmeriFlux - Fermi Lab Agrictultural Site, IL
+        US-KCM  44.69  -93.07   AmeriFlux - KCMP Tall Tower, MN
+        US-Ne1  41.16  -96.48   AmeriFlux - Mead Irrigated Maize, NE
+        US-Ne2  41.16  -96.47   AmeriFlux - Mead Irrigated Rotation, NE
+        US-Ne3  41.18  -96.44   AmeriFlux - Mead Rainfed Rotation, NE
+        US-Ro2  44.73  -93.09   AmeriFlux - Rosemount C7, MN
+        US-Ro3  44.72  -93.09   AmeriFlux - Rosemount G19, MN
+        US-Tw2  38.10  -121.64  AmeriFlux - Twitchell Corn, CA
+
+22 SOY  10
+        US-ARM  36.61  -97.49   AmeriFlux - ARM SGP, OK
+        US-Bo1  40.00  -88.29   AmeriFlux - Bondville, IL
+        US-Bo2  40.00  -88.29   AmeriFlux - Bondville Companion Site, IL
+        US-CRT  41.63  -83.35   AmeriFlux - Curtice Walter-Berger Cropland, OH
+        US-IB1  41.84  -88.24   AmeriFlux  - Fermi Lab Agrictultural Site, IL
+        US-KCM  44.69  -93.07   AmeriFlux - KCMP Tall Tower, MN
+        US-Ne2  41.16  -96.47   AmeriFlux - Mead Irrigated Rotation, NE
+        US-Ne3  41.18  -96.44   AmeriFlux - Mead Rainfed Rotation, NE
+        US-Ro2  44.73  -93.09   AmeriFlux - Rosemount C7, MN
+        US-Ro3  44.72  -93.09   AmeriFlux - Rosemount G19, MN
+
+24 WWT  9
+        BE-Lon  50.55   4.75  GHG Europe - Lonzee, Belgium
+        DE-Kli  50.89  13.52  GHG Europe - Klingenberg, Germany
+        DE-RuS  50.86   6.44  GHG Europe - Selhausen Juelich, Germany
+        DK-Sto  55.48  11.63  GHG Europe - Store Ebberup, Denmark
+        FI-Jok  60.89  23.51  GHG Europe - Jokioinen, Finland
+        NL-Lut  53.40   6.36  GHG Europe - Lutjewad, Netherlands
+        US-ARM  36.61 -97.49  AmeriFlux - ARM SGP, Oklahoma
+        US-CRT  41.63 -83.35  AmeriFlux - Curtice Walter-Berger Cropland, OH
+        US-Pon  36.77 -97.13  AmeriFlux - Ponca City, IL
+
+
+------------------------ Mixed PFTs -----------------------------------------------------
+PFT   PFT_name  Site_Ref  Lat    Lon       Notes
+2/8   mix-for   13
+                AR-Slu   -33.46   -66.46   Fluxnet  - San Luis, Argentina
+                BE-Bra    51.31     4.52   Fluxnet  - Brasschaat, Belgium
+                BE-Vie    50.31     6.00   Fluxnet  - Vielsalm, Belgium
+                CA-Gro    48.22   -82.16   Canada Flux - Groundhog River, Ontario
+                CH-Lae    47.48     8.37   GHG Europe - Laegeren, Switzerland
+                CN-Cha    42.40   128.10   AsiaFlux - Changbaishan, China
+                DE-Spw    51.89    14.03   GHG Europe - Spreewald, Germany
+                DE-Zrk    53.87    12.90   GHG Europe - Zarnekow, Germany
+                JP-SMF    35.26   137.08   AsiaFlux - Seto Mixed Forest Site, Japan
+                US-Ho1    45.20   -68.74   AmeriFlux - Howland (Main Tower), ME
+                US-Los    46.08   -89.98   AmeriFlux - Lost Creek, WI
+                US-PFa    45.94   -90.27   AmeriFlux - Park Falls, WI
+                US-Syv    46.24   -89.35   AmeriFlux - Sylvania Wilderness Area, MI
+
+8/11  mix-fsh   2
+                AU-GWW   -30.19   120.65   OzFlux  - Great Western Woodland, Australia
+                AU-RDF   -14.56   132.48   OzFlux  - Red Dirt Melon Farm, Australia
+
+8/14/15 mix-sav   9
+                AU-Ade   -13.08   131.12   OzFlux  - Adelaide River, Australia (5/14/15)
+                AU-DaS   -14.16   131.39   OzFlux  - Daly River Savanna, Australia (5/15)
+                AU-Dry   -15.26   132.37   OzFlux  - Dry River, Australia (5/15)
+                BR-Mtg   -11.41   -55.32   Sinop Mato Grasso, Brazil (8/15)
+                CG-Tch    -4.29    11.66   CarboAfrica  - Tchizalamou, Congo (8/15)
+                CI-Lmt     6.22    -5.03   Lamto, Coste D'Ivoire (5/15)
+                TH-DTT    16.94    99.43   AsiaFlux - Diverse Land Site, Thailand (8/14/15) 
+                TH-Kln     6.33   100.93   AsiaFlux - Klong Hoi Khong, Thailand (8/15)
+                US-Ton    38.43  -120.97   AmeriFlux - Tonzi Ranch, CA
+                US-Var    38.41  -120.95   AmeriFlux - Vaira Ranch, CA
+
+11/15 mix-gsh   2
+                US-Mpj    34.44  -106.24   AmeriFlux - Pinyon Juniper Woodland, NM
+                US-Wjs    34.43  -105.86   AmeriFlux - Willard Juniper Savanna, NM
+
+12/13 mix-tun   4
+                CA-DL1    64.87  -111.57   AmeriFlux  - Daring Lake, Canada
+                RU-EST    71.62   128.75   Eastern Siberia Tundra, Russia
+                RU-Sam    72.37   126.50   Samoylov Island - Lena Delta, Russia
+                US-Atq    70.47  -157.40   AmeriFlux  - Atqasuk, Alaska
+
+14/15 mix-cxg   14
+                AU-DaP   -14.06   131.32   OzFlux  - Daly Pasture, Australia
+                AU-Emr   -23.86   148.47   Emerald - Queensland, Australia
+                AU-Yan   -34.99   146.29   OzFlux  - Yanco, Australia
+                BW-GhG   -21.15    21.74   Fluxnet  - Ghanzi Grass Site, Botswana
+                CA-Let    49.71  -112.94   Canada Flux  - Lethbridge, Alberta
+                IT-CA2    42.38    12.03   Fluxnet  - Castel d'Asso2, Italy
+                US-Arc    35.55   -98.04   AmeriFlux  - ARM SGP Control, Oklahoma
+                US-Bkg    44.34   -96.84   AmeriFlux  - Brookings, South Dakota
+                US-CPE    40.82  -104.77   Central Plains Experimental Range - Colorado
+                US-FR1    29.93   -98.01   AmeriFlux  - Freeman Ranch, Texas
+                US-Man    46.77  -100.92   Northern Great Plains Research Lab - Mandan, ND
+                US-Sdh    42.07  -101.41   AmeriFlux  - Sand Hills Dry Valley, NE
+                US-SGS    40.81  -104.19   Colorado Shortgrass Steppe LTER (SGS1)
+                US-Wlr    37.52   -96.86   AmeriFlux - Walnut River Watershed, KS
+

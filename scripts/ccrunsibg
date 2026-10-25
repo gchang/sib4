@@ -1,0 +1,99 @@
+#/bin/bash
+
+cp SiB4D SiB4D01
+SiB4D01 1 48 >../output/outfiles/xxx01.out &
+mv SiB4D01 SiB4D02
+SiB4D02 2 48 >../output/outfiles/xxx02.out &
+mv SiB4D02 SiB4D03
+SiB4D03 3 48 >../output/outfiles/xxx03.out &
+mv SiB4D03 SiB4D04
+SiB4D04 4 48 >../output/outfiles/xxx04.out &
+mv SiB4D04 SiB4D05
+SiB4D05 5 48 >../output/outfiles/xxx05.out &
+mv SiB4D05 SiB4D06
+SiB4D06 6 48 >../output/outfiles/xxx06.out &
+mv SiB4D06 SiB4D07
+SiB4D07 7 48 >../output/outfiles/xxx07.out &
+mv SiB4D07 SiB4D08
+SiB4D08 8 48 >../output/outfiles/xxx08.out &
+mv SiB4D08 SiB4D09
+SiB4D09 9 48 >../output/outfiles/xxx09.out &
+mv SiB4D09 SiB4D10
+SiB4D10 10 48 >../output/outfiles/xxx10.out &
+mv SiB4D10 SiB4D11
+SiB4D11 11 48 >../output/outfiles/xxx11.out &
+mv SiB4D11 SiB4D12
+SiB4D12 12 48 >../output/outfiles/xxx12.out &
+mv SiB4D12 SiB4D13
+SiB4D13 13 48 >../output/outfiles/xxx13.out &
+mv SiB4D13 SiB4D14
+SiB4D14 14 48 >../output/outfiles/xxx14.out &
+mv SiB4D14 SiB4D15
+SiB4D15 15 48 >../output/outfiles/xxx15.out &
+mv SiB4D15 SiB4D16
+SiB4D16 16 48 >../output/outfiles/xxx16.out &
+mv SiB4D16 SiB4D17
+SiB4D17 17 48 >../output/outfiles/xxx17.out &
+mv SiB4D17 SiB4D18
+SiB4D18 18 48 >../output/outfiles/xxx18.out &
+mv SiB4D18 SiB4D19
+SiB4D19 19 48 >../output/outfiles/xxx19.out &
+mv SiB4D19 SiB4D20
+SiB4D20 20 48 >../output/outfiles/xxx20.out &
+mv SiB4D20 SiB4D21
+SiB4D21 21 48 >../output/outfiles/xxx21.out &
+mv SiB4D21 SiB4D22
+SiB4D22 22 48 >../output/outfiles/xxx22.out &
+mv SiB4D22 SiB4D23
+SiB4D23 23 48 >../output/outfiles/xxx23.out &
+mv SiB4D23 SiB4D24
+SiB4D24 24 48 >../output/outfiles/xxx24.out &
+mv SiB4D24 SiB4D25
+SiB4D25 25 48 >../output/outfiles/xxx25.out &
+mv SiB4D25 SiB4D26
+SiB4D26 26 48 >../output/outfiles/xxx26.out &
+mv SiB4D26 SiB4D27
+SiB4D27 27 48 >../output/outfiles/xxx27.out &
+mv SiB4D27 SiB4D28
+SiB4D28 28 48 >../output/outfiles/xxx28.out &
+mv SiB4D28 SiB4D29
+SiB4D29 29 48 >../output/outfiles/xxx29.out &
+mv SiB4D29 SiB4D30
+SiB4D30 30 48 >../output/outfiles/xxx30.out &
+mv SiB4D30 SiB4D31
+SiB4D31 31 48 >../output/outfiles/xxx31.out &
+mv SiB4D31 SiB4D32
+SiB4D32 32 48 >../output/outfiles/xxx32.out &
+mv SiB4D32 SiB4D33
+SiB4D33 33 48 >../output/outfiles/xxx33.out &
+mv SiB4D33 SiB4D34
+SiB4D34 34 48 >../output/outfiles/xxx34.out &
+mv SiB4D34 SiB4D35
+SiB4D35 35 48 >../output/outfiles/xxx35.out &
+mv SiB4D35 SiB4D36
+SiB4D36 36 48 >../output/outfiles/xxx36.out &
+mv SiB4D36 SiB4D37
+SiB4D37 37 48 >../output/outfiles/xxx37.out &
+mv SiB4D37 SiB4D38
+SiB4D38 38 48 >../output/outfiles/xxx38.out &
+mv SiB4D38 SiB4D39
+SiB4D39 39 48 >../output/outfiles/xxx39.out &
+mv SiB4D39 SiB4D40
+SiB4D40 40 48 >../output/outfiles/xxx40.out &
+mv SiB4D40 SiB4D41
+SiB4D41 41 48 >../output/outfiles/xxx41.out &
+mv SiB4D41 SiB4D42
+SiB4D42 42 48 >../output/outfiles/xxx42.out &
+mv SiB4D42 SiB4D43
+SiB4D43 43 48 >../output/outfiles/xxx43.out &
+mv SiB4D43 SiB4D44
+SiB4D44 44 48 >../output/outfiles/xxx44.out &
+mv SiB4D44 SiB4D45
+SiB4D45 45 48 >../output/outfiles/xxx45.out &
+mv SiB4D45 SiB4D46
+SiB4D46 46 48 >../output/outfiles/xxx46.out &
+mv SiB4D46 SiB4D47
+SiB4D47 47 48 >../output/outfiles/xxx47.out &
+mv SiB4D47 SiB4D48
+SiB4D48 48 48 >../output/outfiles/xxx48.out &
+rm SiB4D48

@@ -1,0 +1,11 @@
+Variable Name:
+NEE_VUT_REF
+New Minimum:
+-10.
+New Maximum:
+500.
+Replace Values: (1 to replace)
+0
+File Name:
+/Users/kdhaynes/Dropbox/datas/fluxnet_data/US-ARM/arm_0312_m.nc
+

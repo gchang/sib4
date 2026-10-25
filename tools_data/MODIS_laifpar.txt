@@ -1,0 +1,4 @@
+Input File:
+'/Users/kdhaynes/Desktop/MOD15A2.fn_caturke1.txt'
+Output File:
+'/Users/kdhaynes/Dropbox/datas/lai_data/orig/MOD15A2_CA-TP1.nc'

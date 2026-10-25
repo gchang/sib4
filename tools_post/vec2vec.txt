@@ -1,0 +1,82 @@
+SiB4 vec2vec program input file-------------|
+--------------------------------------------|
+                                 start month=1 
+                                  start year=2000
+                                   end month=12
+                                    end year=2016
+--------->                 vec2vec hr2 files=.F.
+                           vec2vec hr3 files=.F.
+                           vec2vec qp2 files=.F.
+                           vec2vec qp3 files=.F.
+                           ec2vec pbp1 files=.F.
+                           ec2vec pbp2 files=.F.
+                          vc2vec other files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+--------->                    specific files=21
+----new vector lat/lon info file------------|
+/Users/kdhaynes/Research/sib4_driver/global/sib_vs_0.5deg.nc
+----input path and prefix-------(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/0.5x0.5/daily/qgrid_xxx.lu.nc
+---output path and prefix-------(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/1x1/daily/qgrid_1x1_xxx.lu.nc
+--input path, prefix, suffix---(Other files)|
+/ssd-scratch/kdhaynes/output/global/hourly.test/sib4_xxx.pft.nc
+--output path, prefix, suffix--(Other files)|
+/ssd-scratch/kdhaynes/output/global/hourly.test/sib4_1x1_xxx.pft.nc
+----specific file input name(s)-------------|
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_1999.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2000.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2001.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2002.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2003.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2004.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2005.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2006.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2007.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2008.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2009.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2010.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2011.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2012.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2013.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2014.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2015.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_2016.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_param_TI.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/sib_r201012.nc
+/Users/kdhaynes/Research/sib3_driver/1.25x1/CO2_respf_2010.nc
+----specific file output name(s)------------|
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_1999.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2000.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2001.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2002.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2003.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2004.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2005.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2006.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2007.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2008.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2009.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2010.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2011.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2012.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2013.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2014.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2015.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_2016.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_param_TI.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/sib_r201012.nc
+/Users/kdhaynes/Research/sib3_driver/0.5x0.5/CO2_respf_2010.nc
+
+
+NOTES: 
+  - For the use annual output files,
+    the start/end months are ignored.
+
+  - The regridding files containing the 
+    new lat/lon values are found in
+    the sib4_data/tools_post 
+    repository on Google Drive

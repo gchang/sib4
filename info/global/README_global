@@ -1,0 +1,78 @@
+####Information for global simulations######
+
+A generic namelist to run SiB4 is in the namel_sibdrv file.
+It's currently setup to run at 0.5dx0.5d.
+
+All the driver data are available at:
+https://drive.google.com/open?id=1LXnnh3ijkSN3K5_l05NwdkgljQoPGnit
+
+#########Required for a global simulation########
+1) namel_sibdrv
+
+   -Namelist file to run SiB4, specified with site info/files
+   -Information on all of the variables listed in the file
+    is found at the bottom of the namel_sibdrv file
+
+   -You will need to modify:
+      --CONTROL_LIST_SIBDRV, simulations options
+        (nsib, starttime, startyear, endtime, endyear,
+         dtsib, dtsibrestart, dtsibqp, dtsibpbp, dtsibhr)
+
+      --IO_LIST_SIBDRV, input files and output locations
+        (parameter files, input files, output directories)
+
+      --SPINUP_LIST_SIBDRV, spinup options
+        (spinup, spinup_default, spinup_output, spinup_numyrs, 
+         spinup_maxiter, spinup_threshold)
+
+      --SUBGRID_SIBDRV, subgrid lat/lon specifications if desired
+        (minlon, maxlon, minlat, maxlat)
+
+      --PBP_LIST_SIBDRV, specific points to save psib data at
+        (npbp, list of points) (npbp = -1 ==> all points)
+
+      --BALAN_LIST_SIBDRV, water and energy balance information
+        (flags and thresholds for balances)
+        
+      --EQPOOL_LIST_SIBDRV, equilibrium options
+        (eqjump_limit, eqjump_thresh, eq_printf, eq_pfmol, 
+         eq_prints, eq_psmol)
+
+      --PRINT_LIST_SIBDRV, screen-printing options during simulation
+
+      --SWITCH_LIST_SIBDRV, specific model options/switches
+        (cornsoy, grazing, green, equibclear, leapyear, updatelst)
+ 
+
+2) sib_vs.txt
+
+    -Vegetation structure file
+    -Can be downloaded from the google drive.
+    -Can be created with tools in the 
+      sib4_corral/tools_pre directory.
+
+3) driver data ==> MERRA
+
+  -MERRA driver data for the site
+  -Can be downloaded from the google drive.
+  -Can be created with tools in the
+   sib4_corral/tools_merra directory.
+
+
+#######Output Viewing/Analysis Options############
+1) sib4plot
+   - IDL program included in the sib4_corral/sib4plot folder,
+     with a README for set-up
+   - In IDL, type 'sib4plot', which opens the program
+   - Capable of opening all the model output, 
+     as well as the input data and generic netcdf files
+   - Performs simple comparisons and analysis  
+   - Allows the data to be easily viewed
+     and creates plots that can be easily saved
+
+2) Combine or edit the output files using the fortran 
+    programs in the sib4_corral/tool_post directory
+
+
+#Updated: 11/17
+#kdhaynes@atmos.colostate.edu

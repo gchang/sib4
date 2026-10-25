@@ -1,0 +1,22 @@
+SiB4 addresp program input file-------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=1998
+                                   end month=1
+                                    end year=1998
+--------->                 addresp hr2 files=.F.
+                           addresp hr3 files=.F.
+                           addresp qp2 files=.F.
+                           addresp qp3 files=.T.
+                          addresp pbp1 files=.F.
+                          addresp pbp2 files=.F.
+--------->                   use daily files=.F.
+                           use monthly files=.T.
+                            use annual files=.F.
+                        use multi-year files=.F.
+----input path------------------------------|
+/Users/kdhaynes/Output/global/monthly/
+----output path-----------------------------|
+/Users/kdhaynes/Output/global/monthlyb/
+----balance ratio file path and prefix------|
+/Users/kdhaynes/Output/global/monthly/qbal_199801_201712.lu.qp3.nc

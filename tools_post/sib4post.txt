@@ -1,0 +1,77 @@
+SiB4 post processing master input file------|
+--------------------------------------------|
+                                 start month=1 
+                                  start year=2000
+                                   end month=12
+                                    end year=2017
+--------->                 process hr2 files=.F.
+                           process hr3 files=.T.
+                           process qp2 files=.F.
+                           process qp3 files=.T.
+                          process pbp1 files=.F.
+                          process pbp2 files=.T.
+                         process other files=.F.
+--------->                   use daily files=.F.
+                           use monthly files=.T.
+                            use annual files=.F.
+                        use multi-year files=.F.
+--------->                    specific files=0
+                         merge restart files=.F.
+                          merge requib files=.F.
+                        number of processors=54
+          use/create multi-year totals/files=.T.
+          use regions for crop distributions=.T.
+                     calc global resolutions=.F.
+                      print gpptot by biomes=.T.
+                        print gpptot by PFTs=.T.
+      unstack using area-weighted PFT values=.T.
+                    add balanced respiration=.T.
+    add crop harvest distributed respiration=.T.
+----input path and prefix-------(SiB4 files)|
+/Users/kdhaynes/Output/sites/BR-Sa3/
+---output path and prefix-------(SiB4 files)|
+/Users/kdhaynes/Output/sites/BR-Sa3/
+--input path, prefix, suffix---(Other files)|
+/Users/kdhaynes/Output/global/test/qgrid_xxx.nc
+--output path, prefix, suffix--(Other files)|
+/Users/kdhaynes/Output/global/test/qgrid_5x4_xxx.nc
+----SiB4 balanced respiration file----------|
+/Users/kdhaynes/Output/global/grid/
+----SiB4 crop file--------------------------|
+/Users/kdhaynes/Output/global/grid/
+---Crop regridding distribution files-------|
+/Users/kdhaynes/Research/sib4_data/tools_crop/fao_cropdist_0.5deg.nc
+----Crop regridding regions map-------------|
+/Users/kdhaynes/Research/sib4_data/tools_crop/transcom_0.5deg.nc
+----regridding lon/lat info file------------|
+/Users/kdhaynes/Research/sib4_data/tools_post/grid_5x4.nc
+----selected variables  (<1 == all)  -------|
+-1
+varname
+----new variable names----------------------|
+new_varname
+----change long_names and new values--------|
+.false.
+new_var_long_name
+----change titles and new value-------------|
+.false.
+new_var_title
+----change units and new values-------------|
+.true.
+new_var_units
+----specific file input name(s)-------------|
+/Users/kdhaynes/Output/global.test/qgrid_200001_200012.cro.qp3.nc
+----specific file output name(s)------------|
+/Users/kdhaynes/Output/global.test/qgrid_1x1_200001_200012.cro.qp3.nc
+
+
+NOTES: 
+  - The regridding files containing the 
+    new lat/lon values are found in
+    the sib4_data/tools_post 
+    repository on Google Drive
+
+  - The crop and region maps for
+    redistributing the harvested carbon
+    are found in the sib4_data/tools_crop
+    repository on Google Drive

@@ -1,0 +1,84 @@
+This folder contains programs that are useful in
+setting up SiB4 simulations:
+  -Global
+  -Regional
+  -Groups
+  -Single Sites
+
+A brief description of the files is listed below.
+All the data used in these routines can be found on
+Google Drive, in the directory:
+>sib4_data/pre
+
+-------------------
+create_sibaero.f90
+-------------------
+Creates the parameter file for the aerodynamic constants 
+   that are PFT-dependent.
+Requires one input file:
+  - Tables of the constants (AeroTab.nc)
+Outputs the aerodynamic constants parameter file (sib_aero.nc)
+
+-------------------
+create_sibpft.f90
+------------------
+Creates a global map with SiB4 PFTs.
+Requires two maps:
+  - A PFT map, regridded to 0.5 degrees (pft35_global_0.5deg.nc)
+  - A land mask, matching the 0.5 degrees (land_mask_0.5deg.nc)
+Outputs the SiB4 PFT map (pftsib_global_0.5deg.nc)
+
+----------------
+create_sibvs.f90
+----------------
+Creates a new global SiB4 vegetation structure file.
+Requires four input maps (expected to match):
+  - Land mask (land_mask_0.5deg.nc)
+  - PFT map (with SiB4 PFTs, pftsib_global_0.5deg.nc)
+  - Soil sand/clay fraction map (soil_global_0.5deg.nc)
+  - Soil reflectance map (soref_global_0.5deg.nc)
+Outputs the SiB4 PFT/soil input file,
+  which is used for global simulations (sib_vs_0.5deg.nc)
+
+--------------------
+regrid_pftfrac.f90
+--------------------
+Regrids 0.1-degree PFT data from MODIS 
+  to dimensions specified in a land area map.
+Requires two input files:
+  - PFT map at finer resolution to combine/regrid (pft35_global_0.1.nc)
+  - Land mask specifying the grid/map to create (land_mask_0.5deg.nc)
+Outputs the regridded PFT map (pft35_global_0.5deg.nc)
+
+-------------------------------------------------------------------------
+make_subdomain files
+-------------------------------------------------------------------------
+All these routines create the SiB4 input files necessary
+  for non-global simulations.
+All of the user input is set in the make_subdomain.txt file.
+  - lat/lon specified region (subdomain option 1)
+  - group of sites (subdomain option 2, list of sites)
+  - single site (subdomain option 2, single site)
+
+
+make_subdomain_sibdr_copy.f90
+-------------------------------
+Creates the driver data from existing single site data.
+This routine only works (or is only useful) for 
+  grouping single sites into a combined group
+  which can then be run all at once.
+
+make_subdomain_sibdr_new.f90
+------------------------------
+Creates the driver data from global data, typically MERRA.
+
+make_subdomain_sibvs.f90
+-------------------------
+Creates the vegetation structure file (sib_vs).
+For subdomains or groups, the output type will be a netcdf file.
+For a single site, the output type will be a text file.
+
+
+#Updated: 10/17
+#Questions or comments? 
+#Contact:  katherine.haynes@colostate.edu

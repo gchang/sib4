@@ -1,0 +1,23 @@
+SiB4 disjoin program input file-------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=2000
+                                   end month=12
+                                    end year=2000
+                           disjoin hr2 files=.F.
+                           disjoin hr3 files=.F.
+                           disjoin qp2 files=.F.
+                           disjoin qp3 files=.F.
+                          disjoin pbp1 files=.F.
+                          disjoin pbp2 files=.T.
+                         disjoin other files=.F.
+ --input path, prefix, suffix---(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/test/ppull_xxx.lu.pbp2.nc
+---output path, prefix, suffix--(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/test/psib_xxx_lu.pbp2.nc
+---input path, prefix, suffix--(other files)|
+/spinning-scratch/kdhaynes/output/global/hourly.grid/hsib_xxx.lu.nc
+--output path, prefix, suffix--(other files)|
+/spinning-scratch/kdhaynes/output/global/hourly.dgrid/hsib_xxx.lu.nc
+----selected variables  (<1 == all)  -------|
+-1

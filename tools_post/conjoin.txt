@@ -1,0 +1,21 @@
+SiB4 conjoin program input file-------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=1998
+                                   end month=12
+                                    end year=2017
+                           conjoin hr2 files=.F.
+                           conjoin hr3 files=.F.
+                           conjoin qp2 files=.T.
+                           conjoin qp3 files=.T.
+                          conjoin pbp1 files=.T.
+                          conjoin pbp2 files=.T.
+                      create multi-year file=.T.
+----input path------------------------------|
+/Users/kdhaynes/Output/sites/grz/US-Seg/
+----output path and prefix------------------|
+/Users/kdhaynes/Output/sites/grz/US-Seg/
+----selected variables  (<1 == all)  -------|
+-1
+assim
+resp_tot

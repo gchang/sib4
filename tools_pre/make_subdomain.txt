@@ -1,0 +1,22 @@
+1    ;Subdomain Type, 0=lon/lat range  1=single site list
+Input VS File:
+'../../sib4v2_driver/global/sib_vs_0.5deg.nc'
+Input Fire Directory:
+'../../sib4v2_driver/global/gfed4/gfed4_0.5deg_'
+Input Driver Data Directory:
+'../../sib4v2_driver/global/merra2/merra2_0.5deg_'
+Output Directory:
+'../../sib4v2_output/'
+------------------------------------------------------------
+-1    ;Specific PFT (-1=default, 1-25=specific PFT, 101=C3/C4)
+1997  ;Starting Year (Driver Data/Fire)
+2018  ;Stopping Year (Driver Data/Fire)
+1     ;Output Type (0=netcdf 1=single text)
+------------------------------------------------------------
+00.0000    ;Starting Latitude
+30.0000    ;Stopping Latitude
+-15.000    ;Starting Longitude
+35.0000    ;Stopping Longitude
+------------------------------------------------------------
+1     ;Number of points (Lat, Lon, Site Name)
+40.58, -105.08, US-FCl

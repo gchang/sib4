@@ -1,0 +1,42 @@
+SiB4 global total NEE input file-----------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=9816
+                                  stop month=12
+                                    end year=9816
+--------->           calculate NEE hr2 files=.F.
+                     calculate NEE hr3 files=.F.
+                     calculate NEE qp2 files=.F.
+                     calculate NEE qp3 files=.T.
+                    calculate NEE pbp1 files=.F.
+                    calculate NEE pbp2 files=.F.
+                   calcaulte NEE other files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+                              specific files=0
+--------->            calc global resolution=.T.
+                                print biomes=.T.
+                                  print PFTs=.T.
+----input path and prefix-------(SiB4 files)|
+/Users/kdhaynes/Output/amazon/
+--input path, prefix, suffix---(Other files)|
+/spinning-scratch/kdhaynes/output/global/hourly.1x1/sib4_1x1_xxx.pft.nc
+----specific file input name(s)-------------|
+/Users/kdhaynes/Output/global/monthly/qsib_200003.lu.qp3.nc
+----specific file output name(s)------------|
+/Users/kdhaynes/Output/global/monthly/qrst_200003.lu.qp3.nc
+
+
+NOTES: 
+  -If you do not calculate the global resolution,
+   a 0.5-degree x 0.5-degree resolution is used.
+
+  -Print biomes will print the annual total 
+   broken down by biomes to match Beer et al. [2010]
+   --The PFTs are grouped together into biomes
+     following basic rules.
+
+  -Print PFTs will print the annual total
+   broken down by PFTs

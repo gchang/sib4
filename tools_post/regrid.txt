@@ -1,0 +1,42 @@
+SiB4 regrid program input file--------------|
+--------------------------------------------|
+                                 start month=1 
+                                  start year=2000
+                                   end month=12
+                                    end year=2016
+--------->                  regrid hr2 files=.F.
+                            regrid hr3 files=.F.
+                            regrid qp2 files=.F.
+                            regrid qp3 files=.F.
+                           regrid pbp1 files=.F.
+                           regrid pbp2 files=.T.
+                          regrid other files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+--------->                    specific files=0
+----regridding lon/lat info file------------|
+/ssd-scratch/kdhaynes/sib4_data/grid/grid_1x1.nc
+----input path and prefix-------(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/0.5x0.5/daily/qgrid_xxx.lu.nc
+---output path and prefix-------(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/1x1/daily/qgrid_1x1_xxx.lu.nc
+--input path, prefix, suffix---(Other files)|
+/ssd-scratch/kdhaynes/output/global/hourly.test/sib4_xxx.pft.nc
+--output path, prefix, suffix--(Other files)|
+/ssd-scratch/kdhaynes/output/global/hourly.test/sib4_1x1_xxx.pft.nc
+----specific file input name(s)-------------|
+/ssd-scratch/kdhaynes/output/global/0.5x0.5/monthly/qbal_200001_201612.lu.nc
+----specific file output name(s)------------|
+/ssd-scratch/kdhaynes/output/global/1x1/monthly/qbal_1x1_200001_201612.lu.nc
+
+
+NOTES: 
+  - For the use annual output files,
+    the start/end months are ignored.
+
+  - The regridding files containing the 
+    new lat/lon values are found in
+    the sib4_data/tools_post 
+    repository on Google Drive

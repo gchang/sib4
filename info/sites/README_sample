@@ -1,0 +1,56 @@
+####Information for a sample site simulation######
+
+This file contains information to run a sample site, 
+US-FCl (Fort Collins, CO, USA)
+
+1) Untar the sample driver data
+   (tar -xzvf sample.tgz)
+   This creates the directory sib4_sample
+
+2) Compile SiB4
+   In sib4_corral/code directory, type 'make'
+   Changes may need to be made to the Makefile
+   if it does not compile
+
+3) Move the executable to the main sib4_corral directory
+   (in sib4_corral/code, 'mv SiB4D ..')
+
+4) Change back into the main directory, 
+   (just in sib4_corral), then run by typing:
+   ./SiB4D info/sites/sib4_sample/namel_sibdrv
+
+
+The namelist file (sib4_sample/namel_sibdrv)
+if currently setup to run 2016 and save
+hourly, daily, and monthly output.
+
+The variables being saved are specified in the
+sib4_corral/input/sib_outopts file.
+The default is a relatively minimal selection.
+
+The output will be saved in the 
+sib4_corral/info/sib4_sample/output directory,
+so for this to run you will need to have
+write permissions to that directory.
+
+This sample uses the restart file sib_requib.nc.
+To create your own restart file, in the namel_sibdrv
+you need to set 'spinup = .true.'
+I'd also recommend spinning up over a longer
+period of time, rather than a single year.
+So change the startyear to 1997 
+(uses all the provided data).
+
+With the spinup_default flag set to true,
+this will start from default (minimum leaf pool only),
+and iterate until equilibrium pools calculated change 
+less than the spinup_threshold value in an iteration.
+
+The output will go to the directory listed in the out_path.
+To then use the new spinup values, just move the sib_equibsxx.nc
+file (numbered sequentially, so you'll want the last one)
+to your driver directory.
+
+
+#Updated: 08/19
+#Katherine.Haynes@colostate.edu

@@ -1,0 +1,101 @@
+This folder contains programs that are useful in processing data
+used to evaluate SiB4.
+
+====================================================================
+The MODIS routines process/modify MODIS LAI data at sites from the 
+MODIS Land Produts Subsets product (https://modis.ornl.gov/fixedsite/).
+
+MODIS_laicsv.f90
+-----------------
+Main routine to process downloaded MODIS site-specific LAI
+in a csv file to a netcdf file.
+
+MODIS_laifpar.f90
+-----------------
+Main routine to process downloaded MODIS site-specific LAI
+in an hdf file to a netcdf file.
+
+MODIS_calclai.f90
+-----------------
+Routine to calculate the annual maximum LAI.
+
+MODIS_maxlai.f90
+-----------------
+Routine to calculate the mean annual maximum LAI for a list of sites.
+
+MODIS_modlai.pro
+----------------
+IDL routine to smooth MODIS data, removing large jumps.
+
+MODIS_evglai.pro
+-----------------
+IDL routine to remove strong seasonal cycle in MODIS 
+data at evergreen forest sites.
+
+MODIS_modnc.pro
+----------------
+IDL routine to modify LAI netcdf files.
+
+====================================================================
+The fluxnet routines process/modify fluxes from FluxNet.
+
+fluxnet_csv_to_netcdf.f90
+--------------------------
+Generic routine to process Fluxnet comma-separated data to netcdf files.
+
+fluxnet_l2nc_to_netcdf.f90
+---------------------------
+Generic routine to process Fluxnet level-2 netcdf data.
+
+fluxnet15_csv_to_netcdf.f90
+----------------------------
+Generic routine to process Fluxnet2015 data.
+
+
+====================================================================
+Specific routines for the separate networks in FluxNet.
+
+ameriflux_csv_to_netcdf.f90
+----------------------------
+Processes comma-separated Ameriflux data into netcdf files.
+
+asiaflux_csv_to_netcdf.f90
+--------------------------
+Processes comma-separated AsiaFlux data into netcdf files.
+
+caflux_csv_to_netcdf.f90
+-------------------------
+Processes comma-separated CanadaFlux data into netcdf files.
+
+euflux_csv_to_netcdf.f90
+-------------------------
+Processes Europian fluxnet data into netcdf files.
+
+lba_csv_to_netcdf.f90
+----------------------
+Processes LBA fluxnet data into netcdf files.
+
+ozflux_nc_to_netcdf.f90
+------------------------
+Processes OzFlux data (Australia) into netcdf files.
+
+
+
+fluxnet_calcgpp.pro
+--------------------
+Calculates annual GPP from Fluxnet GPP data.
+
+fluxnet_fixtime.f90
+-------------------
+Program to fix the time dimension.
+Kept as a sample of a fortran program to modify the
+netcdf data.
+
+fluxnet_modnc.pro
+-----------------
+IDL program to modify the netcdf data.
+
+
+#Updated: 2018/02
+#Questions or comments? 
+#Contact:  katherine.haynes@colostate.edu

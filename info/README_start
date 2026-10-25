@@ -1,0 +1,84 @@
+#### Information for your first SiB4 run, a sample site simulation  ######
+
+This file contains steps to:
+   --Load the Simple Biosphere (SiB4) land surface carbon model on a computer
+   --Run it for a sample site, US-FCl (Fort Collins, CO, USA)
+
+
+I.  Loading SiB4
+
+Advanced installation and set-up instructions are in the file sib4_corral/info/all/README_run.  
+Below is the Installing SiB4 for Dummies version.
+
+SiB4 runs on an ordinary laptop.  It can be an Apple or Windows machine.  If you are making simulations that are large in time, geographic space, and/or number of output variables saved, eventually you may need the laptop to save output to a server with more storage space than a personal computer.  But for single-site runs including the one in section II, almost any desk computer is all that’s needed.
+
+The next steps to install SiB4 will need to be done only once.
+
+1)  If you don’t yet have an account with GibLab.com, go to their website and create one.
+
+2)  Ask Kathy Haynes (Katherine.Haynes@colostate.edu) to add your GitLab login name to the list of people who have access to the GitLab Sib4 site.
+
+3)  Open a terminal window.
+
+4)  If you want SiB4 to be a directory immediately under your main directory, do nothing.  If you want to bury it deeper, change (‘cd’) to the parent directory for your desired location.
+
+5)  Type 
+‘git clone https://USERNAME@gitlab.com/kdhaynes/sib4v2_corral.git’ 
+where USERNAME is yours.  Unless you currently are signed in to your GitLab account, you will be asked for your GitLab password.  An entire SiB4 directory structure of files will be copied to your machine.  The total size is ~55 MB (depending on the latest modifications).
+
+Extra)  SiB4 simulation output is stored in netcdf file format.  If netcdf libraries don’t exist on your computer, you won’t be able to run the model.  If you have worked previously with .nc files on this computer, the libraries already have been installed.  One way to get netcdf libraries is to use r software.  In RStudio, install.packages(“ncdf4”). 
+
+
+
+II.  Running a Sample Site
+
+SiB is run from a command line window.  The sample run’s driver data is in sib4_corral/info/sites.  If you opened this file from a command line, you are in sib4_corral/info and can change into the sites directory by typing 'cd sites'.  If you are just now opening a command line window, type ‘cd sib4_corral/info/sites’.  Then type ‘ls’ to list files and be sure sample.tgz is in the same directory you are.
+
+In the next four steps you will (1) open the data files that the run needs, (2) convert the pre-packaged run’s set-up information into a machine code file (executable), (3) put the executable in the main SiB directory, then (4) actually make the SiB simulation.
+
+
+1) Untar the sample driver data by typing ‘tar -xzvf sample.tgz’.  This creates the directory sib4_sample.
+
+2) Compile SiB4:  Move to the sib4_corral/code directory then type 'make’.  If the program runs successfully, a lot of messages with file names will scroll by ending with ‘Finished building == SiB4D’.  SiB4D is the executable file for running SiB in a particular configuration.  If instead you get an error, changes may need to be made to the Makefile.
+
+3) Move the executable to the main sib4_corral directory.  From sib4_corral/code, type ‘mv SiB4D ..’.
+
+4) SiB4 is always run from the main SiB directory.  Change back to it (cd sib4_corral), then run SiB by typing:
+   ./SiB4D info/sites/sib4_sample/namel_sibdrv
+The line means ‘run the executable file SiB4D, using namelist settings from the file in the listed location.  If the command works, a lot of dates will scroll by, ending with “End simulation”
+ 
+
+
+III.  What Just Happened (or Didn’t)?
+… to view simulation results, skip to the bottom of the output section.
+
+
+A.  Setup
+
+A namelist file tells the SiB program what the user specifications are for a particular run - where on the earth to simulate and for what time period, where input and driver data are located, what variables to save and where to save them, etc.  
+
+The namelist file (sib4_sample/namel_sibdrv) for this sample is currently set up to run 2016 and saves hourly, daily, and monthly output.
+
+
+B.  Spin-up
+
+Spin-up for a land surface model means repeatedly running the model with the same driver data, primarily meteorology, until the influence of semi-arbitrary initial conditions has been neutralized.  In SiB4, for example, this means creating realistic starting carbon pools and canopy structure even though the default starting point is only a minimum pool of leaves.  Spin-up happens if the spinup_default flag is set to true.  Runs are repeated until the differences in soil carbon pool sizes from iteration to the next are less than the spinup_threshold value.  The default threshold value is .01 (1%).
+
+A restart file is a simulation’s status at the end of spin-up runs, and one has already been created for this exercise.  It is sib_requib.nc.  To create your own restart file, in the namel_sibdrv you need to set 'spinup = .true' so that a spin-up will be done for your new configuration before the actual simulation begins.  I'd recommend spinning up over a longer period of spin-up meteorology than a single year.  So if you change namel_sibdrv, also change the startyear to 1997 (uses all the provided data).
+
+To then use new spinup values, move the sib_equibsxx.nc file to your driver directory.  Each spin-up run’s restart file is numbered sequentially, so use the highest numbered one.
+
+
+C.  Output
+
+The output will be (was) saved in the sib4_corral/info/sib4_sample/output directory, so for this to run you need to have write permission to that directory.  If it ran, you do.
+
+The variables being saved are specified in the sib4_corral/input/sib_outopts file in the filename in the out_path variable.  The default is a relatively minimal selection of simulation output variables.
+
+Go to the output directory and see what you did.  For this sample run, the out_path is sib4_corral/info/sites/sib4_sample.  As ‘ls’ will show you, there are multiple results file for each simulated day.  Naming conventions are described in the file sib4_corral/README.  File names including .g. are summaries for an entire grid cell, and file names that include .lu. have separate entries for each land unit (plant functional type) within each grid cell.
+
+To open and explore the output files, use netcdf-compatible software of your choice.  We mostly use IDL or r.
+
+
+#Updated: 2019/08
+#Katherine.Haynes@colostate.edu

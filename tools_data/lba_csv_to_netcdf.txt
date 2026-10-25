@@ -1,0 +1,8 @@
+3      ;File Type: 1=hourly 2=daily 3=monthly
+109    ;Number of Variables in File
+1999   ;Year Start
+2003   ;Year Stop
+File In:
+'/Users/kdhaynes/Downloads/CD32_BRAZIL_FLUX_NETWORK_1174/data/PA_CAX/CAX_month.txt'
+File Out:
+'/Users/kdhaynes/Data/fluxnet_data/All_Sites/BR-Cax/cax_9903_m.nc'

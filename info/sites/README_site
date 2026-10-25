@@ -1,0 +1,215 @@
+####Information for the site data######
+
+A generic namelist to run SiB4 is in the namel_sibdrv file.
+A list of all the sites is in the site_infolist.xlsx file.
+A list of sites specific to PFTs is in the site_pftlist.txt file.  
+  --These are the sites used for testing and development.
+
+Site Data for SiB4 Simulations are available at:
+http://bit.ly/2KPLtEI
+
+#########Required for each site simulation########
+1) namel_sibdrv
+
+   -Namelist file to run SiB4, specified with site info/files
+   -You will need to replace the XX-XXX placeholders with the
+    name of the site you are simulating.
+
+   -Information on all of the variables listed in the file
+    is found at the bottom of the namel_sibdrv file
+   -Namelist variables you may need to modify:
+      --CONTROL_LIST_SIBDRV, simulations options
+        (nsib, starttime, startyear, endtime, endyear,
+         dtsib, dtsibrestart, dtsibqp, dtsibpbp, dtsibhr)
+
+      --IO_LIST_SIBDRV, input files and output locations
+        (parameter files, input files, output directories)
+
+      --SPINUP_LIST_SIBDRV, spinup options
+        (spinup, spinup_default, spinup_output, spinup_numyrs, 
+         spinup_maxiter, spinup_threshold)
+
+      --SUBGRID_SIBDRV, subgrid lat/lon specifications if desired
+        (minlon, maxlon, minlat, maxlat)
+
+      --PBP_LIST_SIBDRV, specific points to save psib data at
+        (npbp, list of points) (npbp = -1 ==> all points)
+
+      --BALAN_LIST_SIBDRV, water and energy balance information
+        (flags and thresholds for balances)
+ 
+      --PRINT_LIST_SIBDRV, screen-printing options during simulation
+
+      --SWITCH_LIST_SIBDRV, specific model options/switches
+        (cornsoy, fire, grazing, green, equibclear, leapyear, updatelst)
+ 
+
+2) sib_vs.txt
+
+    -Vegetation structure file
+    -Set to the PFT defined at the site
+   
+    -To create: use the fortran program in
+          sib4_corral/tools_pre/make_subdomain_sibvs.f90
+     This pulls out the PFT information from a global file.
+
+     Modify the information file make_subdomain.txt
+     --For a single site, set the subdomain type to 1.
+     --For specific sites, you may need to modify the PFTs included
+         to match the site descriptions.  Options are now available
+         to set a specific PFT or use the default in the global file 
+         (specific PFT in input file==PFT number or -1 for default)
+     --Specify the output location
+
+3) driver data ==> MERRA
+
+  -MERRA driver data for the site
+
+  -To create these data, use the program in
+       sib4_corral/tools_pre/make_subdomain_sibdr_new.f90
+   This program pulls the site information
+        from global driver data (typically MERRA).
+
+   Modify the information file make_subdomain.txt
+    >Check the input driver directory
+     (typically '/archive/MERRA2_0.5x0.5/merra2_0.5deg_')
+    >Check the output location 
+     (adds on the merra subdirectory and "merra2_" prefix)
+    >Check the starting year, stopping year, and output type
+      (typically for single sites, the output type should be 1)
+    >Set the number of sites desired
+    >Specify the lat/lon/site name of the desired new sites
+
+4) fire data ==> GFED v4
+
+   -To create these data, use the program
+       sib4_corral/tools_pre/make_subdomain_sibfire.f90
+    This program pulls the site information
+         from global fire emissions.
+
+     Modify the information file make_subdomain.txt
+       >Check the input fire directory
+       >Check the output location
+         (adds on the site and gfed4 subdirectory,
+	   along with "gfed4_" prefix)
+       >Check starting year, stopping year, and output type
+         (typically for single sites, the output type should be 1)
+	 (GFED only available 2003-2018)
+       >Set the number of sites desired
+       >Specify the lat/lon/site name of the sites
+
+Those files should be all the site-specific files necessary for a 
+site simulation.
+   
+
+#######To perform a site simulation#########
+1) Make sure you have the latest version of SiB4
+    --> If you don't yet have SiB4, 
+         use git to check it out:
+        -Type: git clone https://USERNAME@gitlab.com/kdhaynes/sib4v2_corral.git
+        -This will download the SiB4 code and all the 
+          additional information/tools
+        -By default, this will create a folder called
+           'sib4v2_corral'
+    --> If you already have SiB4, use git to 
+        make sure you have the latest version:
+        -Type: 'git pull'
+
+2) Compile SiB4
+   -In the sib4_corral/code directory, type 'make'
+   -Move the executable to the main directory 
+     (mv SiB4D ..)
+
+3) Copy the namel_sibdrv file, with edits for the 
+   specific site, to the main directory with the 
+   executable
+   -- Sample namel_sibdrv files are in 
+      sib4_corral/info/sites/namel_sibdrv (for sites)
+      sib4_corral/info/groups/namel_sibdrv (for groups)
+      sib4_corral/info/global/namel_sibdrv (for global)
+   -- Check the input files, output directory, 
+      time period, and output file frequency 
+
+4) Specify any specific variables to output in the
+   sib4_corral/input/sib_outopts file
+   - This file controls all the output in SiB4, 
+      with each column containing a flag of whether or
+      not to include the variable in the output 
+      (T=output, F=no output)
+   - The first column if for the qp files (typically monthly)
+   - The second column is for the pbp files (typically daily)
+   - The third column is for the hr files (typically hourly)
+
+5) Perform a spin-up simulation to get equilibrium pools
+   - In the namel_sibdrv file, make sure "spinup == .true."
+   - Model output is typically not produced during spin-up runs, 
+      unless in the namel_sibdrv file you set spinup_output=.true.
+   - In the main directory, type: './SiB4D >sib4.out'
+   - Check the equilibrium pools in the standard output
+      saved in the sib4.out file
+   
+6) Save the equilibrium pool restart file produced from
+   the spin-up simulation.
+   - Rename the final spinup restart file as sib_requib.nc
+   - Move the restart file to a directory set-up for the site
+      i.e. username/sib4_driver/sites/xx-xxx/sib_requib.nc
+
+7) Change the namel_sibdrv file for a regular simulation
+   (ic_path == /xxx/sib_requib.nc; spinup == .false.)
+
+8) Perform the simulation (type './SiB4D')
+    - Run with no command-line variables (as above)
+      to use the namel_sibdrv folder found in the same
+      directory as the executable, typically in 
+      the sib4_corral directory
+    - Run with a single command-line variable 
+      specifying a specific namel_sibdrv to use
+      (i.e. typing './SiB4D ./sample/namel_sibdrv'
+       will run with the namel_sibdrv in the specified
+       directory)
+    - Run with two integer command-line variables to
+      perform multiple simulations in parallel 
+      (typically for global runs).  The first is
+      the rank you wish to perform and the second
+      is the total number of different simulations.
+      For example, to divide the simulation into 
+      three smaller simulations you'd need to start 
+      three runs: 'SiB4D 1 3', 'SiB4D 2 3', SiB4D 3 3'
+    
+
+#######Basic Steps for Re-Running Sites############
+Once you follow the full procedure and have the restart file
+with equilibrium pools, you do only have to redo the spin-up
+simulation for:
+  - Changes to the parameter files 
+     (in sib4_corral/input/params/)
+  - Changes to the code that would affect the long-term
+     pool sizes (i.e. roots/wood/soil)
+
+Otherwise, to rerun a site once you have all the input
+data setup:
+1) Make sure you have the latest SiB4
+2) If changes have been made to any file in the 
+   sib4_corral/code directory, you will need to recompile
+   and then move the executable to the trunk directory
+3) Make sure you have the namelist and output options correct
+4) Re-run
+
+
+#######Output Viewing/Analysis Options############
+1) sib4plot
+   - IDL program included in the sib4_corral/sib4plot folder,
+     with a README for set-up
+   - In IDL, type 'sib4plot', which opens the program
+   - Capable of opening all the model output, 
+     as well as the input data and generic netcdf files
+   - Performs simple comparisons and analysis  
+   - Allows the data to be easily viewed
+     and creates plots that can be easily saved
+
+2) Combine or edit the output files using the fortran 
+    programs in the sib4_corral/tool_post directory
+
+
+#Updated: 2019/08
+#Katherine.Haynes@atmos.colostate.edu

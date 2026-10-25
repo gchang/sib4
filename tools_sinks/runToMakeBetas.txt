@@ -1,0 +1,23 @@
+Global CO2 GPP Fertilization (CfertEff):
+0.022
+N America RESP regrowth reduction (respEff):
+0.04
+N America GPP N Fertilization (AmerNfertEff):
+0.04
+European GPP N Fertilization (EurNfertEff):
+0.04
+Boreal Forests GPP Warming (borWarmEff):
+0.04
+Input Filename:
+/spinning-scratch/kdhaynes/output/global/1x1/clim/sib4_1x1_monthly_9817.pft.nc
+Output Filename:
+/spinning-scratch/kdhaynes/output/global/1x1/ssinks/Betas_GPP_RESP.nc
+Output Description:
+SiB4 GPP/RESP factors for ~3.38 GtC/yr sink.
+Output Source:
+Mean 1998-2017 fluxes.
+Save Image (TRUE or FALSE):
+TRUE
+Image Filename (must be a png):
+/spinning-scratch/kdhaynes/output/global/1x1/ssinks/sib4_meansink.png
+

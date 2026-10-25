@@ -1,0 +1,45 @@
+Scripts that I find useful for SiB4.
+
+ccdonesib, cchecksib, and ccnumsib
+----------------------------------
+Scripts to check to see if a SiB4 simulation is finished running.
+
+
+ccrunsibg and ccrunsibs
+------------------------
+Scripts to start running a SiB4 simulation, using multiple processors.
+
+
+exportgcc, exportifort, and exportpgi
+-------------------------------------
+Scripts to set the environmental library,
+  used for running SiB4 with different compilers.
+  -Assumes bash
+  -To utilize, preface with source:
+    >source exportgcc
+
+
+myhsibcopy, mypsibcopy, myqsibcopy
+-----------------------------------
+Script to compress netcdf output using nccopy.
+
+
+rename_file
+-----------
+A perl script to change the names of files.
+For example, to change text in all files in
+a directory, you can use:
+>rename_file -t -r "xxx" -w "xxx" file (-t=test)
+where the -t is for testing (take out to replace),
+      the -r is the text that will be replaced
+  and the -w is the text that will now be seen
+
+
+sib4_taryr.pl
+--------------
+A perl script to tar individual years of output.
+
+
+#Updated: 2019/08
+#Questions or comments? 
+#Contact:  katherine.haynes@colostate.edu

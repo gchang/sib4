@@ -1,0 +1,80 @@
+######SiB4 Instructions######
+
+####Steps for Running SiB4####
+1) Obtain SiB4 from GitLab
+      - Open an account for GitLab and ask for permission to SiB4
+      - git clone https://USERNAME@gitlab.com/kdhaynes/sib4v2_corral.git
+
+2) Compile SiB4
+   - Change to the 'code' directory
+   - Edit the Makefile for any necessary computer/system specifications
+   - At the prompt, type 'make'
+      - Compiles all objects
+      - Links necessary files/libraries
+      - Creates the executable SiB4D
+      - Finishes with the message: "Finished building == SiB4D"
+
+3) Move the executable from the 'code' directory to the main directory
+
+4) Move a namelist containing the simulation specifications into the main directory
+   Option 1) Site Simulations
+      - Change into the 'info/sites' directory
+      - Copy the generic namel_sibdrv file into the main directory
+      - Edit the namel_sibdrv file, 
+        replacing the XX site identifiers with a specific site
+
+   Option 2) Global Simulations
+      - Change into the 'info/global' directory
+      - Copy the namel_sibdrv file into the main directory
+
+5) Modify the namel_sibdrv file
+
+6) Change any parameters, if necessary
+   + Change to the 'input/params' directory
+   + Alter any of the files and variables
+
+7) Change any variables to be output
+   + Change to the 'input' directory
+   + Alter the first three columns of the 'sib_outopts' file
+     to turn the variable output on/off 
+     Column 1) True = Output variable in QP files
+     Column 2) True = Output variable in PBP files
+     Column 3) True = Output variable in HR files
+
+8) If necessary, perform a spin-up simulation to acquire balanced carbon pools
+      + Set the 'spinup' flag to true
+      + Specify initial pool values (spinup_default)
+          -- Zero pools except minimal root pool (spinup_default = .true.)
+          -- Restart file values (spinup_default = .false.)
+      + Specify whether to save output during the spinup (spinup_output)
+      + Specify the number of years to use in the spinup calculation (spinup_numyrs)
+          -- If the number of years does not match the start/end times,
+              it will loop over the years specified to reach this total number
+      + Specify the maximum number of iterations for the spinup (spinup_maxiter)
+      + Specify the threshold required to declare pools balanced (spinup_threshold)
+
+      + Run SiB4: In the main directory, type './SiB4D'
+      + Save the equilibrium restart file (sib_requib.nc)
+      + In the namel_sibdrv file:
+         -- Set the initial condition file to the newly-created restart file
+         -- Set the spinup flag to 'false'
+
+9) Run SiB4
+   + In the main directory, type './SiB4D'
+
+####Notes For SiB4####
+- SiB4 can be run using multiple processors
+  At the prompt:
+  >./SiB4D rank nchunks
+    - Rank specifies which process number
+    - Nchunks specifies the total number of processes
+
+- SiB4 can be run specifying the location of namel_sibdrv,
+  rather than requiring the namelist to be in the same directory
+  as the executable
+  At the prompt:
+  >./SiB4D /directory/namel_sibdrv
+
+#Updated: 08/19
+#Katherine.Haynes@colostate.edu
+   

@@ -1,0 +1,37 @@
+SiB4 cropdist program input file------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=0016
+                                   end month=12
+                                    end year=0016
+--------->                cropdist hr2 files=.F.
+                          cropdist hr3 files=.T.
+                          cropdist qp2 files=.F.
+                          cropdist qp3 files=.F.
+                         cropdist pbp1 files=.F.
+                         cropdist pbp2 files=.F.
+--------->                       daily files=.T.
+                               monthly files=.F.
+                                annual files=.F.
+--------->              use multi-year total=.T.
+               use regions for distributions=.T.
+----crop regridding distribution file-------|
+/ssd-scratch/kdhaynes/sib4_data/crop/fao_cropdist_0.5deg.nc
+----regions map-----------------------------|
+/ssd-scratch/kdhaynes/sib4_data/crop/transcom_0.5deg.nc
+----sib input file path and prefix----------|
+/spinning-scratch/kdhaynes/output/global/0.5x0.5/hourly/hgrid_xxx.lu.nc
+----sib output file path and prefix---------|
+/spinning-scratch/kdhaynes/output/global/0.5x0.5/hourly/
+
+NOTES:
+  - If not using the multi-year total,
+    annual totals are calculated
+    from January-December.
+
+  - Different input file prefixes from
+    the traditional SiB4 diagnostic 
+    output files can be used, 
+    just include them in the file path
+
+

@@ -1,0 +1,14 @@
+Start Year:
+2001
+Stop Year:
+2004
+File Output Hours Per Day (48=1/2 hourly, 24=hourly, 1=daily, -1=monthly)
+24
+Hours To Time Shift
+-4
+Input Directory:
+'/Users/kdhaynes/Downloads/AMF_USWlr_'
+Input Suffix:
+'_L2_WG_V002.nc'
+Output File:
+'/Users/kdhaynes/wlr_'

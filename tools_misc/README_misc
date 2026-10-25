@@ -1,0 +1,85 @@
+This folder contains miscellaneous programs related to SiB4.
+
+-------------------------------------------------------------
+IDL PROGRAMS
+-------------------------------------------------------------
+
+map_sitelist.pro
+-----------------
+Creates a map of site/tower locations.
+
+plotsib_pftfrac.pro
+--------------------
+Creates maps of the PFT distribution in SiB4.
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+All programs beginning with "sib_" plot the
+physiological, phenological, and stress functions in SiB4.
+-------------------------------------------------------------
+
+sib_climp.pro
+--------------
+Climatological suitability.
+
+sib_crassim.pro
+----------------
+Canopy assimilation respiration scalar.
+
+sib_ltdaylen.pro
+----------------
+Leaf transfer from daylength response.
+
+sib_ltdry.pro
+-----------------
+Leaf transfer from dry response.
+
+sib_ltfreeze.pro
+----------------
+Leaf transfer from freezing conditions.
+
+sib_mrfreeze.pro
+-----------------
+Respiration inhibition from freezing conditions.
+
+sib_mrhot.pro
+-------------
+Respiration increase from high temperatures.
+
+sib_mrprecip.pro
+-----------------
+Respiration inhibition from dry conditions,
+   using seasonal precipitation.
+
+sib_psdaylen.pro
+----------------
+Phenology stage daylength potential.
+
+sib_psgrowth.pro
+----------------
+Phenology stage growth index.
+
+sib_rstfac1.pro
+---------------
+Humidity stress factor.
+
+sib_rstfac2.pro
+---------------
+Soil moisture stress factor.
+
+sib_rstfac3.pro
+---------------
+Temperature stress factor.
+
+sib_rtmoist.pro
+----------------
+Respiration changes from soil moisture.
+
+sib_soil.pro
+-------------
+Soil properties.
+
+########################
+#Updated: 2019/03
+#Questions or comments? 
+#Contact:  katherine.haynes@colostate.edu

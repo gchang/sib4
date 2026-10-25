@@ -1,0 +1,27 @@
+SiB4 merge program input file---------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=1997
+                                   end month=12
+                                    end year=1997
+                         merge restart files=.F.
+                          merge requib files=.F.
+                             merge hr2 files=.T.
+                             merge hr3 files=.T.
+                             merge qp2 files=.F.
+                             merge qp3 files=.F.
+                            merge pbp1 files=.F.
+                            merge pbp2 files=.F.
+                        number of processors=48
+----path for unmerged output files----------|
+/spinning-scratch/kdhaynes/output/global/vector/orig/
+----path for merged output files------------|
+/spinning-scratch/kdhaynes/output/global/vector/merged/
+----number of variables and names-----------|
+-1
+assim
+resp_tot
+sif
+www_liq1
+
+

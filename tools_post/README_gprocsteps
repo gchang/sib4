@@ -1,0 +1,391 @@
+This file lists the steps necessary to process SiB4 
+  vector output and convert it to unstacked, gridded files.
+
+All the postprocessing routines require netcdf.
+  - If you are running on outside processors/systems,
+     you may need to modify the Makefile.
+
+The routines now use compressed netcdf4 output.  
+  - To create standard non-compressed files, 
+    for each routine in the sibinfo_module.f90
+    file you can change set the 'use_deflate' 
+    flag to false and recompile.
+
+  - If this doesn't work, please check the routine 
+    itself, as it is possible it got skipped when
+    implementing this flag.  
+    You need to alter two items:
+    1) Uncomment the 'nf90_create' command
+       that uses nf90_64bit_offset, and 
+       comment the nf90_create' command
+       using nf90_hdf5.
+    2) Comment the nf90_def_var_deflate
+       command, which appears after the
+       variables are defined in new files.
+
+The routines can be run multiple years at once,
+using the perl script sib4post.pl.  Once you've 
+test to make sure you have the input information
+correct, instead of using 
+>sib4post xxx (routine of choice)
+you can use
+>sib4post.pl xxx startyr stopyr
+and it will submit each year separately to be run
+concurrently.  Since it uses the input file, the 
+months are the months specified in the xxx.txt file.
+
+Note that with this latest version, no post-balancing
+is required because the initial pools are steady-state.
+(And when using fire emissions balancing is inappropriate).
+The crops are also prebalanced to long-term soil pools
+to re-emit the carbon removed from harvest.  
+Due to this, these steps can be done as soon as each
+year is finished running on all processors, except
+meanclim, since that is the only processing requiring
+multiple years.
+
+-------------------------------------------------------
+Prior to processing the files, create an executable
+that can process all the routines: sib4post.
+  - This is included in the Makefile.  
+    --Type >make sib4post
+  - To clean the directory of object files,
+    --Type >make clean
+  - To remove all executables to force rebuilds,
+    --Type >make cleane
+
+In addition, all routines can be compiled and
+run individually.
+   - All routines will be compiled if nothing
+     is specified to the Makefile.
+    --Type >make
+  - All routines can be compiled individually
+    --Type >make routine 
+       (use the name only before the "_")
+PLEASE NOTE: 
+   If using the individual routines,
+     the values used are in the programs,
+     NOT in the .txt files.
+   -- This is to allow specific files/requests; 
+      however, it is urged to use 'sib4post'
+   -- When changed, because the information is
+      in the actual program and not being read in,
+      you will need to recompile.
+
+--------------------------------------------------
+Once either sib4post (recommended)
+   or the routines themselves are compiled:
+1) Merge the vector SiB4 monthly output files 
+  from multiple processors.
+    - Set options either in merge.txt or sib4post.txt
+      --Process both global and land unit files
+          (i.e. hr2 and hr3; qp2 and qp3; pbp1 and pbp2)
+      --Make sure to set the number of processors used
+        to run SiB4
+    - Type either
+       >sib4post merge 
+        (to use merge.txt)
+           -or-
+       >sib4post merge sib4post.txt  
+        (to use the common specification file)
+
+     - Can also be run with the individual program.
+       In this case, since merge does it's own parsing,
+       it still does read the information in merge.txt
+       So to run this, just compile:
+       >make merge
+       and then run:
+       >merge_sib
+
+2) For hourly data only, since the files are so big
+   it helps to put them into daily files using disjoin.
+   --Modify disjoin.txt
+   -->sib4post disjoin
+
+3) Put the variables onto a grid,
+   rather than vector format.
+  - Set options in grid.txt
+    --Set starting and stopping months and years.
+    --Select diagnostic output files to process
+    --Specifiy if using daily, monthly, 
+      annual, or multi-year output files
+    --Specify if processing specific files
+      (do not forget to grid balance ratios
+        and crop respiration files)
+  - Type >sib4post grid
+
+4) Regrid the variables if necessary (i.e. 1x1 degree).
+  - Set options in regrid.txt
+     -- Grid reference files are 
+        located in the data directory
+        (sib4_data/grid/)
+          -or-
+        are available on Google drive.
+  - Type >sib4post regrid
+
+5) Balance non-crops (OPTIONAL)
+   - Set options in balance.txt or sib4post.txt
+     --Set starting and stopping months and years.
+       The forced balance will scale the respiration
+       to create no net flux over the entire time range
+     --Typically balance land unit files with PFTs only
+        (i.e. hr3; qp3; pbp2)
+     --Specify if you want to create a file with ratios,
+       (recommended) -or- write the balanced respiration 
+       back to the original files.
+   - Type either
+      >sib4post balance
+          -or-
+      >sib4post balance sib4post.txt  
+
+   - Can also be run with the individual program;
+     however, this does not read the input file.
+     Instead, please specify the options in the 
+     program itself (balance_sib.f90), then
+     compile the program:
+     >make balance
+     and then run:
+     >balance_sib
+
+   - Can be run either with vector or gridded output.
+     Please note that this needs to be redone after
+     any regridding due to the truncation of PFTs
+     when land units are used and area is aggregated
+     to large regions.
+     
+6) Distribute the crop carbon removed for harvest (OPTIONAL)
+  - Set options in cropdist.txt or sib4post.txt
+    --Set starting and stopping months and years.
+      Typically match the balance for non-crops; 
+      however, you can create annual crop 
+      distribution maps by setting multi-year 
+      total to false.
+  - Distributes the carbon to a single file with
+    constant respiration in micromoles/m2/s that are
+    required over the specified time period to balance
+    the crop fluxes.  The file name is set from
+    the time period the distribution represents.
+  - Type either
+    >sib4post cropdist
+         -or-
+    >sib4post cropdist sib4post.txt
+
+   - Can also be run with the individual program;
+     however, this does not read the input file.
+     Instead, please specify the options in the 
+     program itself (cropdist_sib.f90), then
+     compile the program:
+     >make cropdist
+     and then run:
+     >cropdist_sib
+
+   - Can be run either with vector or gridded output.
+     Please note that this needs to be redone after
+     any regridding due to the truncation of PFTs
+     when land units are used and area is aggregated
+     to large regions.
+
+
+7) Unstack the PFTs.
+  - Set options in unstack.txt
+     --Set starting and stopping months and years.
+     --Select output files to process
+     --Select if using daily, monthly, 
+       annual or multi-year files
+     --Select if wanting specific files processed
+     --Specify if output variables are to be area-weighted
+     --Specify if adding balanced respiration
+     --Specify if adding crop respiration
+     --Specify the file paths/names
+     --Select which variables to include
+       (< 1 ==> all variables)
+  - Type >sib4post unstack
+  - Note: The unstack program creates
+    files that are CF-compliant.
+
+
+8) Check the carbon balance.
+  - Set options in checkbal.txt
+    --Set starting and stopping months and years.
+      ->These should match what you used for balancing
+      and crop redistribution.
+      ->Checks the balance over the entire period specified.
+    --If the balanced respiration is not in the file 
+       (saved as resp_bal), then set the path to the 
+       balanced respiration file.  If only a path is given,
+       it will look for the corresponding ratio file from
+       the times given.  If a specific file is given,
+       it will use that specific file.
+    --Specify the crop respiration from redistributed harvest.
+      If only a path is given, it will look for the
+      corresponding crop file from the times given.  If a 
+      specific file is given, it will use that specific file.
+  - Type either
+      >sib4post checkbal
+          -or-
+      >sib4post checkbal sib4post.txt
+
+   - Can also be run with the individual program;
+     however, this does not read the input file.
+     Instead, please specify the options in the 
+     program itself (checkbal_sib.f90), then
+     compile the program:
+     >make checkbal
+     and then run:
+     >checkbal_sib
+
+   - Can be run either with vector or
+     gridded output.  If the output is gridded,
+     it will test for land units or unstacked PFTs.
+
+   - This can be done at any stage in the post-process.
+     
+9) Make "climatological" mean files of SiB4 output.
+   - Set options in meanclim.txt
+   - Run: >sib4post meanclim
+
+10) If monthly files, conjoin climatological mean
+    monthly files into a single file.
+    - Set options in conjoin.txt
+    - Run: >sib4post conjoin
+
+11) Make maps of sources/sinks to create annual
+    carbon sink (~3 Gt C yr-1)
+    - Uses R and programs in tools_sinks directory
+    - Set options in runToMakeBetas.txt
+    - Run program runToMakeBetas
+
+
+=====OPTIONAL ROUTINES==================
+1) Conjoin the output into annual files.
+   This is helpful for sites and groups,
+   or for monthly global output.
+    - Set options in conjoin.txt 
+      --Set starting and stopping months and years.
+      --Select diagnostic files to process
+      --Specify if creating multi-year file or
+        annual files
+      --Set input and output directories
+    - Type >sib4post conjoin
+
+2) Disjoin the output files, breaking apart
+   monthly files into daily files.
+   - Set options in disjoin.txt
+
+3) Combine the PFT contributions (optional).
+  - Creates grid cell mean values of 
+    all land unit variables.
+  - Writes out to existing grid file.
+
+  - Set options in combine.txt
+  - Type >sib4post combine
+
+4) Pull out any specific variables 
+   (optional and can be done at any time).
+  - Set options in pull.txt or sib4post.txt
+    --Starting and stopping months and years.
+    --Type of output files to pull from 
+      (i.e. daily, monthly, annual or multi-year)
+    --Paths of files to read and write
+      -->If no prefix/suffix provided, uses defaults
+      -->To use specific prefix/suffix values, then:
+          >/path/to/dir/prefix_xxx_suffix.nc
+      -->Of course, if using specific files, will
+         actually look for those files
+    --Variables to pull (must be >= 1)
+      -->Info variables are done automatically
+         (lonsib,latsib,pft_names,pft_refnums, 
+          lu_area, lu_pref and time)
+  - Type either
+    >sib4post pull
+        -or-
+    >sib4post pull sib4post.txt
+
+5) Rename any specific variables and/or attributes
+   (optional and can be done at any time).
+   - Set options in renamevar.txt or sib4post.txt
+   - Type >sib4post renamevar
+
+6) Add the balanced respiration to
+   the output files.
+   - This is primarily done while 
+     unstacking; however, if you
+     want to do this at any point
+     you can use the 'baladd' routine.
+   - Set options in baladd.txt
+   - Type >sib4post baladd
+   (This routine may need to be tested!)
+
+7) Create multi-year mean.
+  - Creates the mean from multpile years.
+
+  - Set options in meanclim.txt
+  - Type >sib4post meanclim
+
+8) Check total GPP.
+   - Set options in gpptot.txt
+   - Type >sib4post gpptot
+
+--------------------------------------------------
+NOTES: 
+A) I find it most useful to use the 
+   >sib4post routine
+   setup and edit the matching routine.txt
+   file, so I know which options apply to
+   each routine.  
+
+B) All these routines can use the
+   sib4post.txt specification file.
+   To use that, just alter that file and run:
+   >sibpost routine sib4post.txt
+
+   The utility of the sib4post.txt file is 
+   that it can be used to run numerous
+   processes in parallel, as the
+   program only checks for the 'sib4post'
+   portion of the specification file.
+   So, for example, to run 2 processes
+   at once (say for different years)
+   >sib4post routine sib4post1.txt
+   >sib4post routine sib4post2.txt
+
+   If I need to use this feature, I
+   typically set the routine.txt file
+   first, then match the sib4post.txt
+   file (as it can be confusing since
+   it is rather long).
+  
+C) As stated above, 
+   all these routines also can be run on 
+   their own.  Just compile each routine,
+   and either set the information in the 
+   matching program (routine_sib.f90 or
+   routine_sibgrid.f90), or in the 
+   case of merge and disjoin, just 
+   change the routine.txt file.
+   Then, compile the program:
+   >make routine
+   and then run:
+   >routine_sib or routine_sibgrid
+    (whatever executable is created)
+
+D) These routines have lines commented
+   or uncommented to use compression
+   with netcdf4.  For each routine,
+   just search for both the 'create'
+   command (nf90_create) and the 
+   'def_var' command (nf90_def_var).
+   To use compression, make sure the 
+   commands for the create line it uses
+   the hdf5 flag, and make sure the 
+   nf90_def_var_deflate is commented.
+
+E) To create CF-Compliant netcdf files,
+   use unstack.  Right now this is the
+   only program that is setup; however,
+   it can provide a good template to
+   follow.
+
+###################
+#Updated: 2019/09
+#Katherine.Haynes@colostate.edu

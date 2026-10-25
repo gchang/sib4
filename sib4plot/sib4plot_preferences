@@ -1,0 +1,195 @@
+; This file is used to set EZPLOT preferences
+
+;-----BasicParameters_COM
+defaultPrinter = 'Crayon'  ;'Mulch' for Black/White
+
+;-----Colors_COM
+defaultColorChoice = 0
+
+;------File_COM
+; Define your own custom directory buttons here
+; The first string in each line is the name that appears on a button
+; The second string in that line is the full path to the directory to
+; change to when the button is pushed.
+dirButton = [ $
+              ['Home', '/Users/kdhaynes'] $
+             ,['Global', '/Users/kdhaynes/Output/global'] $
+             ,['Groups', '/Users/kdhaynes/Output/groups'] $
+             ,['Sites ', '/Users/kdhaynes/Output/sites'] $
+             ,[' LAI  ', '/Users/kdhaynes/Dropbox/datas/lai_data/proc'] $
+             ]
+
+; Set your default working directories here
+dirInput = '.'
+dirOutput = '.'
+gridInfoFile = 'sib4_0.5x0.5_gridinfo.sav'
+
+; Set the default prompt for 'Quit EZPLOT' to:
+;      1:  to prompt yes/no before quit
+;      0:  not to prompt
+quitPrompt = 0
+
+; Set the sortchoice:
+;      1:  yes
+;      0:  no
+sortChoice = 1
+
+;------FontGeo_COM
+; Set the font information
+; To get the available fonts in IDL, type:
+;>DEVICE, GET_FONTNAMES=fnames, SET_FONT='*'  
+
+commentFont = '-adobe-helvetica-bold-r-normal--14-*'
+mainFont  = '-adobe-helvetica-bold-r-normal--14-*'
+titleFont = '-adobe-helvetica-bold-r-normal--18-*'
+
+dateFont = '-adobe-helvetica-medium-r-normal--10-*'
+filenameFont = '-adobe-helvetica-medium-r-normal--10-*'
+labelFont = '-adobe-helvetica-medium-r-normal--12-*'
+meanFont  = '-adobe-helvetica-medium-r-normal--12-*'
+
+psFont = 'HELVETICA' ;'COURIER' or 'TIMES'
+psFontSize = 10
+psCommentSize = 1.4
+psMainSize = 1.7
+psTitleSize = 1.7
+
+psDateSize = 1.2
+psFilenameSize = 1.2
+psLabelSize = 1.4
+psMeanSize = 1.2
+
+defaultcbarSize = 1.2
+defaultcbarLabelSize = 4.0
+defaultSize = 1.4
+
+defaultCBarFormat = '(F6.1)'
+defaultMeanFormat = '(F10.4)'
+defaultTitleLength = 32
+
+;------FontLine_COM
+; Set the font information
+commentFontL = '-adobe-helvetica-bold-r-normal--14-*'
+mainFontL  = '-adobe-helvetica-bold-r-normal--14-*'
+titleFontL = '-adobe-helvetica-bold-r-normal--18-*'
+
+dateFontL = '-adobe-helvetica-medium-r-normal--10-*'
+filenameFontL = '-adobe-helvetica-medium-r-normal--10-*'
+labelFontL = '-adobe-helvetica-medium-r-normal--12-*'
+meanFontL  = '-adobe-helvetica-medium-r-normal--12-*'
+simFontL = '-adobe-helvetica-medium-r-normal--12-*'
+
+psFontL = 'HELVETICA' ;'COURIER' or 'TIMES'
+psFontSizeL = 10
+psCommentSizeL = 1.4
+psMainSizeL = 1.7
+psTitleSizeL = 1.7
+
+psDateSizeL = 1.2
+psFilenameSizeL = 1.2
+psLabelSizeL = 1.4
+psMeanSizeL = 1.2
+psSimSizeL = 1.2
+
+defaultMeanFormatL = '(F10.4)'
+defaultTitleLengthL = 32
+defaultXYSizeL = 1.2
+
+; --- Month_COM
+monstart=[0,31,59,90,120,151,181,212,243,273,304,334]
+monstop =[31,59,90,120,151,181,212,243,273,304,334,366]
+monlen  =[31,28,31,30,31,30,31,31,30,31,30,31]
+monname =['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
+; --- PrefsGeo_COM
+defaultDateDisplay = 1
+datePosX = 0.98
+datePosY = 0.01
+dateAlign = 1
+
+defaultFileNameDisplay = 0
+filePosX = 0.01
+filePosY = 0.86
+fileAlign = 0
+
+defaultLabelDisplay = 1
+labelPosX = 0.01
+labelPosY = 0.02
+labelAlign = 0
+
+defaultMeanDisplay = 1
+meanPosX = 0.95
+meanPosY = 0.86
+meanAlign = 1
+
+dPosX1 = 0.12
+dPosY1 = 0.10
+dPosX2 = 0.94
+dPosY2 = 0.80
+
+; --- PrefsLine_COM
+defaultDateDisplayL = 1
+datePosXL = 0.98
+datePosYL = 0.01
+dateAlignL = 1
+
+defaultFileNameDisplayL = 0
+filePosXL = 0.01
+filePosYL = 0.88
+fileAlignL = 0
+
+defaultMeanDisplayL = 1
+meanPosXL = 0.92
+meanPosYL = 0.86
+meanAlignL = 1
+
+defaultSimDisplayL = 1
+simPosXL = 0.01
+simPosYL = 0.02
+simAlignL = 0
+
+dPosX1L = 0.12
+dPosY1L = 0.11
+dPosX2L = 0.94
+dPosY2L = 0.80
+
+sPosXL = 0.12
+sPosYL = 0.82
+lineColorSty = 0
+
+; --- SiBInfo_COM
+; Set the PFT information
+luNames=['All','1','2','3','4','5','6','7','8','9','10']
+
+pftNames=['all', $
+          'dbg','enf','dnf','ebf','dbf', $
+          'shb','sha','c3a','c3g','c4g', $
+          'c3c','c4c', $
+          'mze','soy','wwt']
+pftRefs=[0, $
+         1, 2, 4, 5, 8, $
+         11, 12, 13, 14, 15, $
+         17, 18, $
+         20, 22, 24]
+
+cropNames=['All','c3c','c4c','mze','soy','wwt']
+
+poolcanNames=['Total','Leaf','Stem','Product']
+poolpftNames=['Total','Leaf','FRoot','CRoot','Wood','Product']
+poolluNames=['Total','CWD','Met Litter','Str Litter', $
+             'Soil Litter','Soil Slow','Soil Passive']
+snowNames=['All','1','2','3','4','5']
+soilNames=['All','1','2','3','4','5','6','7','8','9','10']
+totNames =['All','-5','-4','-3','-2','-1', $
+           '1','2','3','4','5','6','7','8','9','10']
+
+missing = -900.0
+
+; --- Window_COM
+; Set the default plot window size and plot settings
+ezWindowFormat = '(I2,2A)'
+plotwindowsize = '640x500'
+xLeftMargin = 7
+xRightMargin = 2
+yBotMargin = 1
+yTopMargin = 1

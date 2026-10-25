@@ -1,0 +1,33 @@
+2007     ;Start Year
+2010     ;Stop Year
+1        ;File Output Time Resolution
+         ;(0=1/2 hourly 1=hourly 2=daily 3=monthly)
+Input Directory:
+'/scratch4/kdhaynes/Otway_'
+Input Suffix:
+'_L3.nc'
+Output File:
+'/scratch4/kdhaynes/otw_'
+20 ;Variables
+Ah
+Cc
+Fa
+Fc
+Fe
+Fg
+Fh
+Fld
+Flu
+Fn
+Fsd
+Fsu
+Precip
+Sws
+Ta
+Ts
+Wd_CSAT
+Ws_CSAT
+ps
+ustar
+
+

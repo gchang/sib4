@@ -1,0 +1,17 @@
+**********************************************************************
+*******************ROUTINES TO PROCESS GFED DATA**********************
+
+gfed_pullsib.f90
+-----------------
+Routine to pull out the SiB4 land points from GFED files,
+creating files to be used at runtime.
+
+gfedtot.f90
+-------------
+Routine to calculate total fire emissions.
+
+
+*********************************************************************
+Questions? Contact Kathy Haynes, katherine.haynes@colostate.edu
+Last Modified: August, 2019
+*********************************************************************

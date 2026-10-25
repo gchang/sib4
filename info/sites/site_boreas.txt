@@ -1,0 +1,10 @@
+BOREAS Sites (Name/Lat/Lon)
+
+0    NA        55.88   -98.67    CA-Nas
+1    NBS       55.88   -98.47    CA-Man, Flux
+2    NYJP      55.90   -98.28    ---
+3    NOJP      55.92   -98.61    CA-Njp
+4    SA        53.63   -106.20   CA-Oas, Flux
+5    SBS       53.98   -105.12   CA-Obs, Flux
+6    SYJP      53.87   -104.64   ---
+7    SOJP      53.91   -104.69   CA-Ojp, Flux

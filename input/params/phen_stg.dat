@@ -1,0 +1,247 @@
+15 PFTs
+9  Stage PFTs
+5  Live Pools
+5  Phenology Stages
+*******************************************************************************************************
+                    Stage-Based Phenology Parameter Definitions and Units
+                   ------------------------------------------------------
+                                     1   Leaf-Out
+                                     2   Growth
+                                     3   Mature
+                                     4   Stress
+                                     5   Dormant
+-------------------------------------------------------------------------------------------------------
+LP=Leaf Pool
+FR=Fine Root Pool
+CR=Coarse Root Pool
+WP=Stem/Wood Pool
+PP=Product Pool
+
+-----Growing Season Start Parameters (FlagG)------
+DayMinI = Minimum light to start growing season for increasing day lengths (hr)
+DayOffD = Parameter to start growing season for decreasing day lengths (hr)
+          > 0: Offset from maximum day length
+	  < 0: Daylength threshold to restrict day lengths (winter wheat)
+TAWMin  = Minimum fraction of total available water (TAW) in
+            top three layers to start growing season (-)
+TAWLen  = Number of sequential days TAW_FTop > FlagG_WMin (days)
+TempMin = Minimum temperature to start growing season (K)
+TempLen = Number of sequential days temperature > FlagG_Tmin (days)
+
+-----Growing Season Reset Parameters (FlagA) -----
+ALen   = Running-mean length for Assim_Mean (days)
+AReset = Threshold value for FAssim to set FlagA
+
+-----Phenology Factor Parameters-----
+Day Length Potential-----
+PSD_Ref  = Phenology daylength potential reference daylength (hr)
+PSD_Mul  = Phenology daylength potential daily change (-)
+PSD_Min  = Phenology daylength potential minimum (-)
+
+Growth Potential (calculates climatological suitability, climp)---------
+ClimP_A   = ClimP exponential adjustment coefficient
+ClimP_B   = ClimP exponential adjustment base
+ClimP_C   = ClimP multplicative adjustment coefficient
+ClimP_D   = ClimP multplicative adjustment offset
+ClimP_Min = ClimP minimum value
+ClimP_Max = ClimP maximum value
+CWA_Type = Water availability type:
+        1 = CUPR Precipitation
+	2 = Total Precipitation
+	3 = PAWFRW
+	4 = TAWFRW
+
+CLAI_Coef = Climp coefficient for climatological reference LAI (Clim_LAI)
+CLAI_OffL = Lower offset for minimum Clim_LAI
+CLAI_OffG = Higher offset for maximum Clim_LAI
+PSG_Min  = Minimum value for phenology growth potential
+
+Weather Potential--------
+PSW_Type = Water availability type for phenology weather potential:
+           1=PAW_FTOP;            2=PAWFZW;  3=2*PAW_FALL;
+           4=PAW_FALL>0. ==> 1.;  5=TAW_FTOP;  6=TAWFZW
+           7=RSTFAC2;             8=RSTFAC4;   9=PAWFRW
+PSW_RML  = Phenology weather potential running-mean length (days)
+
+Phenology Stage Index--------
+Thr = Min/Max threshold between stages
+
+
+-----Vegetation Phenology-Dependent Parameters-----
+-----(per stage)-----------------------------------
+LP_Alloc=Leaf pool allocation fraction (-)
+FR_Alloc=Fine root allocation fraction (-)
+CR_Alloc=Coarse root allocation fraction (-)
+WP_Alloc=Stem/Wood allocation fraction (-)
+PP_Alloc=Product allocation fraction (-)
+M_Adj=Adjust allocation fractions from moisture rules?
+T_Adj=Adjust allocation fractions from temperature rules?
+
+LP_Trans=Leaf pool transfer fraction (-)
+
+VMAX = Rubisco velocity of sun leaf per phenology stage (mol/m2/s)
+VMAX_CA = Calirbation ratio between VMAX and Carbonic Anhydrase velocity (-)
+
+*********************************************************************************************************
+
+Growing Season Start Parameters (hrs, -, K, days)
+-----------------------------------------------
+     PFT  DayMinI  DayOffD  TAWMin  TAWLen  TempMin  TempMax  TempLen
+2    enf  008.000  003.000  00.12   004     270.0    312.0    005
+4    dnf  008.000  003.000  00.12   004     268.0    312.0    005
+5    ebf  008.000  003.000  00.12   004     270.0    312.0    005
+8    dbf  008.000  003.000  00.12   004     270.0    312.0    005
+11   shb  008.000  003.000  00.12   004     270.0    312.0    005
+12   sha  008.000  004.000  00.12   004     270.0    312.0    005
+13   c3a  008.400  004.000  00.12   004     270.0    312.0    006
+14   c3g  008.600  003.000  00.12   004     278.0    312.0    006
+15   c4g  008.600  003.000  00.12   004     286.0    312.0    005
+
+Growing Season Reset Parameters (days, -)
+-----------------------------------------------
+     PFT  ALen    AReset
+2    enf  010     00.10
+4    dnf  010     00.10
+5    ebf  010     00.10
+8    dbf  010     00.10
+11   shb  010     00.10
+12   sha  010     00.10
+13   c3a  010     00.10
+14   c3g  010     00.10
+15   c4g  010     00.10
+
+
+Phenology Stage Daylength Potential Parameters (hours, -)
+-----------------------------------------------
+     PFT  PSD_Ref  PSD_Mul  PSD_Min
+2    enf  000.00   00.140   00.58
+4    dnf  000.00   00.140   00.38
+5    ebf  000.00   00.000   01.00
+8    dbf  000.00   00.140   00.38
+11   shb  000.00   00.140   00.58
+12   sha  002.00   00.060   00.38
+13   c3a  002.00   00.060   00.58
+14   c3g  002.00   00.140   00.38
+15   c4g  002.00   00.140   00.38
+
+Phenology Stage Growth Potential Parameters (days, -)
+-----------------------------------------------
+     PFT  ClimP_A  ClimP_B  ClimP_C  ClimP_D  ClimP_Min ClimP_Max  CWA_Type
+2    enf  00.00    00.00    00.80    00.00    00.10     02.00      001
+4    dnf  00.00    00.00    02.40    00.10    00.50     02.00      003
+5    ebf  00.00    00.00    01.80    00.00    00.80     01.00      003
+8    dbf  00.00    00.00    01.60    00.00    00.60     02.00      003
+11   shb  00.00    00.00    00.40    00.60    00.10     02.00      002
+12   sha  00.00    00.00    01.30    00.10    00.40     01.00      004
+13   c3a  00.00    00.00    01.00    00.10    00.20     01.00      003
+14   c3g  00.00    000.0    02.20    00.10    00.05     01.60      003
+15   c4g  00.04    800.0    00.00    00.00    00.05     02.00      003
+
+     PFT  PSG_Min   CLAI_Coef  CLAI_OffL  CLAI_OffG
+2    enf  00.50     01.40      01.40      02.80
+4    dnf  00.50     00.60      03.00      03.80
+5    ebf  00.50     01.00      03.20      05.20
+8    dbf  00.50     02.40      01.40      04.00
+11   shb  00.25     01.40      -0.20      01.00
+12   sha  00.25     02.20      -0.40      01.00
+13   c3a  00.25     01.20      00.00      01.00
+14   c3g  00.25     02.00      00.00      00.60
+15   c4g  00.25     01.60      00.00      00.60
+
+Phenology Stage Weather Potential Parameters (1 to 4, days)
+-----------------------------------------------
+     PFT  PSW_Type  PSW_RML
+2    enf  001       010
+4    dnf  001       010
+5    ebf  004       007
+8    dbf  002       010
+11   shb  009       010
+12   sha  008       007
+13   c3a  001       010
+14   c3g  001       010
+15   c4g  001       010
+
+Phenology Stage Index Thresholds (0 to 1)
+-----------------------------------------------
+     PFT  Thr12     Thr23     Thr34     Thr45
+2    enf  00.80     00.60     00.40     00.20
+4    dnf  00.80     00.60     00.40     00.20
+5    ebf  00.80     00.60     00.40     00.20
+8    dbf  00.80     00.60     00.40     00.20
+11   shb  00.80     00.60     00.40     00.20
+12   sha  00.80     00.60     00.40     00.20
+13   c3a  00.80     00.60     00.40     00.20
+14   c3g  00.80     00.60     00.40     00.20
+15   c4g  00.80     00.60     00.40     00.20
+
+
+-----------------------------------------------
+Vegetation Information Per Phenology Stage
+-----------------------------------------------
+
+Allocation Parameters
+-----------------------------------------------
+          ----   ALLOC STAGE 1  ----    ----   ALLOC STAGE 2  ----    ----   ALLOC STAGE 3  ---- 
+     PFT  LP    FR    CR    WP    PP    LP    FR    CR    WP    PP    LP    FR    CR    WP    PP 
+2    enf  0.60  0.20  0.10  0.10  0.00  0.40  0.30  0.20  0.10  0.00  0.35  0.45  0.10  0.10  0.00
+4    dnf  0.60  0.20  0.10  0.10  0.00  0.40  0.30  0.20  0.10  0.00  0.35  0.45  0.10  0.10  0.00
+5    ebf  0.25  0.35  0.10  0.25  0.05  0.25  0.35  0.10  0.25  0.05  0.25  0.35  0.10  0.25  0.05
+8    dbf  0.72  0.10  0.08  0.10  0.00  0.58  0.14  0.14  0.14  0.00  0.17  0.30  0.25  0.28  0.00
+11   shb  0.60  0.40  0.00  0.00  0.00  0.45  0.45  0.05  0.05  0.00  0.25  0.55  0.10  0.10  0.00
+12   sha  0.60  0.40  0.00  0.00  0.00  0.45  0.45  0.05  0.05  0.00  0.25  0.55  0.10  0.10  0.00
+13   c3a  0.80  0.20  0.00  0.00  0.00  0.65  0.35  0.00  0.00  0.00  0.55  0.45  0.00  0.00  0.00
+14   c3g  0.80  0.20  0.00  0.00  0.00  0.65  0.35  0.00  0.00  0.00  0.40  0.60  0.00  0.00  0.00
+15   c4g  0.80  0.20  0.00  0.00  0.00  0.65  0.35  0.00  0.00  0.00  0.55  0.45  0.00  0.00  0.00
+
+          ----   ALLOC STAGE 4  ----     ----   ALLOC STAGE 5  ----
+     PFT  LP    FR    CR    WP    PP     LP    FR    CR    WP    PP     M_Adj  T_Adj
+2    enf  0.20  0.45  0.25  0.10  0.00   0.20  0.50  0.20  0.10  0.00   .F.    .F.
+4    dnf  0.15  0.45  0.25  0.15  0.00   0.05  0.45  0.35  0.15  0.00   .F.    .F.
+5    ebf  0.25  0.35  0.10  0.25  0.05   0.25  0.35  0.10  0.25  0.05   .F.    .F.
+8    dbf  0.13  0.29  0.28  0.30  0.00   0.05  0.31  0.31  0.33  0.00   .F.    .F.
+11   shb  0.10  0.70  0.10  0.10  0.00   0.05  0.65  0.15  0.15  0.00   .F.    .F.
+12   sha  0.10  0.70  0.10  0.10  0.00   0.05  0.65  0.15  0.15  0.00   .F.    .F.
+13   c3a  0.25  0.75  0.00  0.00  0.00   0.05  0.95  0.00  0.00  0.00   .F.    .F.
+14   c3g  0.20  0.80  0.00  0.00  0.00   0.02  0.98  0.00  0.00  0.00   .F.    .F.
+15   c4g  0.25  0.75  0.00  0.00  0.00   0.05  0.95  0.00  0.00  0.00   .F.    .F.
+
+
+Leaf Pool Transfer Rate (LAI fraction per day)
+----------------------------------------------------------
+#    PFT   LT1       LT2       LT3       LT4       LT5
+2    enf   0.00000   0.00000   0.00000   0.00000   0.00000
+4    dnf   0.00000   0.00000   0.00001   0.00001   0.00000
+5    ebf   0.00000   0.00000   0.00000   0.00000   0.00000
+8    dbf   0.00000   0.00000   0.00000   0.00000   0.00000
+11   shb   0.00000   0.00000   0.00001   0.00004   0.00004
+12   sha   0.00000   0.00000   0.00000   0.00040   0.00400
+13   c3a   0.00000   0.00000   0.00000   0.00000   0.00000
+14   c3g   0.00000   0.00000   0.00000   0.00000   0.00000
+15   c4g   0.00000   0.00000   0.00000   0.00000   0.00000
+
+
+VMAX (mol/m2/s)
+----------------------------------------------------------
+#    PFT   VMAX1     VMAX2     VMAX3     VMAX4     VMAX5  
+2    enf   0.50E-4   0.52E-4   0.54E-4   0.52E-4   0.48E-4
+4    dnf   0.60E-4   0.59E-4   0.56E-4   0.50E-4   0.48E-4
+5    ebf   0.60E-4   0.60E-4   0.68E-4   0.62E-4   0.60E-4
+8    dbf   0.96E-4   0.94E-4   0.92E-4   0.90E-4   0.90E-4
+11   shb   0.84E-4   0.84E-4   0.80E-4   0.76E-4   0.70E-4
+12   sha   0.47E-4   0.45E-4   0.40E-4   0.36E-4   0.26E-4
+13   c3a   0.40E-4   0.38E-4   0.36E-4   0.34E-4   0.30E-4
+14   c3g   0.81E-4   0.83E-4   0.83E-4   0.78E-4   0.72E-4
+15   c4g   0.18E-4   0.16E-4   0.14E-4   0.12E-4   0.11E-4
+
+VMAX_CA (mol/m2/s)
+----------------------------------------------------------
+#    PFT   VMAX1     VMAX2     VMAX3     VMAX4     VMAX5
+2    enf   1400.00   1316.00   1331.00   1400.00   1400.00
+4    dnf   1400.00   1400.00   1400.00   1400.00   1400.00
+5    ebf   1400.00   1400.00   1400.00   1400.00   1400.00
+8    dbf   1798.00   1740.00   2224.00   1400.00   1400.00
+11   shb   1400.00   1400.00   1400.00   1400.00   1400.00
+12   sha   1400.00   1400.00   1400.00   1400.00   1400.00
+13   c3a   1400.00   1400.00   1400.00   1400.00   1400.00
+14   c3g   1400.00   1400.00   1400.00   1400.00   1400.00
+15   c4g   7462.00   7462.00   7462.00   7462.00   7462.00

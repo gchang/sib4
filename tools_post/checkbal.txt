@@ -1,0 +1,22 @@
+SiB4 check balance program input file-------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=9816
+                                   end month=12
+                                    end year=9816
+                     check balance hr2 files=.F.
+                     check balance hr3 files=.F.
+                     check balance qp2 files=.F.
+                     check balance qp3 files=.F.
+                    check balance pbp1 files=.F.
+                    check balance pbp2 files=.T.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+----SiB4 diagnostic file path---------------|
+/Users/kdhaynes/Output/amazon/
+---SiB4 balanced respiration file-----------|
+/Users/kdhaynes/Output/amazon/pbal_98916.lu.pbp2.nc
+---SiB4 crop path or file-------------------|
+/Path/To/File/Name.nc
+

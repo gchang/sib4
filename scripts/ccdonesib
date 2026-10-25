@@ -1,0 +1,61 @@
+#!/usr/bin/perl
+# Kathy Haynes, 09/17
+# Searches standard output and reports number of finished processes.
+# Searches user processes and reports number of running processes.
+# Reports total number of processes
+
+use strict;
+
+my $nprocs = 48;
+my $outfile_dir = "/ssd-scratch/kdhaynes/output/outfiles/";
+my $outfile_name = "global";
+my $outfile_suffix = ".out";
+
+my $string_sib4 = "SiB4D";
+my $string_done = "End";
+
+my $ndone = 0;
+my $nnotdone = 0;
+my $nmiss = 0;
+my $nnow = "01";
+while ( $nnow <= $nprocs ) {
+    my $outfile = $outfile_dir . $outfile_name . $nnow . $outfile_suffix;
+    if (-e $outfile){
+       my $pdone = `tail -1 $outfile |grep $string_done`;
+       chomp $pdone;
+       if (length($pdone) > 0) {
+           $ndone = (++$ndone);
+       }
+       else {
+           $nnotdone = (++$nnotdone);
+       }
+    }
+    else {
+        $nmiss = (++$nmiss);
+    }
+
+    $nnow = (++$nnow);
+    if ( $nnow < 10 ) {
+       $nnow = "0" . $nnow;
+    }
+}
+
+my $nrun = `ps -a -A | grep $string_sib4 | wc -l`;
+chomp $nrun;
+
+my $ntot = $nrun + $ndone;
+my $nerr = $ntot - $nprocs;
+
+if ($nerr ne 0) {
+    print "!!$string_sib4 Error!!\n";
+    print "Processes Specified: $nprocs\n";
+    print "Processes Running: $nrun\n";
+    print "Processes Done: $ndone\n";
+    print "Processes Not Done: $nnotdone\n";
+    print "Processes Missing: $nmiss\n";
+}
+else {
+    print "$string_sib4 processes running: $nrun\n";
+    print "$string_sib4 processes done   : $ndone\n";
+    print "$string_sib4 total processes  : $ntot\n";
+}

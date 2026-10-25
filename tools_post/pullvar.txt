@@ -1,0 +1,34 @@
+SiB4 pull variables input file--------------|
+--------------------------------------------|
+                                 start month=1 
+                                  start year=2000
+                                   end month=12
+                                    end year=2000
+--------->                    pull hr2 files=.F.
+                              pull hr3 files=.F.
+                              pull qp2 files=.F.
+                              pull qp3 files=.F.
+                             pull pbp1 files=.F.
+                             pull pbp2 files=.T.
+                            pull other files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+--------->               pull specific files=0
+----input path and prefix-------(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/daily/
+---output path and prefix-------(SiB4 files)|
+/ssd-scratch/kdhaynes/output/global/test/
+--input path, prefix, suffix---(Other files)|
+/Users/kdhaynes/Output/global/test/qgrid_xxx.nc
+--output path, prefix, suffix--(Other files)|
+/Users/kdhaynes/Output/global/test/qgrid_5x4_xxx.nc
+----number of variables and names-----------|
+2
+assim
+resp_tot
+----specific file input name(s)-------------|
+/Users/kdhaynes/Output/global/monthly/qsib_200003.lu.qp3.nc
+----specific file output name(s)------------|
+/Users/kdhaynes/Output/global/monthly/qrst_200003.lu.qp3.nc

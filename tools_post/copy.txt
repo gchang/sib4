@@ -1,0 +1,20 @@
+SiB4 copy program input file----------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=1998
+                                   end month=1
+                                    end year=1998
+--------->                   copy date files=.T.
+--------->                   use daily files=.F.
+                           use monthly files=.T.
+                            use annual files=.F.
+                        use multi-year files=.F.
+--------->               copy specific files=0
+----input path------------------------------|
+/Users/kdhaynes/sib4_hourly_xxx.pft.nc
+----output path-----------------------------|
+/Users/kdhaynes/sib4_fixed2_xxx.pft.nc
+----input specific files--------------------|
+/Users/kdhaynes/sib4_hourly_199804.pft.nc
+----output specific files-------------------|
+/Users/kdhaynes/sib4_fixed_199804.pft.nc

@@ -1,0 +1,3 @@
+AT-Neu   ;Sitename
+Input Directory:
+'/Users/kdhaynes/Dropbox/datas/lai_data/'

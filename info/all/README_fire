@@ -1,0 +1,37 @@
+######################### SiB4 Fire Notes ################################
+
+Because the fire emissions are provided only for the gridcell,
+SiB4 handles determining the PFTs and pools that are burned
+following the procedure in the technical document.
+
+For the fire output variables, please note:
+-- firec = the total carbon emitted by the fire,
+           is included in the gridcell output (.g. files),
+           and matches the fire emissions input from GFED.
+
+-- fireco2 = the total CO2 emitted by the fire,
+             (i.e. does not include emissions of other constituents
+                   such as black carbon),
+             is included in the gridcell output (.g. files),
+             and matches the fire CO2 emissions input from GFED.
+
+-- resp_fire = the fire carbon emissions per PFT,
+               is included in the pft output (.pft. files) and
+               is ALREADY area-weighted (unlike other variables)
+                   -> the total across PFTs is the sum of contributions
+                      (do not multiply by the PFT fractional coverage)
+                   -> the sum of PFTs matches the fire C emissions
+                      (since the fire consumed all of the carbon,
+                       all carbon has been consumed from the pools
+                       and included in this flux).
+
+PLEASE NOTE:
+-- If you want to include only the CO2 emissions,
+you need to use the fireco2 variable.
+-- Using the firec or sum of resp_fire will provide the total flux
+of carbon emitted from the fire (including all constituents such as
+black carbon and CO).
+
+
+#Updated: 02/21
+#Katherine.Haynes@colostate.edu

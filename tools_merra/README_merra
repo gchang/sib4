@@ -1,0 +1,118 @@
+**********************************************************************
+*******************STEPS TO PROCESS MERRA2 DATA***********************
+
+--2/3-degree longitude by 1/2-degree latitude
+--hourly resolution
+--https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/
+--Gelero, R., McCarty, W., Suarez, M.J., Todling, R., Molod, A., 
+  Takacs, L., ..., Zhao, B. (2017).  The Modern-Era Retrospective
+  Analysis for Research and Applications, Version 2 (MERRA-2).  
+  J. Climate, 30, 5419-5454, https://doi:10.1175/JCLI-D-16-0758.1.
+
+1) Download the data 
+   --The driver data required for SiB4 comes from three different 
+      MERRA2 files: FLX, SLV, and RAD.
+   --Use the scripts "getm2flx", "getm2slv", and "getm2rad" to 
+      get all of these files.
+      NOTE: I have found that wget doesn't specifically get the
+            years/months requested.  You will have to stop
+            them once you get the years/months you want, otherwise
+            they will continue forever, starting over at 1980 once
+            they go beyond the latest year.
+   --Edit scripts to specify:
+      > Output directory
+      > Year to download
+      > Month(s) to download
+      NOTE: The year/month specified are only where the 
+            downloading will begin.  As stated above, it will
+            loop forever until you stop the downloading
+            (far beyond the last year/month specified, starting
+             over in 1980).
+
+  ADDITIONAL NOTES:
+  The scripts use wget to download the data from the GES DISC.
+  To do this, you must have an Earthdata account: https://disc.gsfc.nasa.gov/#top
+  Instructions on using wget with Earthdata are at: 
+        https://disc.gsfc.nasa.gov/data-access#mac_linux_wget
+  They are also copied here:
+     -- Install wget if necessary. 
+     -- Create a .netrc file in your home directory.
+         >cd ~ or cd $HOME
+         >touch .netrc
+         >echo "machine urs.earthdata.nasa.gov login <uid> password <password>" >> .netrc 
+           (where <uid> is your user name and <password> is your Earthdata Login password without the brackets)
+         >chmod 0600 .netrc (so only you can access it)
+
+     -- Create a cookie file. This file will be used to persist sessions across calls to wget or curl.
+         >cd ~ or cd $HOME
+         >touch .urs_cookies.
+          Note: you may need to re-create .urs_cookies in case you have already executed wget without valid authentication.
+
+     -- Download your data using wget:
+         >wget --load-cookies ~/.urs_cookies --save-cookies ~/.urs_cookies --auth-no-challenge=on --keep-session-cookies 
+                 --content-disposition <url>
+           (where <url> is the link that points to a file you wish to download or to an OPeNDAP resource)
+
+
+     -- Your Earthdata password might be requested on the first download
+     -- If you wish to download an entire directory, such as this example URL, use the following command:
+          wget --load-cookies ~/.urs_cookies --save-cookies ~/.urs_cookies --auth-no-challenge=on --keep-session-cookies -np -r 
+                --content-disposition <url>
+
+     -- To download multiple data files at once, create a plain-text <url.txt> file with each line containing a GES DISC data file URL. 
+        Then, enter the following command:
+        >wget --load-cookies ~/.urs_cookies --save-cookies ~/.urs_cookies --auth-no-challenge=on --keep-session-cookies 
+            --content-disposition -i <url.txt>
+
+2) Pull out the variables required
+     --Use the fortran program merra_pullvar.f90
+     --Edit the program to specify:
+       > Starting and stopping years and months
+       > Directory of original MERRA data
+       > Directory and prefix for files of selected MERRA data
+     --Compile (make merra_pullvar)
+     --Run merra_pullvar executable
+
+3) Scale the MERRA-2 precipitation to GPCP 
+   --Prepare the GPCP data
+     > Needs to be same spatial resolution as MERRA,
+       a single annual file with twelve months of
+       precipitation in units of mm/day.
+     > See the tools_gpcp directory on how to acquire
+       and prepare the GPCP data.
+
+   --Use the fortran program scale_merra_gpcp.f90
+   --Edit the program to specify:
+     > Starting and stopping years
+     > Starting and stopping months
+     > GPCP Precipitation File (Version 2.3)
+       ---Assumes GPCP data are in global, gridded files 
+          (same spatial resolution; month total precip (mm))
+     > Directory and prefix for the MERRA files
+   --Compile (make scale_merra)
+   --Run scale_merra executable
+
+4) Pull out the SiB points
+   --Use the fortran program merra_pullsib.f90
+   --Edit the program to specify:
+     > Starting and stopping years
+     > Starting and stopping months
+     > Directory and prefix for the global MERRA files
+        (gridded at 2/3-degree by 1/2-degree)
+     > Directory and prefix for the SiB4 MERRA files 
+        (vector of nsib points at 1/2-degree by 1/2-degree)
+     > Filename specifying the SiB4 gridpoints
+   --Compile (>make merra_pullsib)
+   --Run (>merra_pullsib)
+
+5) Check the results
+   --Use sib4plot
+   --Press the Driver Data button and either select a
+     single file or specify a time range.
+   --Once the file opens, select which variable to plot
+
+
+*********************************************************************
+Questions? Contact Kathy Haynes, katherine.haynes@colostate.edu
+Last Modified: March, 2019
+*********************************************************************

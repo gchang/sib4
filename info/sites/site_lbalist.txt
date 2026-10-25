@@ -1,0 +1,12 @@
+LBA Sites:  9 
+Ref  Name    Lon      Lat      Start Stop   Fluxnet  PFT    Description
+0    JAV     -50.16   -9.82    2004  2006   BR-Ban   5,15   Seasonally Flooded Forest-Savanna
+1    RJA     -61.93   -10.08   2000  2002   BR-Ji2   7      Tropical Dry Forest
+2    K34     -60.21   -2.61    2002  2005   BR-Ma2   5      Tropical Rainforest
+3    K67     -54.96   -2.86    2002  2004   BR-Sa1   5      Primary Tropical Moist Forest
+4    K77     -54.54   -3.01    2001  2005   BR-Sa2   15     Pasture
+5    K83     -54.97   -3.02    2001  2003   BR-Sa3   5      Primary Tropical Moist Forest
+6    FNS     -62.36   -10.76   1999  2001   BR-Ji1   15     Pasture
+7    PDG     -47.65   -21.62   2001  2003   BR-Sp1   10     Cerrado (Shrubland/Savanna)
+8    CAX     -51.46   -1.72    1999  2008   BR-Cax   5      Tropical Forest
+9    SIN     -55.19   -11.24   ----  ----   BR-Mtg   8,15   Equitorial Savannah (Dry Winter)

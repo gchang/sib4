@@ -1,0 +1,30 @@
+SiB4 meanclim program input file------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=2003
+                                   end month=12
+                                    end year=2004
+--------->                    mean hr2 files=.F.
+                              mean hr3 files=.F.
+                              mean qp2 files=.F.
+                              mean qp3 files=.F.
+                             mean pbp1 files=.F.
+                             mean pbp2 files=.F.
+                            mean other files=.T.
+--------->                       daily files=.F.
+                               monthly files=.F.
+                                annual files=.T.
+                            multi-year files=.F.
+----input path------------------------------|
+/Users/kdhaynes/Data/casa_flux/CASAGFED3v2_Flux.xxx.nc
+---output path------------------------------|
+/Users/kdhaynes/Data/casa_flux/CASAGFED3v2_Flux.xxx.nc
+----selected variables (<1 == all)  --------|
+-1  
+assim
+resp_tot
+
+
+INPUT:  - At least 2 years
+OUTPUT: - "Climatological mean" over 
+           specified years.

@@ -1,0 +1,35 @@
+This folder contains routines to evaluate SiB4.
+
+The Makefile will compile the fortran routines, which 
+can all be compiled by just typing 'make'. 
+The routines can also be compiled individually by 
+following make with the routine name.
+
+---------------------------------------
+pullflux.f90
+-------------
+Routine that pulls out SiB4 fluxes and Fluxnet
+observations at all available tower sites.
+It combines them, matching the times, and then
+writes out a netcdf file containing the 
+paired data for easy comparison.
+
+The input file pullflux.txt contains the user
+specifications, including:
+  --Starting and stopping times
+  --Directory containing SiB4 output
+  --Directory containing Fluxnet data
+  --Directory for output file
+  --Tower information
+
+It assumes the Fluxnet data all are in netcdf
+files per tower, with separate files for
+hourly, daily, and monthly output.  For SiB4,
+it uses the hsib, psib, and qsib output, respectively.
+
+
+
+
+#Updated: 2018/02
+#Questions or comments? 
+#Contact:  katherine.haynes@colostate.edu

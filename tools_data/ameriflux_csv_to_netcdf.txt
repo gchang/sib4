@@ -1,0 +1,11 @@
+2004    Start Year
+2008    Stop Year
+48      Timesteps Per Day
+5       File Time Output (0=1/2 hourly, 1=hourly, 2=daily, 3=weekly 4=monthly 5=all)
+US-Bo2  Sitename
+Input Directory:
+'/Users/kdhaynes/Downloads/AMF_xxxxxx_BASE-BADM_2-1/'
+Input File Name:
+'AMF_xxxxxx_BASE_HH_2-1.csv'
+Output File Prefix:
+'/Users/kdhaynes/Dropbox/datas/fluxnet_data/'

@@ -1,0 +1,13 @@
+1995    Start Year
+2014    Stop Year
+24      Timesteps Per Day
+5       File Time Output (0=1/2 hourly, 1=hourly, 2=daily, 3=weekly 4=monthly 5=all)
+US-PFa  Sitename
+Input Directory:
+'/Users/kdhaynes/Downloads/'
+Site Directory:
+'/FLX_xxxxxx_FLUXNET2015_FULLSET_1995-2014_1-3/'
+Input File Name:
+'FLX_xxxxxx_FLUXNET2015_FULLSET_HR_year-year_1-3.csv'
+Output File Prefix:
+'/Users/kdhaynes/Dropbox/datas/fluxnet_data/'

@@ -1,0 +1,38 @@
+SiB4 rename variables input file------------|
+--------------------------------------------|
+                                 start month=1 
+                                  start year=2000
+                                   end month=12
+                                    end year=2016
+--------->                  rename hr2 files=.F.
+                            rename hr3 files=.F.
+                            rename qp2 files=.T.
+                            rename qp3 files=.F.
+                           rename pbp1 files=.F.
+                           rename pbp2 files=.F.
+                          rename other files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+--------->             rename specific files=0
+----input path and prefix-------(SiB4 files)|
+/spinning-scratch/kdhaynes/output/global/monthly/
+--input path, prefix, suffix---(Other files)|
+/scratch5/kdhaynes/sib4_output/global/0.5x0.5/hourly/sib4_xxx.pft.nc
+----number of variables and names-----------|
+1
+assim
+----new variable names----------------------|
+gpp
+----change long_names and new values--------|
+.true.
+Gross Primary Production
+----change titles and new value-------------|
+.false.
+no-change
+----change units and new values-------------|
+.false.
+micromoles C/m2/s
+----specific file name(s)-------------------|
+/Users/kdhaynes/Output/global/monthly/qrst_200001.lu.qp3.nc

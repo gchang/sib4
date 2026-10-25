@@ -1,0 +1,14 @@
+FR-Lam  Sitename
+2004    Start Year
+2010    Stop Year
+48      Timesteps Per Day
+5       File Time Output (1=hr, 2=day, 3=week, 4=mon, 5=all)
+Input Directory:
+'/Users/kdhaynes/Downloads/'
+Input File:
+'EFDC_L2_Flx_xxxxx_year_vvv_30m.txt'
+Output Directory:
+'/Users/kdhaynes/Dropbox/datas/fluxnet_data/'
+-------------------------------------------------
+Variables to Save:
+NETRAD,P,PPFD_IN,PPFD_OUT,RH,SW_IN,SWC_2,TA,TS,TS_2,TS_3,WD,WS,CO2,FC,G,H,H2O,LE,USTAR,NEE_PI,FETCH_MAX

@@ -1,0 +1,10 @@
+2003    Start Year
+2005    Stop Year
+48      Timesteps Per Day
+1       File Time Output (0=1/2 hourly, 1=hourly, 2=daily, 3=weekly 4=monthly)
+Input Directory:
+'/Users/kdhaynes/Downloads/FxMt_SKT_2003_30m_02/'
+Input File Name:
+'skt_0306.csv'
+Output File Prefix:
+'/Users/kdhaynes/Dropbox/datas/fluxnet_data/MO-SKT/skt_0305'

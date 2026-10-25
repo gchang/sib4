@@ -1,0 +1,277 @@
+This folder contains programs that are useful in
+processing SiB4 output.
+
+-----FORTRAN ROUTINES---------------
+All the routines in this folder use netcdf,
+and are included in the Makefile.  
+To change the location of netcdf libraries,
+modify the Makefile.
+
+All of these routines can be used using the
+program 'sib4post'.  To make this program,
+simply type:
+>make sib4post
+
+To run any program, for any program edit
+the associated ".txt" file, and then type:
+>sib4post routine
+where routine is the routine name
+(before the "_").
+
+For example, to balance fluxes, edit the 
+balance.txt file and then run:
+>sib4post balance
+
+If not using 'sib4post', all routines can also
+be run individually.  All routines are compiled
+by just typing 'make'.  Each routine can be 
+compiled individually by typing:
+>make routine
+(routine name before the "_").
+Note: To use the individual routines, most of them
+do not use the ".txt" input file, but rather 
+need the information specified in the file
+directly (such as in balance_sib.f90).  
+Then to get that information, the routine
+will need to be recompiled.  This is useful
+to "hardwire" in specific files/information.
+
+COMPRESSION:
+Most of the routines have the commands included to 
+compress the output.  For some of the routines,
+these commands are currently commented out.  
+To use, you will need to switch the ncdf_create to 
+use hdf5 (not 64bit), and you will need to uncomment
+the call to ncdf_def_var_deflate.  For newer routines,
+there is a switch in sibinfo_module.f90 that switches
+between compressed and non-compressed files.  To create
+compressed files, set use_deflate=.TRUE.
+
+MULTIPLE YEARS:
+To post-process multiple years, processing each
+year individually on a separate processor,
+use the perl script sib4post.pl.  
+To use, make the changes in the program's
+input file (xxx.txt), then specify the
+program and the years to process.
+For example, to merge 1997 through 2017:
+>sib4post.pl merge 1997 2017
+
+======================================================
+Brief descriptions of all the files are listed below.
+More information is in the README_procsteps file.
+------------------------------------------------------
+
+addresp
+------------
+Adds the balanced respiration, saved in a single
+ratio file, into new output files.
+
+balance
+--------
+Balances the non-crop PFTs by scaling the respiration.
+Assumes monthly SiB4 output files (hsib/psib/qsib).
+Creates either a single file with the ratios,
+   or adds the balanced respiration to the files.
+
+
+checkbal
+--------
+Checks the balance of the fluxes.
+Allows for either the balanced respiration
+to be included in the output files or 
+to be read from the ratio file.
+Expects a crop harvest distribution file,
+otherwise this information is not used.
+
+
+combine
+-------
+Combines plant functional types
+to create gridcell means.
+
+
+conjoin
+-------
+Conjoins multiple output files into
+a single netcdf file.
+
+For example, combines monthly files into
+a single annual file.
+
+Conjoins both land unit and gridcell files.
+
+Currently checks for eight required variables
+in the output file without specifying them in 
+the user options:
+   - Longitude, latitude, pft_names, pft_refs,
+     lu_area, lu_pref, site_names, and time
+   - If these are not found, they are ignored
+
+
+cropdist
+--------
+Redistributes the crop carbon removed during harvest.
+Uses a crop distribution map for spatial 
+   distribution of the crop flux.
+Uses a region definition map to keep specified percentage
+   of crop carbon domestic, rather than international.
+   - Set to 90% in the sibinfo_module
+      (variable name regionfrac)
+   - Currently assumes the region map is transcom regions,
+     with 11 land and 11 ocean regions.
+Assumes the input files are monthly files.
+Currently processes only vector formats.
+
+
+disjoin
+-------
+Disjoins monthly files, breaking them apart
+into daily files.
+Should work for both vector and grid output.
+
+
+gpptot
+-------
+Program to calculate the total GPP over 
+the time specified.
+Prints to screen the calculated global annual GPP,
+   and optional output of the GPP distributed
+   by biome and by PFT.
+
+grid
+----
+Program to put SiB4 vector output files
+onto a grid.
+Creates a new file containing the gridded output.
+If the file is a SiB4 diagnostic, the new filename
+  is changed from "sib" to "grid"
+
+meanclim
+--------
+Program to create an annual mean SiB4 file.
+Assumes the input files are monthly diagnostic
+   output files.
+Assumes at least two years are being combined.
+Creates a new file containing the mean values for
+   a single year.
+   - New filename has the last two digits of the
+     starting and stopping months.
+
+merge
+-----
+Merges the output files from simulations that were split 
+into sections for running on multiple processors.
+Creates new files, without the "pxxx" indicators.
+It contains the option to write out only select variables.
+If you wish to merge all variables, then set the
+integer below the line stating "number of variables" to -1.
+If you wish to merge only a subset of variables, then set
+the integer to the number you wish, followed by a list of
+the variable names to be merged.  Even if you wish to
+only save a single variable, this routine rently requires 
+eight variables for information (which can be changed in
+sibinfo_module.f90).
+
+
+pullvar
+--------
+Pulls out specific variables from a netcdf file,
+   creating a new file containing only the
+   specified variables.
+Processes any netcdf file (vector or gridded formats)
+
+Currently requires eight variables to be included 
+in the output file without specifying them in 
+the user options:
+   - Longitude, latitude, pft_names, pft_refs,
+     lu_area, lu_pref, site_names, and time
+   - If these are not found, they are ignored
+
+
+regrid
+------
+Regrids already gridded output.
+Assumes all lats/lons are grid centers.
+Creates new files
+   --By default, the new filename will
+     include the resolution
+   --Specific prefix text can be specified
+     in the input/output paths
+
+
+renamevar
+---------
+Renames specific variables, and also has the
+    capability to change the associated attributes
+    --Long_name, title, and units
+
+
+replaceresp
+------------
+Program to replace the original respiration (resp_tot)
+with balanced respiration (resp_bal).  Create new files.
+
+
+unstack
+--------
+Unstacks the PFTs, creating single levels
+for each PFT (rather than the limited 10 
+land units).  While unstacking, it has the 
+option to add the balanced repsiration
+as well as the redistributed crop harvest
+respiration.  Creates CF-compiliant output.
+
+
+sibinfo_module.f90
+------------------
+Module file containing SiB4-specific information.
+Includes:
+   - Diagnostic output information (prefix/suffix)
+   - Dimension names
+   - Specific variables names
+   - Flux variable names
+   - PFT information (number/names/references)
+   - Biome information (names/references)
+   - Common formats
+
+sibinfo_tools.f90
+-------------------
+File that contains generic subroutines to process
+   netcdf files.
+
+======================================================
+Overview of the order of routines in sib4post
+------------------------------------------------------
+
+sib4post.f90 --> sib4post_process.f90 --> sib4post_parse.f90
+  --> sib4post_control.f90  --> individual routines
+
+
+sib4post.f90
+-------------
+-- parses the routine called after sib4post
+
+sib4post_process.f90
+----------------------
+-- reads the input files
+-- calls sib4post_parse with appropriate options
+   for sib4 output
+-- calls sib4post_control for specific files
+   that do not need filename parsing
+
+sib4post_parse.f90
+-------------------
+-- parses the file name options and creates all
+   input and output filenames
+
+sib4post_control.f90
+--------------------
+-- calls the appropriate routine with all filenames
+    and options
+
+
+#------------------------------
+#Updated: 2019/05
+#Questions or comments? 
+#Contact:  kdhaynes@atmos.colostate.edu

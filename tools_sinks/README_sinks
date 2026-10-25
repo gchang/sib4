@@ -1,0 +1,69 @@
+This folder contains R routines to create unbalanced SiB4 fluxes.
+
+The main program is runToMakeBetas.R.  
+All other functions are called in the calculation process.
+
+The input file runToMakeBetas.txt contains the user specifications
+for making GPP/RESP multipliers that will create sinks. 
+Currently, there are four different processes that are being
+used to enhance GPP:
+  -- CO2 Fertilization 
+  -- N American Nitrogen Fertilization
+  -- European Nitrogen Fertilization
+  -- Boreal Forest Warming
+And there is one process being used to reduce respiration:
+  -- N American Forest Regrowth
+For all five of these processes, factors setting their
+strength are set in the input file.  
+
+To run, you will need to specify the SiB4 file
+containing the fluxes to be used to create the 
+multipliers.  It assumes that a year
+of fluxes is contained in this file.  
+Currently, we used climatological 
+monthly mean fluxes from 1998 through 2018. If the 
+output is in monthly files, rather than containing
+the full year of fluxes, the individual files
+can be joined together using the 'conjoin' routine
+in the tools_post directory.
+
+You will also need to specify the name of the 
+output file being created that holds the multipliers,
+a brief description of the output, and the 
+source of the fluxes.  These last two are included
+as attributes in the output netcdf file.
+
+Finally, you will need to specify whether to save
+the image of the mean annual sink (in umol/m2/s).
+If it is being saved, specify the name of the
+image (which is currently a png file).
+
+When running the program, print statements show
+the strength of the annual sink.  
+--Please keep in mind the fluxes for crops are 
+imbalanced due to harvest.  This missing 
+respiration is included in crop_resp, but is 
+not taken into account in these calculations.  To
+compensate for this, the original sink from the
+crop imbalance is shown, as is the new sink, 
+and then the net imbalance showing the difference
+(once crop_resp is applied).
+
+To use these fluxes, multiply the SiB4 
+assimilation ('assim') by the betaGPP and the
+SiB4 respiration ('resp_bal') by the 
+betaRESP.  For this version with fires, we used
+the unbalanced respiration ('resp_tot').
+
+To run, first you need to edit all options
+in the runToMakeBetas.txt file.  Then to run it
+I use rstudio.  Open that up and open the main file
+(runToMakeBetas.R).  Make sure that file gets sourced,
+then type
+>runToMakeBetas()
+
+
+
+#Updated: 2019/09
+#Questions or comments? 
+#Contact:  katherine.haynes@colostate.edu

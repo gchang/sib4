@@ -1,0 +1,5 @@
+IT-SRo   ;Sitename
+2000     ;PYrStart
+2016     ;PYrStop
+0        ;Replace Values
+0.4      ;Variability Fraction

@@ -1,0 +1,4 @@
+11     ;PFT: -4=Crops -3=Grasses -2=Shrubs -1=Forests 0=Group Sample 1-24=PFT_Refs
+1      ;Layout: 0=Wide 1=Tall
+SiB VS File:
+/Users/kdhaynes/Research/sib4_driver/global/sib_vs_0.5deg.nc

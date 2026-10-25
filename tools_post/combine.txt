@@ -1,0 +1,19 @@
+SiB4 combine program input file-------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=2000
+                                   end month=12
+                                    end year=2000
+                           combine hr3 files=.F.
+                           combine qp3 files=.F.
+                          combine pbp2 files=.F.
+                               monthly files=.F.
+                                annual files=.F.
+                            multi-year files=.F.
+                              specific files=1
+--path--(with matching g and lu files)------|
+/ssd-scratch/kdhaynes/output/global/test/
+----specific file input name(s)-------------|
+/Users/kdhaynes/Output/global/clim/monthly/qsib_9817.lu.qp3.nc
+----specific file output name(s)------------|
+/Users/kdhaynes/Output/global/clim/monthly/qsib_9817.g.qp2.nc

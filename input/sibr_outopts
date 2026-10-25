@@ -1,0 +1,114 @@
+******Restart Output List******
+
+  Please list the following information:
+  -- T or F to output to restart file
+  -- T or F to output to requib file
+      (equilibrium restart)
+  -- Variable Name
+  -- Variable Reference Number
+  -- Default Value
+      If < 0, uses driver data information
+         (if possible)
+
+*********************************************
+t t  'tmd                 ' 1    -1
+t t  'seas_precip         ' 2    -1
+t t  'seas_tm             ' 3    -1
+t t  'clim_cupr           ' 4    -1
+t t  'clim_precip         ' 5    -1
+t t  'clim_tm             ' 6    -1
+
+t t  'eacas               ' 10   7.7
+t t  'shcas               ' 11   0.005
+t t  'tcas                ' 12   275.0
+t t  'tkecas              ' 13   1.8
+t t  'tc                  ' 14   -1
+t t  'tcmin               ' 15   -1
+
+t t  'pco2m               ' 20   -1
+t t  'pco2cas             ' 21   36.98
+t t  'pco2c               ' 22   36.98
+t t  'pco2i               ' 23   36.98
+t t  'pco2s               ' 24   36.98
+t t  'pcosm               ' 25   -1
+t t  'pcoscas             ' 26   0.0000497
+t t  'coscas              ' 27   0.0
+
+t t  'ra                  ' 35   780.0
+t t  'rb                  ' 36   58.0
+t t  'rst                 ' 37   5668.0
+
+t t  'assim               ' 40   0.0
+t t  'assimd              ' 41   0.0
+t t  'resp_nveg           ' 42   0.0
+t t  'resp_leaf           ' 43   0.0
+t t  'resp_root           ' 44   0.0
+t t  'resp_grow           ' 45   0.0
+t t  'resp_mntn           ' 46   0.0
+t t  'resp_auto           ' 47   0.0
+t t  'resp_soil           ' 48   0.0
+t t  'resp_het            ' 49   0.0
+
+t t  'capacc_liq          ' 60   0.0
+t t  'capacc_snow         ' 61   0.0
+t t  'capacg              ' 62   0.0
+t t  'clim_pawfrw         ' 63   0.4
+t t  'clim_tawfrw         ' 64   0.4
+
+t t  'nsl                 ' 70   0000
+t t  'dzsnow              ' 71   0.0
+t t  'td                  ' 72   -1
+t t  'www_liq             ' 73   0.0
+t t  'www_ice             ' 74   0.0
+
+t t  'clim_assim          ' 80   0.0
+t t  'clim_lai            ' 81   0.0
+t t  'phenave_assim       ' 82   0.0
+t t  'phenave_assimsm     ' 83   0.0
+t t  'phenave_pr          ' 84   0.0
+t t  'phenave_prsm        ' 85   0000
+t t  'phenave_prsdoy      ' 86   0.0
+t t  'phenave_prcdoy      ' 87   0.0
+t t  'phenave_tawftop     ' 88   1.0
+t t  'phenave_tm          ' 89   -1
+t t  'phenc_climp         ' 90   0.6
+t t  'phenc_laimax        ' 91   1.5
+t t  'phenc_laimin        ' 92   0.5
+t t  'phenave_env         ' 93   1.0
+t t  'phenave_wa          ' 94   1.0
+t t  'phenave_wacsm       ' 95   0.0
+t t  'phen_pi             ' 96   0.0
+t t  'phen_istage         ' 97   0000
+
+t t  'dapd                ' 100   0000
+t t  'dapdaf              ' 101   0000
+t t  'gdd                 ' 102   0.0
+t t  'seed_pool           ' 103   0.0
+
+t t  'poolpft             ' 110  0.0
+t t  'poolpft_dgain       ' 111  0.0
+t t  'poolpft_dloss       ' 112  0.0
+t t  'poolpft_gainassim   ' 113  0.0
+t t  'poolpft_gainseed    ' 114  0.0
+t t  'poolpft_lossgresp   ' 115  0.0
+t t  'poolpft_lossmresp   ' 116  0.0
+t t  'poolpft_losstrans   ' 117  0.0
+t t  'poolpft_lossfire    ' 118  0.0
+t t  'poolpft_lossgrz     ' 119  0.0
+t t  'poolpft_losshrvst   ' 120  0.0
+f f  'poolpft_totgain     ' 121  0.0
+f f  'poolpft_totloss     ' 122  0.0
+
+t t  'poollu              ' 130  0.0
+t t  'poollu_dgain        ' 131  0.0
+t t  'poollu_dloss        ' 132  0.0
+t t  'poollu_gaingrz      ' 133  0.0
+t t  'poollu_gainhrvst    ' 134  0.0
+t t  'poollu_gaintransl   ' 135  0.0
+t t  'poollu_gaintransd   ' 136  0.0
+t t  'poollu_lossfire     ' 137  0.0
+t t  'poollu_lossresp     ' 138  0.0
+t t  'poollu_losstrans    ' 139  0.0
+f f  'poollu_totgain      ' 140  0.0
+f f  'poollu_totloss      ' 141  0.0
+

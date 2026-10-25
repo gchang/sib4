@@ -1,0 +1,55 @@
+#!/usr/bin/perl
+# 2016/09/19  Written by John M. Haynes (john.haynes@colostate.edu)
+
+use Getopt::Long;
+use strict;
+
+my ( $opt_help, $opt_i, $opt_q, $opt_t, $opt_v );
+GetOptions(
+    "help"    => \$opt_help,
+    "ignore"  => \$opt_i,
+    "quiet"   => \$opt_q,
+    "test"    => \$opt_t,
+    "verbose" => \$opt_v
+);
+
+if ( ( ( $#ARGV + 1 ) < 2 ) || ($opt_help) ) { &usage }
+
+foreach ( @ARGV[ 1 .. $#ARGV ] ) {
+    my $new = $ARGV[0];
+    $new =~ s/\#\#/$_/g;
+    if ( $opt_t || $opt_v ) { print $new . "\n" }
+    if ( !$opt_t ) {
+        system($new);
+        if ( !$opt_i ) {
+            if ( $? != 0 ) { die "forall: Command exited with error\n" }
+        }
+    }
+}
+
+sub usage {
+
+    print <<USAGE;
+Usage: forall [OPTIONS] "COMMAND" FILE [FILE...]
+
+Runs COMMAND for each FILE, substituting each occurence of ## in COMMAND
+with the name of the file.
+
+This is possibly as ill-advised as it sounds. In fact, are you sure you want
+to do this? If any FILE contains ## in the filename, or you do not properly
+escape special characters in COMMAND, the result may not be what you intended.
+At the very least, run a test (-t) first!
+
+The command will be run using the 'system' command in Perl.
+
+Options:
+  -h, --help     display this help and exit
+  -i, --ignore   ignore exit status of COMMAND
+  -t, --test     show commands to be executed, but don't execute them
+  -v, --verbose  show commands as they are executed
+
+Example: Prepend "q_" and append ".txt" to names of files matching "D*":
+  forall "mv ## q_##.txt" D*
+USAGE
+    exit;
+}

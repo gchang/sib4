@@ -1,0 +1,20 @@
+#!/bin/bash
+
+##User Information
+MDIR=/spinning-scratch/kdhaynes/data/merra_orig/
+YR=2018
+MON=("01 02 03 04 05 06 07 08 09 10 11 12")
+##
+
+cd $MDIR
+
+for i in ${MON[*]}; do
+   mkdir ./$YR${i}
+   cd ./$YR${i}
+
+   wget -r -A.nc4 --cut-dirs=5 --load-cookies ~/.urs-cookies --save-cookies ~/.urs_cookies --auth-no-challenge=on --keep-session-cookies http://goldsmr4.gesdisc.eosdis.nasa.gov/data/MERRA2/M2T1NXRAD.5.12.4/$YR/${i}
+
+   rm *.gif *.txt *.nc4.xml
+   cd ..
+done
+

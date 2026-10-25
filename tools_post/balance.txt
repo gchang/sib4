@@ -1,0 +1,21 @@
+SiB4 balance program input file-------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=1998
+                                   end month=12
+                                    end year=2018
+--------->                 balance hr2 files=.F.
+                           balance hr3 files=.F.
+                           balance qp2 files=.F.
+                           balance qp3 files=.F.
+                          balance pbp1 files=.F.
+                          balance pbp2 files=.T.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+--------->                  write ratio file=.T.
+         write balanced respiration to files=.F.
+----file path-------------------------------|
+/Users/kdhaynes/Output/sites/newf/XX-XX1/
+----ratio file path and prefix--------------|
+/Users/kdhaynes/Output/sites/newf/XX-XX1/

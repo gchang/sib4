@@ -1,0 +1,47 @@
+SiB4 unstack program input file-------------|
+--------------------------------------------|
+                                 start month=1
+                                  start year=2000
+                                   end month=12
+                                    end year=2000
+ --------->                unstack hr2 files=.F.
+                           unstack hr3 files=.F.
+                           unstack qp2 files=.F.
+                           unstack qp3 files=.F.
+                          unstack pbp1 files=.F.
+                          unstack pbp2 files=.T.
+                         unstack other files=.F.
+--------->                       daily files=.F.
+                               monthly files=.T.
+                                annual files=.F.
+                            multi-year files=.F.
+--------->            unstack specific files=0
+             output area-weighted PFT values=.T.
+                    add balanced respiration=.F.
+    add crop harvest distributed respiration=.F.
+----input path and prefix---(SiB4 files)----|
+/Users/kdhaynes/Output/sites/grid/US-Kon/pgrid_xxx.lu.nc
+---output path and prefix---(SiB4 files)----|
+/Users/kdhaynes/Output/sites/grid/US-Kon/sib4_xxx.pft.nc
+---balanced respiration ratio path or file--|
+/spinning-scratch/kdhaynes/output/global/0.5x0.5/hourly/hbal_0016.lu.nc
+----crop harvest respiration path or file---|
+/spinning-scratch/kdhaynes/output/global/0.5x0.5/hourly/hcro_0016.lu.nc
+--------------------------------------------|
+--input path, prefix, suffix---(Other files)|
+/Users/kdhaynes/Output/global/monthly/qpull_xxx.lu.qp3.nc
+--output path, prefix, suffix--(Other files)|
+/Users/kdhaynes/Output/global/test/qsib4_xxx.pft.nc
+--------------------------------------------|
+----specific variable number and names------|
+-1        <1 unstacks all variables
+--------------------------------------------|
+----specific file input name(s)-------------|
+/ssd-scratch/kdhaynes/SiB4.Sinks.Becky/BetaGPP.nc
+/ssd-scratch/kdhaynes/SiB4.Sinks.Becky/BetaRESP.nc
+----specific file output name(s)------------|
+/scratch5/kdhaynes/sib4_output/global/1x1/betas/betaGPP_1x1_0016.pft.nc
+/scratch5/kdhaynes/sib4_output/global/1x1/betas/betaRESP_1x1_0016.pft.nc
+
+
+

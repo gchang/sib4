@@ -1,0 +1,284 @@
+#!/usr/bin/perl
+#
+# finame - file renaming utility
+# Version 1.02
+#
+# 2007/04/05  Written by John Haynes (www.johnhaynes.us)
+# 2010/10/19  Allow blank replacement (JMH)
+
+use Getopt::Std;
+use File::Spec;
+use File::Basename;
+$ver = 1.02;
+
+getopts('d:efi:lp:qr:tuvw:');
+
+#GetOptions(
+#    'delete=s'   => \$opt_d,
+#    'examples'   => \$opt_e,
+#    'force'      => \$opt_f,
+#    'insert=s'   => \$opt_i,
+#    'lower'      => \$opt_l,
+#    'position=i' => \$opt_p,
+#    'quiet'      => \$opt_t,
+#    'replace=s'  => \$opt_r,
+#    'test'       => \$opt_t,
+#    'upper'      => \$opt_u,
+#    'version'    => \$opt_v,
+#    'with=s'     => \$opt_w
+#);
+
+$narg = $#ARGV + 1;
+
+if ( $narg eq 0 ) {
+    if ( $opt_v ) {
+
+        #   // print version information and exit (-v)
+        $version_txt = "finame Version $ver, 19 October 2010\n"
+          . "Written by John Haynes, www.johnhaynes.us\n";
+        print $version_txt;
+        exit;
+
+    }
+
+    if ( $opt_e ) {
+
+        #   // print example usage and exit (-e)
+        $example_txt =
+            "Consider a number of operations with a file named...\n"
+          . "              aabbccbb.txt\n\n"
+          . "Example 1:    To DELETE 3 characters from position 1...\n"
+          . "                 finame -d 3 -p 1 aabbccbb.txt\n"
+          . "              ---> bccbb.txt\n\n"
+          . "Example 2:    To INSERT YYY at position 5...\n"
+          . "                 finame -i YYY -p 5 aabbccbb.txt\n"
+          . "              ---> aabbYYYccbb.txt\n\n"
+          . "Example 3:    To REPLACE the first occurence of bb with "
+          . "YYYYY...\n"
+          . "                 finame -r bb -w YYYYY aabbccbb.txt \n"
+          . "              ---> aaYYYYYccbb.txt\n\n"
+          . "Example 4:    To convert all filenames in directory to "
+          . "uppercase...\n"
+          . "                 finame -u *\n";
+        print $example_txt;
+        exit;
+
+    }
+
+    #   // print usage
+    $usage_txt =
+      "Usage: finame [-d CHAR] [-e] [-f] [-i INSERT_TEXT] [-l] [-p POS] [-q]\n"
+      . "              [-r OLD_TEXT] [-t] [-u] [-v] [-w NEW_TEXT] "
+      . "<file_list>\n"
+      . "<file_list>  file or list of files to rename\n\n"
+      . "Must specify <file_list> and exactly one PRIMARY command:\n"
+      . "  -d -delete    delete a number of characters equal to CHAR starting at\n"
+      . "                position POS in the filename\n"
+      . "  -i -insert    insert phrase INSERT_TEXT into the filename at position POS\n"
+      . "  -r -replace   replace the first occurence of phrase OLD_TEXT with phrase\n"
+      . "                NEW_TEXT in the filename\n"
+      . "  -l -lower     convert filename to lower case\n"
+      . "  -u -upper     convert filename to upper case\n\n"
+
+      . "Use SUPPORTING commands as required by primary commands:\n"
+      . "  -p -position  character position in filename, first character being 1\n"
+      . "  -w -with      replacement text (use \"*\" to represent nothing)\n\n"
+      . "Options:\n"
+      . "  -e -examples  show examples and exit\n"
+      . "  -f -force     force overwrite of existing files\n"
+      . "  -q -quiet     quiet mode, display only warnings\n"
+      . "  -t -test      list changes to make, but do not actually make them\n"
+      . "  -v -version   print version and exit\n\n"
+      . "finame file renaming utility, J.M. Haynes use at "
+      . "your own risk\n";
+    print $usage_txt;
+
+}
+else {
+
+    #   // ensure exactly one of -d,-i,-r,-l,-u was specified; if not, exit
+    $total =
+      ( $opt_d ne "" ) +
+      ( $opt_i ne "" ) +
+      ( $opt_r ne "" ) +
+      ( $opt_l ne "" ) +
+      ( $opt_u ne "" );
+    if ( $total != 1 ) {
+        die "Error: Must specify exactly one of -d, -i, -l, -r, -u\n";
+    }
+
+    #   // do error checking for each command; exit if needed
+    # :: command -d
+    if ( $opt_d ) {
+        if ( !$opt_p ) {
+            die "Error: Must specify position using -p\n";
+        }
+        if ( $opt_p lt 1 ) {
+            die "Error: Position given by -p must be at least 1\n";
+        }
+    }
+
+    # :: command -r
+    if ( $opt_r ) {
+        if ( !$opt_w ) {
+            die "Error: Must specify text to insert using -w "
+              . "(use \"*\" to represent nothing)\n";
+        }
+        if ( $opt_w eq "*" ) { $opt_w = "" }
+    }
+
+    # :: command -i
+    if ( $opt_i ) {
+        if ( !$opt_p ) {
+            die "Error: Must specify position using -p\n";
+        }
+        if ( $opt_p lt 1 ) {
+            die "Error: Position given by -p must be at least 1\n";
+        }
+    }
+
+    #   // determine if filenames are case sensitive
+    $tmpdir    = File::Spec->tmpdir();
+    $case_sens = -1;
+    $test_file = $tmpdir . "/.finame_temp";
+    open( CTEST, ">" . $test_file ) || ( $case_sens = 1 );
+    if ( $case_sens == -1 ) {
+        close(CTEST);
+        $case_sens = ( -e uc($test_file) ) ? 0 : 1;
+        unlink($test_file);
+    }
+
+    #   // file checks and processing
+    $rep_option = ( ( $opt_f ) || ( $opt_t ) ) ? "A" : "";
+    foreach (@ARGV) {
+
+        # :: separate filename into basename plus directory
+        my ( $tmp1, $tmp2 ) = fileparse($_);
+        $fn = $tmp1;
+        $dn = $tmp2;
+
+        if ( !( -e $_ ) ) {
+            print "Warning: File cannot be located, skipping ";
+            print "... $fn\n";
+            next;
+        }
+
+        #   // DELETE command (-d)
+        if ( $opt_d ) {
+            $len_str = length($fn);
+            if ( $opt_p > $len_str ) {
+                print "Warning: Invalid character position, skipping ";
+                print "... $fn\n";
+                next;
+            }
+            if (   ( $opt_d > $len_str - $opt_p + 1 )
+                || ( ( $opt_p == 1 ) && ( $opt_d > $len_str - 1 ) ) )
+            {
+                print "Warning: Cannot delete $opt_d characters, skipping ";
+                print "... $fn\n";
+                next;
+            }
+            if ( $opt_p - 1 eq 0 ) {
+                $new = substr( $fn, -1 * ( $len_str - $opt_d ) );
+            }
+            else {
+                $new =
+                    substr( $fn, 0, $opt_p - 1 )
+                  . substr( $fn, $opt_d + $opt_p - 1 );
+            }
+        }
+
+        #   // REPLACE command (-r)
+        if ( $opt_r ) {
+            $len_str = length($fn);
+            $pos_rep = index( $fn, $opt_r );
+            if ( $pos_rep != -1 ) {
+                $len_rep = length($opt_r);
+                if ( $pos_rep eq 0 ) {
+                    $new = $opt_w . substr( $fn, $len_rep );
+                }
+                else {
+                    $new =
+                        substr( $fn, 0, $pos_rep ) 
+                      . $opt_w
+                      . substr( $fn, $pos_rep + $len_rep );
+                }
+            }
+            else {
+                $new = $fn;
+            }
+        }
+
+        #   // INSERT command (-i)
+        if ( $opt_i ) {
+            if ( $opt_p - 1 eq 0 ) {
+                $new = $opt_i . $fn;
+            }
+            else {
+                $new =
+                    substr( $fn, 0, $opt_p - 1 ) 
+                  . $opt_i
+                  . substr( $fn, $opt_p - 1 );
+            }
+        }
+
+        #   // LOWER CASE command (-l)
+        if ( $opt_l ) { $new = lc($fn) }
+
+        #   // UPPER CASE command (-u)
+        if ( $opt_u ) { $new = uc($fn) }
+
+        #   // program output
+        if ( $fn ne $new ) {
+            if ( -w $_ ) {
+
+                #   // write permission exists
+                $rename_okay = 0;
+                $rename_text = "";
+                $new_file    = $dn . $new;
+
+                #   // determine if necessary to check if $new exists
+                if ( ( not $case_sens ) && ( uc($fn) eq uc($new) ) ) {
+                    $check_exist = 0;
+                    $rename_okay = 1;
+                }
+                else {
+                    $check_exist = 1;
+                }
+
+                if ($check_exist) {
+                    if ( !( -e $new_file ) ) { $rename_okay = 1; }
+                    else {
+
+                        #   // the file already exists, decide what to do
+                        while ( $rep_option !~ m/Y|N|A/ ) {
+                            print "Warning: Replace $fn with $new, which ";
+                            print "already exists? (y/n/a) ";
+                            $rep_option = uc(<STDIN>);
+                            chomp($rep_option);
+                        }
+                        if ( $rep_option =~ m/Y|A/ ) {
+                            $rename_okay = 1;
+                            $rename_text = "  (overwrite existing)";
+                        }
+                        $rep_option = $rep_option eq "A" ? "A" : "";
+                    }
+                }
+
+                #   // do or show rename
+                if ($rename_okay) {
+                    if ( !$opt_t ) { rename( $_, $new_file ); }
+                    if ( ( !$opt_q ) || ( $opt_t ) ) {
+                        print "$_ ---> " . $dn . $new . $rename_text . "\n";
+                    }
+                }
+            }
+            else {
+                print "Warning: Cannot write file, skipping ";
+                print "... $_\n";
+            }
+        }
+
+    }
+
+}

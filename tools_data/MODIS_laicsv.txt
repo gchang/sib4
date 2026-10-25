@@ -1,0 +1,6 @@
+Site Name:
+US-NRM
+Input Directory:
+'/Users/kdhaynes/Desktop/LAI/'
+Output Directory:
+'/Users/kdhaynes/Dropbox/data/sites/lai/orig/'

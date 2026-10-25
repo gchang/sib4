@@ -1,0 +1,12 @@
+2001    Start Year
+2013    Stop Year
+HR      File Type
+US-Ne3  Sitename
+Input Directory:
+/Users/kdhaynes/Downloads/
+Site Directory:
+/FLX_xxxxxx_FLUXNET2015_FULLSET_2001-2013_1-3/
+Input File Name:
+FLX_xxxxxx_FLUXNET2015_FULLSET_tt_2001-2013_1-3.csv
+Output File Prefix:
+/Users/kdhaynes/Dropbox/datas/fluxnet_data/

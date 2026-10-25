@@ -1,0 +1,1 @@
+export LD_LIBRARY_PATH="/usr/local/netcdf4-gcc/lib:/usr/local/hdf5-gcc/lib:/user1/kdhaynes/atlas/lib"

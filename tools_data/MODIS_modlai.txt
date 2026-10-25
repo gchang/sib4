@@ -1,0 +1,8 @@
+CA-TP1   ;Sitename
+0        ;0=smooth with spline, 1=shift, 2=multiply, 3=harvest
+1        ;0=test, 1=overwrite
+0.52     ;Offset/Multiplier/HarvestDate
+0.14     ;T-Half
+14       ;NumDaysZ
+2000     ;PYrStart
+2017     ;PYrStop      

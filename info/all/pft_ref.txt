@@ -1,0 +1,22 @@
+1=dbg   Desert
+2=enf   Evergreen Needleleaf Forest
+4=dnf   Deciduous Needleleaf Forest
+5=ebf   Evergreen Broadleaf Forest
+8=dbf   Deciduous Broadleaf Forest
+
+11=shb  Shrubs (non-tundra)
+12=sha  Tundra Shrubs
+
+13=c3a  Tundra C3 Grass
+14=c3g  C3 Grassland (non-tundra)
+15=c4g  C4 Grassland
+
+17=c3c  Generic C3 Cropland
+18=c4c  Generic C4 Cropland
+
+20=mze  Maize
+22=soy  Soybean
+24=wwt  Winter Wheat
+
+----------------
+Total PFTs = 15
